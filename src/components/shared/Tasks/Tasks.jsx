@@ -16,8 +16,9 @@ import Check from '@material-ui/icons/Check'
 import tasksStyle from '../../../assets/jss/material-dashboard-react/components/tasksStyle'
 
 class Tasks extends React.Component {
-  constructor({ checkedIndexes }) {
-    super({ checkedIndexes })
+  constructor(props) {
+    super(props)
+    const { checkedIndexes } = props
     this.state = { checked: checkedIndexes }
   }
 

@@ -3,17 +3,17 @@ import React from 'react'
 import withStyles from '@material-ui/core/styles/withStyles'
 import InputLabel from '@material-ui/core/InputLabel'
 // core components
-import GridItem from '../Grid/GridItem'
-import GridContainer from '../Grid/GridContainer'
-import CustomInput from '../CustomInput/CustomInput'
-import Button from '../CustomButtons/Button'
-import Card from '../Card/Card'
-import CardHeader from '../Card/CardHeader'
-import CardAvatar from '../Card/CardAvatar'
-import CardBody from '../Card/CardBody'
-import CardFooter from '../Card/CardFooter'
+import GridItem from '../shared/Grid/GridItem'
+import GridContainer from '../shared/Grid/GridContainer'
+import CustomInput from '../shared/CustomInput/CustomInput'
+import Button from '../shared/CustomButtons/Button'
+import Card from '../shared/Card/Card'
+import CardHeader from '../shared/Card/CardHeader'
+import CardAvatar from '../shared/Card/CardAvatar'
+import CardBody from '../shared/Card/CardBody'
+import CardFooter from '../shared/Card/CardFooter'
 
-import avatar from '../../../assets/img/faces/marc.jpg'
+import avatar from '../../assets/img/faces/marc.jpg'
 
 const styles = {
   cardCategoryWhite: {

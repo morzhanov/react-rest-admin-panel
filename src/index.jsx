@@ -2,13 +2,14 @@ import * as React from 'react'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import App from './components/App/App'
-import './assets/styles/main.scss'
+
+import './assets/css/material-dashboard-react.css?v=1.5.0'
 
 render(
   <AppContainer>
     <App />
   </AppContainer>,
-  document.getElementById('app')
+  document.getElementById('root')
 )
 
 if (module.hot) {
@@ -19,7 +20,7 @@ if (module.hot) {
       <AppContainer>
         <NextApp />
       </AppContainer>,
-      document.getElementById('app')
+      document.getElementById('root')
     )
   })
 }

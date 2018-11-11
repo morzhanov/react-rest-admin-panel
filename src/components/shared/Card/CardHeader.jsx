@@ -8,7 +8,7 @@ import withStyles from '@material-ui/core/styles/withStyles'
 // core components
 import cardHeaderStyle from '../../../assets/jss/material-dashboard-react/components/cardHeaderStyle'
 
-function CardHeader({
+const CardHeader = ({
   classes,
   className,
   children,
@@ -17,7 +17,7 @@ function CardHeader({
   stats,
   icon,
   ...rest
-}) {
+}) => {
   const cardHeaderClasses = classNames({
     [classes.cardHeader]: true,
     [classes[`${color}CardHeader`]]: color,

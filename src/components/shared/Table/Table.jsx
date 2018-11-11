@@ -7,7 +7,7 @@ import TableRow from '@material-ui/core/TableRow'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 // core components
-import tableStyle from 'assets/jss/material-dashboard-react/components/tableStyle'
+import tableStyle from '../../../assets/jss/material-dashboard-react/components/tableStyle'
 
 const CustomTable = ({ classes, tableHead, tableData, tableHeaderColor }) => (
   <div className={classes.tableResponsive}>

@@ -15,8 +15,8 @@ import Notifications from '@material-ui/icons/Notifications'
 import Dashboard from '@material-ui/icons/Dashboard'
 import Search from '@material-ui/icons/Search'
 // core components
-import CustomInput from '../shared/CustomInput/CustomInput'
-import Button from '../shared/CustomButtons/Button'
+import CustomInput from '../CustomInput/CustomInput'
+import Button from '../CustomButtons/Button'
 
 import headerLinksStyle from '../../../assets/jss/material-dashboard-react/components/headerLinksStyle'
 

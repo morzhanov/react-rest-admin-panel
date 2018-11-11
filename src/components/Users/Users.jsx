@@ -2,12 +2,12 @@ import React from 'react'
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles'
 // core components
-import GridItem from '../Grid/GridItem'
-import GridContainer from '../Grid/GridContainer'
-import Table from '../Table/Table'
-import Card from '../Card/Card'
-import CardHeader from '../Card/CardHeader'
-import CardBody from '../Card/CardBody'
+import GridItem from '../shared/Grid/GridItem'
+import GridContainer from '../shared/Grid/GridContainer'
+import Table from '../shared/Table/Table'
+import Card from '../shared/Card/Card'
+import CardHeader from '../shared/Card/CardHeader'
+import CardBody from '../shared/Card/CardBody'
 
 const styles = {
   cardCategoryWhite: {
@@ -39,7 +39,7 @@ const styles = {
   }
 }
 
-const TableList = ({ classes }) => (
+const Users = ({ classes }) => (
   <GridContainer>
     <GridItem xs={12} sm={12} md={12}>
       <Card>
@@ -104,4 +104,4 @@ const TableList = ({ classes }) => (
   </GridContainer>
 )
 
-export default withStyles(styles)(TableList)
+export default withStyles(styles)(Users)

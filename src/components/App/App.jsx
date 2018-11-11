@@ -1,12 +1,13 @@
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
-import dashboardStyle from 'assets/jss/material-dashboard-react/layouts/dashboardStyle'
-import image from 'assets/img/sidebar-2.jpg'
-import logo from 'assets/img/reactlogo.png'
 import React from 'react'
 import withStyles from '@material-ui/core/styles/withStyles'
 import { Provider } from 'mobx-react'
+import { Router } from 'react-router'
 import { createBrowserHistory } from 'history'
-import Router from '../../router/router'
+import logo from '../../assets/img/reactlogo.png'
+import image from '../../assets/img/sidebar-2.jpg'
+import dashboardStyle from '../../assets/jss/material-dashboard-react/layouts/dashboardStyle'
+import AppRouter from '../../router/router'
 import routes from '../../router/routes'
 import { createStores } from '../../stores/createStore'
 import UserModel from '../../models/UserModel'
@@ -21,22 +22,22 @@ const defautlUser = UserModel.create({
 const stores = createStores(history, defautlUser)
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      mobileOpen: false
-    }
-    this.resizeFunction = this.resizeFunction.bind(this)
-    this.mainPanel = React.createRef()
+  state = {
+    mobileOpen: false
   }
+
+  mainPanel = React.createRef()
 
   componentDidMount() {
     window.addEventListener('resize', this.resizeFunction)
   }
 
-  componentDidUpdate(e) {
+  componentDidUpdate(props) {
     const { mobileOpen } = this.state
-    if (e.history.location.pathname !== e.location.pathname) {
+    if (
+      props.history &&
+      props.history.location.pathname !== props.location.pathname
+    ) {
       this.mainPanel.scrollTop = 0
       if (mobileOpen) {
         // eslint-disable-next-line
@@ -53,7 +54,7 @@ class App extends React.Component {
     this.setState(state => ({ ...state, mobileOpen: !state.mobileOpen }))
   }
 
-  resizeFunction() {
+  resizeFunction = () => {
     if (window.innerWidth >= 960) {
       this.setState({ mobileOpen: false })
     }
@@ -64,27 +65,33 @@ class App extends React.Component {
     const { mobileOpen } = this.state
     return (
       <Provider {...stores}>
-        <div className={classes.wrapper}>
-          <Sidebar
-            routes={routes}
-            logoText="Creative Tim"
-            logo={logo}
-            image={image}
-            handleDrawerToggle={this.handleDrawerToggle}
-            open={mobileOpen}
-            color="blue"
-            {...rest}
-          />
-          <div className={classes.mainPanel} ref={this.mainPanel}>
-            <Header
+        <Router history={history}>
+          <div className={classes.wrapper}>
+            <Sidebar
               routes={routes}
+              logoText="Creative Tim"
+              logo={logo}
+              image={image}
               handleDrawerToggle={this.handleDrawerToggle}
+              open={mobileOpen}
+              color="blue"
+              location={history.location}
               {...rest}
             />
-            <Router history={history} />
-            {this.getRoute() ? <Footer /> : null}
+            <div className={classes.mainPanel} ref={this.mainPanel}>
+              <Header
+                location={history.location}
+                routes={routes}
+                handleDrawerToggle={this.handleDrawerToggle}
+                {...rest}
+              />
+              <div className={classes.content}>
+                <AppRouter history={history} />
+              </div>
+              <Footer />
+            </div>
           </div>
-        </div>
+        </Router>
       </Provider>
     )
   }

@@ -8,7 +8,7 @@ import withStyles from '@material-ui/core/styles/withStyles'
 // core components
 import cardFooterStyle from '../../../assets/jss/material-dashboard-react/components/cardFooterStyle'
 
-function CardFooter({
+const CardFooter = ({
   classes,
   className,
   children,
@@ -17,7 +17,7 @@ function CardFooter({
   stats,
   chart,
   ...rest
-}) {
+}) => {
   const cardFooterClasses = classNames({
     [classes.cardFooter]: true,
     [classes.cardFooterPlain]: plain,

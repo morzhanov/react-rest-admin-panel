@@ -6,7 +6,7 @@ import withStyles from '@material-ui/core/styles/withStyles'
 // @material-ui/icons
 
 // core components
-import cardStyle from 'assets/jss/material-dashboard-react/components/cardStyle'
+import cardStyle from '../../../assets/jss/material-dashboard-react/components/cardStyle'
 
 const Card = ({
   classes,

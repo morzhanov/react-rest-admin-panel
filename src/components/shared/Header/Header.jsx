@@ -10,7 +10,7 @@ import Hidden from '@material-ui/core/Hidden'
 // @material-ui/icons
 import Menu from '@material-ui/icons/Menu'
 // core components
-import Button from 'components/CustomButtons/Button'
+import Button from '../CustomButtons/Button'
 import HeaderLinks from './HeaderLinks'
 
 import headerStyle from '../../../assets/jss/material-dashboard-react/components/headerStyle'
