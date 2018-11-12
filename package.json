@@ -21,8 +21,10 @@
   "dependencies": {
     "@material-ui/core": "3.1.0",
     "@material-ui/icons": "3.0.1",
+    "babel-plugin-react-css-modules": "^3.4.2",
     "chartist": "^0.11.0",
     "classnames": "^2.2.5",
+    "faker": "^4.1.0",
     "history": "^4.7.2",
     "lodash": "^4.17.10",
     "mobx": "^5.1.1",

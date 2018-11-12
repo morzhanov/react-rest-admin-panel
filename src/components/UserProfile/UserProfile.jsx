@@ -1,8 +1,7 @@
 import React from 'react'
-// @material-ui/core components
-import withStyles from '@material-ui/core/styles/withStyles'
+import './UserProfile.styl'
+import { observer, inject } from 'mobx-react'
 import InputLabel from '@material-ui/core/InputLabel'
-// core components
 import GridItem from '../shared/Grid/GridItem'
 import GridContainer from '../shared/Grid/GridContainer'
 import CustomInput from '../shared/CustomInput/CustomInput'
@@ -12,36 +11,16 @@ import CardHeader from '../shared/Card/CardHeader'
 import CardAvatar from '../shared/Card/CardAvatar'
 import CardBody from '../shared/Card/CardBody'
 import CardFooter from '../shared/Card/CardFooter'
-
 import avatar from '../../assets/img/faces/marc.jpg'
 
-const styles = {
-  cardCategoryWhite: {
-    color: 'rgba(255,255,255,.62)',
-    margin: '0',
-    fontSize: '14px',
-    marginTop: '0',
-    marginBottom: '0'
-  },
-  cardTitleWhite: {
-    color: '#FFFFFF',
-    marginTop: '0px',
-    minHeight: 'auto',
-    fontWeight: '300',
-    fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
-    marginBottom: '3px',
-    textDecoration: 'none'
-  }
-}
-
-const UserProfile = ({ classes }) => (
+const UserProfile = () => (
   <div>
     <GridContainer>
       <GridItem xs={12} sm={12} md={8}>
         <Card>
           <CardHeader color="primary">
-            <h4 className={classes.cardTitleWhite}>Edit Profile</h4>
-            <p className={classes.cardCategoryWhite}>Complete your profile</p>
+            <h4 className="card-title-white">Edit Profile</h4>
+            <p className="card-category-white">Complete your profile</p>
           </CardHeader>
           <CardBody>
             <GridContainer>
@@ -155,9 +134,9 @@ const UserProfile = ({ classes }) => (
             </a>
           </CardAvatar>
           <CardBody profile>
-            <h6 className={classes.cardCategory}>CEO / CO-FOUNDER</h6>
-            <h4 className={classes.cardTitle}>Alec Thompson</h4>
-            <p className={classes.description}>
+            <h6 className="card-category">CEO / CO-FOUNDER</h6>
+            <h4 className="card-title">Alec Thompson</h4>
+            <p className="description">
               Don`t be scared of the truth because we need to restart the human
               foundation in truth And I love you like Kanye loves Kanye I love
               Rick Owens’ bed design but the back is...
@@ -172,4 +151,4 @@ const UserProfile = ({ classes }) => (
   </div>
 )
 
-export default withStyles(styles)(UserProfile)
+export default inject('uiStore')(observer(UserProfile))

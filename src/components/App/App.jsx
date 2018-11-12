@@ -9,17 +9,13 @@ import image from '../../assets/img/sidebar-2.jpg'
 import dashboardStyle from '../../assets/jss/material-dashboard-react/layouts/dashboardStyle'
 import AppRouter from '../../router/router'
 import routes from '../../router/routes'
-import { createStores } from '../../stores/createStore'
-import UserModel from '../../models/UserModel'
+import createStores from '../../stores/createStore'
 import Header from '../shared/Header/Header'
 import Footer from '../shared/Footer/Footer'
 import Sidebar from '../shared/Sidebar/Sidebar'
 
 const history = createBrowserHistory()
-const defautlUser = UserModel.create({
-  name: 'Default Name'
-})
-const stores = createStores(history, defautlUser)
+const stores = createStores(history)
 
 class App extends React.Component {
   state = {
@@ -69,7 +65,7 @@ class App extends React.Component {
           <div className={classes.wrapper}>
             <Sidebar
               routes={routes}
-              logoText="Creative Tim"
+              logoText="Admin dashboard"
               logo={logo}
               image={image}
               handleDrawerToggle={this.handleDrawerToggle}

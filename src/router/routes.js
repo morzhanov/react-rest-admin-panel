@@ -1,22 +1,16 @@
 import Dashboard from '@material-ui/icons/Dashboard'
 import Person from '@material-ui/icons/Person'
-import LibraryBooks from '@material-ui/icons/LibraryBooks'
-import BubbleChart from '@material-ui/icons/BubbleChart'
-import Notifications from '@material-ui/icons/Notifications'
-import DashboardPage from '../components/Dashboard/Dashboard'
+import Users from '../components/Users/Users'
 import UserProfile from '../components/UserProfile/UserProfile'
-import TableList from '../components/TableList/TableList'
-import Typography from '../components/Typography/Typography'
-import Icons from '../components/Icons/Icons'
-import NotificationsPage from '../components/Notifications/Notifications'
+import Tasks from '../components/Tasks/Tasks'
 
 export default [
   {
-    path: '/dashboard',
-    sidebarName: 'Dashboard',
-    navbarName: 'Material Dashboard',
+    path: '/tasks',
+    sidebarName: 'tasks',
+    navbarName: 'Tasks',
     icon: Dashboard,
-    component: DashboardPage
+    component: Tasks
   },
   {
     path: '/user',
@@ -26,32 +20,11 @@ export default [
     component: UserProfile
   },
   {
-    path: '/table',
-    sidebarName: 'Table List',
-    navbarName: 'Table List',
+    path: '/users',
+    sidebarName: 'Users List',
+    navbarName: 'Users List',
     icon: 'content_paste',
-    component: TableList
+    component: Users
   },
-  {
-    path: '/typography',
-    sidebarName: 'Typography',
-    navbarName: 'Typography',
-    icon: LibraryBooks,
-    component: Typography
-  },
-  {
-    path: '/icons',
-    sidebarName: 'Icons',
-    navbarName: 'Icons',
-    icon: BubbleChart,
-    component: Icons
-  },
-  {
-    path: '/notifications',
-    sidebarName: 'Notifications',
-    navbarName: 'Notifications',
-    icon: Notifications,
-    component: NotificationsPage
-  },
-  { redirect: true, path: '/', to: '/dashboard', navbarName: 'Redirect' }
+  { redirect: true, path: '/', to: '/tasks', navbarName: 'Tasks' }
 ]

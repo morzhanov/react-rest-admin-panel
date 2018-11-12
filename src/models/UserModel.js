@@ -1,7 +1,15 @@
 import { types } from 'mobx-state-tree'
 
-const UserModel = types.model('UserModel', {
-  name: types.maybe(types.string)
-})
+const User = types
+  .model('User', {
+    id: types.integer,
+    email: types.string,
+    name: types.string
+  })
+  .views(self => ({
+    get fullName() {
+      return `${self.name}`
+    }
+  }))
 
-export default UserModel
+export default User

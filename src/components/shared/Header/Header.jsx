@@ -1,7 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
-// @material-ui/core components
+import { observer, inject } from 'mobx-react'
 import withStyles from '@material-ui/core/styles/withStyles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -20,7 +19,8 @@ const Header = ({
   routes,
   classes,
   color,
-  location: { pathname }
+  location: { pathname },
+  uiStore
 }) => {
   const makeBrand = () => {
     let name
@@ -40,13 +40,12 @@ const Header = ({
     <AppBar className={classes.appBar + appBarClasses}>
       <Toolbar className={classes.container}>
         <div className={classes.flex}>
-          {/* Here we create navbar brand, based on route name */}
           <Button color="transparent" href="#" className={classes.title}>
             {makeBrand()}
           </Button>
         </div>
         <Hidden smDown implementation="css">
-          <HeaderLinks />
+          <HeaderLinks user={uiStore.user} />
         </Hidden>
         <Hidden mdUp implementation="css">
           <IconButton
@@ -62,4 +61,4 @@ const Header = ({
   )
 }
 
-export default withStyles(headerStyle)(Header)
+export default inject('uiStore')(observer(withStyles(headerStyle)(Header)))
