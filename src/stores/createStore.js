@@ -15,10 +15,10 @@ const createStore = history => {
     user = UserModel.create(JSON.parse(localStorageUser))
   }
   const uiStore = UiStore.create({ user }, { user: UserModel })
-  const routerStore = new RouterStore(history)
+  const router = new RouterStore(history)
   return {
     uiStore,
-    routerStore
+    router
   }
 }
 

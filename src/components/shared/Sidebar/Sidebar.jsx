@@ -1,6 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import { NavLink, withRouter } from 'react-router-dom'
+import { filter } from 'lodash'
 import withStyles from '@material-ui/core/styles/withStyles'
 import Drawer from '@material-ui/core/Drawer'
 import Hidden from '@material-ui/core/Hidden'
@@ -11,12 +12,12 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Icon from '@material-ui/core/Icon'
 import HeaderLinks from '../Header/HeaderLinks'
 import sidebarStyle from '../../../assets/jss/material-dashboard-react/components/sidebarStyle'
+import { PageType } from '../../../utils/constants'
 
 const Sidebar = ({
   classes,
   color,
   logo,
-  image,
   logoText,
   routes,
   handleDrawerToggle,
@@ -24,52 +25,97 @@ const Sidebar = ({
   location: { pathname }
 }) => {
   const activeRoute = routeName => pathname.indexOf(routeName) > -1
+  const generalRoutes = filter(routes, { type: PageType.GENERAL })
+  const entityRoutes = filter(routes, { type: PageType.ENTITY })
 
   const links = (
-    <List className={classes.list}>
-      {routes.map(prop => {
-        if (prop.redirect) return null
-        let activePro = ' '
-        let listItemClasses
-        if (prop.path === '/upgrade-to-pro') {
-          activePro = `${classes.activePro} `
-          listItemClasses = classNames({
-            [` ${classes[color]}`]: true
+    <div>
+      <List className={classes.list}>
+        {generalRoutes.map(prop => {
+          if (prop.redirect) return null
+          let activePro = ' '
+          let listItemClasses
+          if (prop.path === '/upgrade-to-pro') {
+            activePro = `${classes.activePro} `
+            listItemClasses = classNames({
+              [` ${classes[color]}`]: true
+            })
+          } else {
+            listItemClasses = classNames({
+              [` ${classes[color]}`]: activeRoute(prop.path)
+            })
+          }
+          const whiteFontClasses = classNames({
+            [` ${classes.whiteFont}`]: activeRoute(prop.path)
           })
-        } else {
-          listItemClasses = classNames({
-            [` ${classes[color]}`]: activeRoute(prop.path)
+          return (
+            <NavLink
+              exact
+              to={prop.path}
+              className={activePro + classes.item}
+              activeClassName="active"
+              key={prop.path}
+            >
+              <ListItem button className={classes.itemLink + listItemClasses}>
+                <ListItemIcon className={classes.itemIcon + whiteFontClasses}>
+                  {typeof prop.icon === 'string' ? <Icon>{prop.icon}</Icon> : <prop.icon />}
+                </ListItemIcon>
+                <ListItemText
+                  primary={prop.sidebarName}
+                  className={classes.itemText + whiteFontClasses}
+                  disableTypography
+                />
+              </ListItem>
+            </NavLink>
+          )
+        })}
+      </List>
+      <div className={classes.logo}>
+        <a href="/" className={classes.logoLink}>
+          Entities management
+        </a>
+      </div>
+      <List className={classes.list}>
+        {entityRoutes.map(prop => {
+          if (prop.redirect) return null
+          let activePro = ' '
+          let listItemClasses
+          if (prop.path === '/upgrade-to-pro') {
+            activePro = `${classes.activePro} `
+            listItemClasses = classNames({
+              [` ${classes[color]}`]: true
+            })
+          } else {
+            listItemClasses = classNames({
+              [` ${classes[color]}`]: activeRoute(prop.path)
+            })
+          }
+          const whiteFontClasses = classNames({
+            [` ${classes.whiteFont}`]: activeRoute(prop.path)
           })
-        }
-        const whiteFontClasses = classNames({
-          [` ${classes.whiteFont}`]: activeRoute(prop.path)
-        })
-        return (
-          <NavLink
-            exact
-            to={prop.path}
-            className={activePro + classes.item}
-            activeClassName="active"
-            key={prop.path}
-          >
-            <ListItem button className={classes.itemLink + listItemClasses}>
-              <ListItemIcon className={classes.itemIcon + whiteFontClasses}>
-                {typeof prop.icon === 'string' ? (
-                  <Icon>{prop.icon}</Icon>
-                ) : (
-                  <prop.icon />
-                )}
-              </ListItemIcon>
-              <ListItemText
-                primary={prop.sidebarName}
-                className={classes.itemText + whiteFontClasses}
-                disableTypography
-              />
-            </ListItem>
-          </NavLink>
-        )
-      })}
-    </List>
+          return (
+            <NavLink
+              exact
+              to={prop.path}
+              className={activePro + classes.item}
+              activeClassName="active"
+              key={prop.path}
+            >
+              <ListItem button className={classes.itemLink + listItemClasses}>
+                <ListItemIcon className={classes.itemIcon + whiteFontClasses}>
+                  {typeof prop.icon === 'string' ? <Icon>{prop.icon}</Icon> : <prop.icon />}
+                </ListItemIcon>
+                <ListItemText
+                  primary={prop.sidebarName}
+                  className={classes.itemText + whiteFontClasses}
+                  disableTypography
+                />
+              </ListItem>
+            </NavLink>
+          )
+        })}
+      </List>
+    </div>
   )
   const headerLogo = (
     <div className={classes.logo}>
@@ -101,10 +147,7 @@ const Sidebar = ({
             <HeaderLinks />
             {links}
           </div>
-          <div
-            className={classes.background}
-            style={{ backgroundColor: '#444' }}
-          />
+          <div className={classes.background} style={{ backgroundColor: '#444' }} />
         </Drawer>
       </Hidden>
       <Hidden smDown implementation="css">
@@ -118,10 +161,7 @@ const Sidebar = ({
         >
           {headerLogo}
           <div className={classes.sidebarWrapper}>{links}</div>
-          <div
-            className={classes.background}
-            style={{ backgroundColor: '#444' }}
-          />
+          <div className={classes.background} style={{ backgroundColor: '#444' }} />
         </Drawer>
       </Hidden>
     </div>

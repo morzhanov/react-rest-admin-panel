@@ -48,11 +48,7 @@ const Header = ({
           <HeaderLinks user={uiStore.user} />
         </Hidden>
         <Hidden mdUp implementation="css">
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerToggle}
-          >
+          <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerToggle}>
             <Menu />
           </IconButton>
         </Hidden>

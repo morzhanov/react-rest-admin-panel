@@ -1,12 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
-
-const ColumnHeader = styled.button`
-  display: inline-block;
-  vertical-align: top;
-  height: 100%;
-  padding-right: 16px;
-`
+import TableCell from '@material-ui/core/TableCell'
 
 const TableHeadItem = ({
   item: {
@@ -20,9 +13,9 @@ const TableHeadItem = ({
   const onClick = () => hasSorting && sort.onChangeSortDirection()
 
   return (
-    <ColumnHeader type="button" onClick={onClick}>
+    <TableCell type="button" onClick={onClick}>
       <span>{name}</span>
-    </ColumnHeader>
+    </TableCell>
   )
 }
 

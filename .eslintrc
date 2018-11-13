@@ -9,8 +9,10 @@
   },
   "parserOptions": { "ecmaVersion": 6 },
   "rules": {
+    "max-len": [2, 90],
     "prettier/prettier": "error",
     "no-unused-vars": 2,
+    "no-param-reassign": "off",
     "global-require": "off",
     "no-undef": 2,
     "no-nested-ternary": "off",

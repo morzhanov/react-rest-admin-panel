@@ -1,20 +1,11 @@
 import React from 'react'
 import { observer } from 'mobx-react'
-import TableHead from './TableHead'
-import TableBody from './TableBody'
-import NoData from '../noData/NoData'
+import MuiTable from '@material-ui/core/Table'
+import TableHead from './parts/TableHead'
+import TableBody from './parts/TableBody'
 
-const Table = (
-  cols,
-  data,
-  isPending,
-  firstCustomRow,
-  noDataClassName,
-  rowLinks,
-  emptyDataMessage,
-  withButton
-) => (
-  <div>
+const Table = ({ cols, data, isPending, firstCustomRow, rowLinks, withButton }) => (
+  <MuiTable>
     <TableHead cols={cols} />
     <TableBody
       withButton={withButton}
@@ -23,13 +14,8 @@ const Table = (
       cols={cols}
       firstCustomRow={firstCustomRow}
     />
-    {!isPending && !data.length && (
-      <NoData
-        message={emptyDataMessage || `No data`}
-        classes={noDataClassName}
-      />
-    )}
-  </div>
+    {!isPending && !data.length && <div>No data</div>}
+  </MuiTable>
 )
 
 Table.defaultProps = {
