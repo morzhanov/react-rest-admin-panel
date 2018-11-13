@@ -1,7 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import { NavLink } from 'react-router-dom'
-// @material-ui/core components
+import { NavLink, withRouter } from 'react-router-dom'
 import withStyles from '@material-ui/core/styles/withStyles'
 import Drawer from '@material-ui/core/Drawer'
 import Hidden from '@material-ui/core/Hidden'
@@ -10,9 +9,7 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import Icon from '@material-ui/core/Icon'
-// core components
 import HeaderLinks from '../Header/HeaderLinks'
-
 import sidebarStyle from '../../../assets/jss/material-dashboard-react/components/sidebarStyle'
 
 const Sidebar = ({
@@ -26,7 +23,6 @@ const Sidebar = ({
   open,
   location: { pathname }
 }) => {
-  // verifies if routeName is the one active (in browser input)
   const activeRoute = routeName => pathname.indexOf(routeName) > -1
 
   const links = (
@@ -50,6 +46,7 @@ const Sidebar = ({
         })
         return (
           <NavLink
+            exact
             to={prop.path}
             className={activePro + classes.item}
             activeClassName="active"
@@ -74,9 +71,9 @@ const Sidebar = ({
       })}
     </List>
   )
-  const brand = (
+  const headerLogo = (
     <div className={classes.logo}>
-      <a href="https://www.creative-tim.com" className={classes.logoLink}>
+      <a href="/" className={classes.logoLink}>
         <div className={classes.logoImage}>
           <img src={logo} alt="logo" className={classes.img} />
         </div>
@@ -96,20 +93,18 @@ const Sidebar = ({
           }}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true // Better open performance on mobile.
+            keepMounted: true
           }}
         >
-          {brand}
+          {headerLogo}
           <div className={classes.sidebarWrapper}>
             <HeaderLinks />
             {links}
           </div>
-          {image !== undefined ? (
-            <div
-              className={classes.background}
-              style={{ backgroundImage: `url(${image})` }}
-            />
-          ) : null}
+          <div
+            className={classes.background}
+            style={{ backgroundColor: '#444' }}
+          />
         </Drawer>
       </Hidden>
       <Hidden smDown implementation="css">
@@ -121,18 +116,16 @@ const Sidebar = ({
             paper: classes.drawerPaper
           }}
         >
-          {brand}
+          {headerLogo}
           <div className={classes.sidebarWrapper}>{links}</div>
-          {image !== undefined ? (
-            <div
-              className={classes.background}
-              style={{ backgroundImage: `url(${image})` }}
-            />
-          ) : null}
+          <div
+            className={classes.background}
+            style={{ backgroundColor: '#444' }}
+          />
         </Drawer>
       </Hidden>
     </div>
   )
 }
 
-export default withStyles(sidebarStyle)(Sidebar)
+export default withRouter(withStyles(sidebarStyle)(Sidebar))

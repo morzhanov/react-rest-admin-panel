@@ -5,7 +5,6 @@ import { Provider } from 'mobx-react'
 import { Router } from 'react-router'
 import { createBrowserHistory } from 'history'
 import logo from '../../assets/img/reactlogo.png'
-import image from '../../assets/img/sidebar-2.jpg'
 import dashboardStyle from '../../assets/jss/material-dashboard-react/layouts/dashboardStyle'
 import AppRouter from '../../router/router'
 import routes from '../../router/routes'
@@ -67,7 +66,6 @@ class App extends React.Component {
               routes={routes}
               logoText="Admin dashboard"
               logo={logo}
-              image={image}
               handleDrawerToggle={this.handleDrawerToggle}
               open={mobileOpen}
               color="blue"

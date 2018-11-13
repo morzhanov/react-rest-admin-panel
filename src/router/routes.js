@@ -13,7 +13,7 @@ export default [
     component: Tasks
   },
   {
-    path: '/user',
+    path: '/profile',
     sidebarName: 'User Profile',
     navbarName: 'Profile',
     icon: Person,
