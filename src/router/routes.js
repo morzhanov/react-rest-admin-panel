@@ -51,5 +51,10 @@ export default {
       component: Auth,
       exact: true
     }
+  },
+  notFound: {
+    redirect: true,
+    path: '*',
+    to: '/admin'
   }
 }

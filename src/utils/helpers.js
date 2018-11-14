@@ -46,7 +46,8 @@ export const saveTokens = ({ accessToken, refreshToken }) => {
   localStorage.setItem('refreshToken', refreshToken)
 }
 
-export const logout = () => {
+export const logOut = () => {
   localStorage.removeItem('accessToken')
   localStorage.removeItem('refreshToken')
+  localStorage.removeItem('user')
 }

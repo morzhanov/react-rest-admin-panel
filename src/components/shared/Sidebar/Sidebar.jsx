@@ -12,6 +12,8 @@ import Icon from '@material-ui/core/Icon'
 import HeaderLinks from '../Header/HeaderLinks'
 import sidebarStyle from '../../../assets/jss/material-dashboard-react/components/sidebarStyle'
 
+// TODO: refactor all
+
 const Sidebar = ({
   classes,
   color,
@@ -81,7 +83,6 @@ const Sidebar = ({
       )}
       <List className={classes.list}>
         {Object.values(routes.entities).map(prop => {
-          console.log(prop)
           if (prop.redirect) return null
           let activePro = ' '
           let listItemClasses
