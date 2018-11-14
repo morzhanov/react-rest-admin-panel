@@ -1,5 +1,3 @@
-export const PageType = Object.freeze({ ENTITY: 0, GENERAL: 1 })
-
 export const errorMessages = {
   isDefaultRequiredValue: 'This field is required',
   required: 'This field is required',

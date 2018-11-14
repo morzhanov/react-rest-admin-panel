@@ -1,6 +1,6 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
-import { Button, Input, FormControlLabel } from '@material-ui/core'
+import { Button, Input, FormLabel } from '@material-ui/core'
 import routes from '../../router/routes'
 import AuthHeader from './parts/AuthHeader'
 import AuthWrapper from './parts/AuthWrapper'
@@ -53,7 +53,7 @@ class Auth extends React.Component {
             <h1>Auth</h1>
           </AuthHeader>
           <AuthForm>
-            <FormControlLabel htmlFor="email">Email</FormControlLabel>
+            <FormLabel htmlFor="email">Email</FormLabel>
             <Input
               type="email"
               id="email"
@@ -61,7 +61,7 @@ class Auth extends React.Component {
               onChange={this.handleEmailChange}
               placeholder="Enter email*"
             />
-            <FormControlLabel htmlFor="password">Password</FormControlLabel>
+            <FormLabel htmlFor="password">Password</FormLabel>
             <Input
               type="password"
               id="password"
@@ -81,7 +81,11 @@ class Auth extends React.Component {
               Sign {type === AUTH_TYPE_LOGIN ? ' In' : ' Up'}
             </Button>
             <ChangeTypeLink
-              href={type === AUTH_TYPE_LOGIN ? routes.auth.register : routes.auth.login}
+              href={
+                type === AUTH_TYPE_LOGIN
+                  ? routes.auth.signup.path
+                  : routes.auth.login.path
+              }
             >
               Go to Sign{type === AUTH_TYPE_LOGIN ? 'Up' : ' In'}
             </ChangeTypeLink>

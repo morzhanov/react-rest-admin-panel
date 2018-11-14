@@ -1,4 +1,4 @@
-import UiStore from './uiStore'
+import UiStore from './rootStore'
 import RouterStore from './routerStore'
 import UserModel from '../models/UserModel'
 import userData from '../fixtures/user'
@@ -14,10 +14,10 @@ const createStore = history => {
   if (localStorageUser) {
     user = UserModel.create(JSON.parse(localStorageUser))
   }
-  const uiStore = UiStore.create({ user }, { user: UserModel })
+  const rootStore = UiStore.create({ user }, { user: UserModel })
   const router = new RouterStore(history)
   return {
-    uiStore,
+    rootStore,
     router
   }
 }

@@ -11,5 +11,10 @@ const User = types
       return `${self.name}`
     }
   }))
+  .actions(self => ({
+    changePassword() {
+      console.log('changing password')
+    }
+  }))
 
 export default User

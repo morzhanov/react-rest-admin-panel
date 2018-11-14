@@ -1,8 +1,8 @@
 import { types } from 'mobx-state-tree'
 import UserModel from '../models/UserModel'
 
-const uiStore = types.model('uiStore', {
+const rootStore = types.model('rootStore', {
   user: types.optional(types.maybe(UserModel), undefined)
 })
 
-export default uiStore
+export default rootStore

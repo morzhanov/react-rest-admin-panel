@@ -20,7 +20,7 @@ const Header = ({
   classes,
   color,
   location: { pathname },
-  uiStore
+  rootStore
 }) => {
   const makeBrand = () => {
     let name
@@ -45,7 +45,7 @@ const Header = ({
           </Button>
         </div>
         <Hidden smDown implementation="css">
-          <HeaderLinks user={uiStore.user} />
+          <HeaderLinks user={rootStore.user} />
         </Hidden>
         <Hidden mdUp implementation="css">
           <IconButton
@@ -61,4 +61,4 @@ const Header = ({
   )
 }
 
-export default inject('uiStore')(observer(withStyles(headerStyle)(Header)))
+export default inject('rootStore')(observer(withStyles(headerStyle)(Header)))

@@ -1,12 +1,42 @@
 import Dashboard from '@material-ui/icons/Dashboard'
 import Person from '@material-ui/icons/Person'
+import Password from '@material-ui/icons/'
 import Users from '../components/Users/Users'
 import Auth from '../components/Auth/Auth'
-import UserProfile from '../components/UserProfile/UserProfile'
+import DashboardPage from '../components/Dashboard/Dashboard'
+import ChangePassword from '../components/ChangePassword/ChangePassword'
 import Tasks from '../components/Tasks/Tasks'
-import { PageType } from '../utils/constants'
 
 export default {
+  admin: {
+    path: '/admin',
+    sidebarName: 'Dashboard',
+    navbarName: 'Dashboard',
+    component: DashboardPage,
+    children: {
+      changePassword: {
+        path: '/admin/password_change',
+        component: ChangePassword
+      },
+      custom: {},
+      entities: {
+        tasks: {
+          path: '/admin/tasks',
+          sidebarName: 'tasks',
+          navbarName: 'Tasks',
+          icon: Dashboard,
+          component: Tasks
+        },
+        users: {
+          path: '/admin/users',
+          sidebarName: 'Users List',
+          navbarName: 'Users List',
+          icon: Person,
+          component: Users
+        }
+      }
+    }
+  },
   auth: {
     login: {
       path: '/login',
@@ -18,33 +48,8 @@ export default {
       path: '/signup',
       sidebarName: 'Sign Up',
       navbarName: 'Sign Up',
-      component: Auth
-    }
-  },
-  sidebar: {
-    profile: {
-      path: '/profile',
-      sidebarName: 'User Profile',
-      navbarName: 'Profile',
-      icon: Person,
-      component: UserProfile,
-      type: PageType.GENERAL
-    },
-    tasks: {
-      path: '/tasks',
-      sidebarName: 'tasks',
-      navbarName: 'Tasks',
-      icon: Dashboard,
-      component: Tasks,
-      type: PageType.ENTITY
-    },
-    users: {
-      path: '/users',
-      sidebarName: 'Users List',
-      navbarName: 'Users List',
-      icon: 'content_paste',
-      component: Users,
-      type: PageType.ENTITY
+      component: Auth,
+      exact: true
     }
   }
 }
