@@ -2,6 +2,7 @@ import logger from './logger'
 
 export default {
   checkUrl: url =>
+    // eslint-disable-next-line
     /https?:\/\/(www.)?[-a-zA-Z0-9@:%._+~#=]{2,256}.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&\/\/=]*)/.test(
       url
     ),
@@ -38,4 +39,14 @@ export default {
     return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
   },
   isNumber: n => !Number.isNaN(parseFloat(n)) && Number.isFinite(n)
+}
+
+export const saveTokens = ({ accessToken, refreshToken }) => {
+  localStorage.setItem('accessToken', accessToken)
+  localStorage.setItem('refreshToken', refreshToken)
+}
+
+export const logout = () => {
+  localStorage.removeItem('accessToken')
+  localStorage.removeItem('refreshToken')
 }

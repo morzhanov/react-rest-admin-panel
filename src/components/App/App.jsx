@@ -29,10 +29,7 @@ class App extends React.Component {
 
   componentDidUpdate(props) {
     const { mobileOpen } = this.state
-    if (
-      props.history &&
-      props.history.location.pathname !== props.location.pathname
-    ) {
+    if (props.history && props.history.location.pathname !== props.location.pathname) {
       this.mainPanel.scrollTop = 0
       if (mobileOpen) {
         // eslint-disable-next-line
@@ -63,7 +60,7 @@ class App extends React.Component {
         <Router history={history}>
           <div className={classes.wrapper}>
             <Sidebar
-              routes={routes}
+              routes={routes.sidebar}
               logoText="Admin dashboard"
               logo={logo}
               handleDrawerToggle={this.handleDrawerToggle}
@@ -75,7 +72,7 @@ class App extends React.Component {
             <div className={classes.mainPanel} ref={this.mainPanel}>
               <Header
                 location={history.location}
-                routes={routes}
+                routes={routes.sidebar}
                 handleDrawerToggle={this.handleDrawerToggle}
                 {...rest}
               />

@@ -58,7 +58,11 @@ const Sidebar = ({
             >
               <ListItem button className={classes.itemLink + listItemClasses}>
                 <ListItemIcon className={classes.itemIcon + whiteFontClasses}>
-                  {typeof prop.icon === 'string' ? <Icon>{prop.icon}</Icon> : <prop.icon />}
+                  {typeof prop.icon === 'string' ? (
+                    <Icon>{prop.icon}</Icon>
+                  ) : (
+                    <prop.icon />
+                  )}
                 </ListItemIcon>
                 <ListItemText
                   primary={prop.sidebarName}
@@ -103,7 +107,11 @@ const Sidebar = ({
             >
               <ListItem button className={classes.itemLink + listItemClasses}>
                 <ListItemIcon className={classes.itemIcon + whiteFontClasses}>
-                  {typeof prop.icon === 'string' ? <Icon>{prop.icon}</Icon> : <prop.icon />}
+                  {typeof prop.icon === 'string' ? (
+                    <Icon>{prop.icon}</Icon>
+                  ) : (
+                    <prop.icon />
+                  )}
                 </ListItemIcon>
                 <ListItemText
                   primary={prop.sidebarName}

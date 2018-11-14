@@ -24,7 +24,7 @@ const Header = ({
 }) => {
   const makeBrand = () => {
     let name
-    routes.map(prop => {
+    Object.keys(routes).forEach(prop => {
       if (prop.path === pathname) {
         name = prop.navbarName
       }
@@ -48,7 +48,11 @@ const Header = ({
           <HeaderLinks user={uiStore.user} />
         </Hidden>
         <Hidden mdUp implementation="css">
-          <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerToggle}>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerToggle}
+          >
             <Menu />
           </IconButton>
         </Hidden>
