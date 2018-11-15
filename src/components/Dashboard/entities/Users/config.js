@@ -1,4 +1,4 @@
-import { DataTable } from '../../models/list/DataTable.model'
+import { DataTable } from '../../../../models/list/DataTable.model'
 
 const filters = {
   id: {
@@ -77,4 +77,4 @@ const list = {
     onSort: () => {}
   }
 }
-export const EntityTableConfig = DataTable.create(list)
+export const usersEntityConfig = DataTable.create(list)

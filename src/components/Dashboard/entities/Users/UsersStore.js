@@ -1,3 +1,6 @@
+import users from '../../../../fixtures/users'
+
+// TODO: create store
 // import { types, flow, getParent } from 'mobx-state-tree'
 // import { Task } from '../models/Task.model'
 // import Logger from '../utils/Logger'
@@ -62,3 +65,5 @@
 //       fetchTasks
 //     }
 //   })
+
+export default users

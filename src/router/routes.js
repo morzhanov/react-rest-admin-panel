@@ -1,11 +1,10 @@
 import Dashboard from '@material-ui/icons/Dashboard'
 import Person from '@material-ui/icons/Person'
-import Password from '@material-ui/icons/'
-import Users from '../components/Users/Users'
 import Auth from '../components/Auth/Auth'
 import DashboardPage from '../components/Dashboard/Dashboard'
-import ChangePassword from '../components/ChangePassword/ChangePassword'
-import Tasks from '../components/Tasks/Tasks'
+import ChangePassword from '../components/Dashboard/ChangePassword/ChangePassword'
+import Users from '../components/Dashboard/entities/Users/Users'
+import Tasks from '../components/Dashboard/entities/Tasks/Tasks'
 
 export default {
   admin: {

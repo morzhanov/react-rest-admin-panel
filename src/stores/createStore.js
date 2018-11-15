@@ -4,6 +4,7 @@ import UserModel from '../models/UserModel'
 import userData from '../fixtures/user'
 
 // TODO: remove dev logic
+// TODO: inject all stores for entities or create single entity store for each entity
 if (!localStorage.getItem('user')) {
   localStorage.setItem('user', JSON.stringify(userData))
 }

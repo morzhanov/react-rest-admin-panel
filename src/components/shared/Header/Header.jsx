@@ -22,11 +22,7 @@ const Header = ({ handleDrawerToggle, classes, color, rootStore }) => (
     }
   >
     <Toolbar className={classes.container}>
-      <div className={classes.flex}>
-        <Button color="transparent" href="#" className={classes.title}>
-          Admin Dashboard
-        </Button>
-      </div>
+      <div className={classes.flex} />
       <Hidden smDown implementation="css">
         <HeaderLinks user={rootStore.user} />
       </Hidden>
