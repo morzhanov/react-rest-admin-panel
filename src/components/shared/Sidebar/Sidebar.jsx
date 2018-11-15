@@ -142,7 +142,7 @@ const Sidebar = ({
       <Hidden mdUp implementation="css">
         <Drawer
           variant="temporary"
-          anchor="right"
+          anchor="left"
           open={open}
           classes={{
             paper: classes.drawerPaper

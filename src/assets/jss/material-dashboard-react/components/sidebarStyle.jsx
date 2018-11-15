@@ -33,8 +33,8 @@ const sidebarStyle = theme => ({
       display: 'block',
       top: '0',
       height: '100vh',
-      right: '0',
-      left: 'auto',
+      left: '0',
+      right: 'auto',
       zIndex: '1032',
       visibility: 'visible',
       overflowY: 'visible',
@@ -56,7 +56,7 @@ const sidebarStyle = theme => ({
       bottom: '0',
 
       height: '1px',
-      right: '15px',
+      left: '15px',
       width: 'calc(100% - 30px)',
       backgroundColor: 'rgba(180, 180, 180, 0.3)'
     }

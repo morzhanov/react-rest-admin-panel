@@ -8,16 +8,13 @@ import CardHeader from '../../../../shared/Card/CardHeader'
 import CardBody from '../../../../shared/Card/CardBody'
 
 const Title = styled.h4`
-  color: rgba(255, 255, 255, 0.62);
+  color: #fff;
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif,
   margin: 0;
-  font-size: 14px;
+  font-size: 18px;
   margin-top: 0;
   margin-bottom: '0';
-  &:hover,
-  &:focus {
-    color: #fff;
-  }
+  cursor: default;
 `
 
 const SubTitle = styled.p`
@@ -29,6 +26,7 @@ const SubTitle = styled.p`
   text-decoration: 'none';
   margin-top: 0;
   margin-bottom: 3px;
+  cursor: default;
 `
 
 const EntityPage = ({ title, subtitle, cols, data }) => (
