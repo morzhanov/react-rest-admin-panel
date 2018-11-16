@@ -1,11 +1,8 @@
 import React from 'react'
+import './Auth.styl'
 import { inject, observer } from 'mobx-react'
 import { Button, Input, FormLabel } from '@material-ui/core'
 import routes from '../../router/routes'
-import AuthHeader from './parts/AuthHeader'
-import AuthWrapper from './parts/AuthWrapper'
-import ChangeTypeLink from './parts/ChangeTypeLink'
-import AuthForm from './parts/AuthForm'
 import logger from '../../utils/logger'
 import { saveTokens } from '../../utils/helpers'
 
@@ -47,12 +44,12 @@ class Auth extends React.Component {
   render() {
     const { email, password, type } = this.state
     return (
-      <AuthWrapper>
+      <div className="auth">
         <>
-          <AuthHeader>
+          <header>
             <h1>Auth</h1>
-          </AuthHeader>
-          <AuthForm>
+          </header>
+          <form>
             <FormLabel htmlFor="email">Email</FormLabel>
             <Input
               type="email"
@@ -80,7 +77,8 @@ class Auth extends React.Component {
             >
               Sign {type === AUTH_TYPE_LOGIN ? ' In' : ' Up'}
             </Button>
-            <ChangeTypeLink
+            <a
+              className="auth__change-type-link"
               href={
                 type === AUTH_TYPE_LOGIN
                   ? routes.auth.signup.path
@@ -88,10 +86,10 @@ class Auth extends React.Component {
               }
             >
               Go to Sign{type === AUTH_TYPE_LOGIN ? 'Up' : ' In'}
-            </ChangeTypeLink>
-          </AuthForm>
+            </a>
+          </form>
         </>
-      </AuthWrapper>
+      </div>
     )
   }
 }

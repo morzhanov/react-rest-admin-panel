@@ -1,0 +1,18 @@
+.dashboard
+    position: relative
+    top: 0
+    height: 100vh
+  &__main-panel
+    overflow: auto
+    position: relative
+    float: right
+    max-height: 100%
+    width: 100%
+    overflow-scrolling: touch
+    transition: all 0.33s cubic-bezier(0.685 0.0473 0.346 1)
+    @media(max-width: 960px)
+        width: calc(100% - 260px)
+  &__content
+    margin-top: 70px
+    padding: 30px 15px
+    min-height: calc(100vh - 123px)

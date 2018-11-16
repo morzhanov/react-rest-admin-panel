@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import MuiTableRow from '@material-ui/core/TableRow'
 import TableBodyItem from './TableBodyItem'
 

@@ -1,49 +1,46 @@
 import React from 'react'
-// @material-ui/core components
-import withStyles from '@material-ui/core/styles/withStyles'
+import './Footer.styl'
 import ListItem from '@material-ui/core/ListItem'
 import List from '@material-ui/core/List'
-// core components
-import footerStyle from '../../../assets/jss/material-dashboard-react/components/footerStyle'
 
-const Footer = ({ classes }) => (
-  <footer className={classes.footer}>
-    <div className={classes.container}>
-      <div className={classes.left}>
-        <List className={classes.list}>
-          <ListItem className={classes.inlineBlock}>
-            <a href="#home" className={classes.block}>
+// TODO: change footer, remove redundant items, add required
+const Footer = () => (
+  <footer className="footer">
+    <div className="footer__container">
+      <div className="footer__left">
+        <List className="footer__list">
+          <ListItem className="footer_inline-block">
+            <a href="#home" className="footer_block">
               Home
             </a>
           </ListItem>
-          <ListItem className={classes.inlineBlock}>
-            <a href="#company" className={classes.block}>
+          <ListItem className="footer_inline-block">
+            <a href="#company" className="footer_block">
               Company
             </a>
           </ListItem>
-          <ListItem className={classes.inlineBlock}>
-            <a href="#portfolio" className={classes.block}>
+          <ListItem className="footer_inline-block">
+            <a href="#portfolio" className="footer__block">
               Portfolio
             </a>
           </ListItem>
-          <ListItem className={classes.inlineBlock}>
-            <a href="#blog" className={classes.block}>
+          <ListItem className="footer_inline-block">
+            <a href="#blog" className="footer_block">
               Blog
             </a>
           </ListItem>
         </List>
       </div>
-      <p className={classes.right}>
+      <p className="footer__right">
         <span>
           &copy; {1900 + new Date().getYear()}{' '}
-          <a href="https://www.creative-tim.com" className={classes.a}>
-            Creative Tim
+          <a href="https://www.creative-tim.com" className="footer__copy">
+            Enter App name
           </a>
-          , made with love for a better web
         </span>
       </p>
     </div>
   </footer>
 )
 
-export default withStyles(footerStyle)(Footer)
+export default Footer

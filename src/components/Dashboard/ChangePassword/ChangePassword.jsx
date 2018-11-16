@@ -1,10 +1,8 @@
 import React from 'react'
+import './ChangePassword.styl'
 import { Button, Input, FormLabel } from '@material-ui/core'
 import { inject, observer } from 'mobx-react'
 import { withState, compose } from 'recompose'
-import Header from './parts/Header'
-import Wrapper from './parts/Wrapper'
-import Form from './parts/Form'
 
 const ChangePassword = ({
   rootStore: {
@@ -17,11 +15,11 @@ const ChangePassword = ({
   newPassword,
   setNewPassword
 }) => (
-  <Wrapper>
-    <Header>
+  <div className="change-password">
+    <header>
       <h1>Change password</h1>
-    </Header>
-    <Form>
+    </header>
+    <form>
       <FormLabel htmlFor="email">Email</FormLabel>
       <Input
         type="password"
@@ -57,8 +55,8 @@ const ChangePassword = ({
       >
         Change password
       </Button>
-    </Form>
-  </Wrapper>
+    </form>
+  </div>
 )
 
 export default inject('rootStore')(

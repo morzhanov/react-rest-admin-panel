@@ -1,8 +1,6 @@
-import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import React from 'react'
-import withStyles from '@material-ui/core/styles/withStyles'
+import './Dashboard.styl'
 import logo from '../../assets/img/reactlogo.png'
-import dashboardStyle from '../../assets/jss/material-dashboard-react/layouts/dashboardStyle'
 import Header from '../shared/Header/Header'
 import Footer from '../shared/Footer/Footer'
 import Sidebar from '../shared/Sidebar/Sidebar'
@@ -51,7 +49,7 @@ class Dashboard extends React.Component {
     const DashboardRouter = createRouter(routes.admin.children)
 
     return (
-      <div className={classes.wrapper}>
+      <div className="dashboard">
         <Sidebar
           routes={routes.admin.children}
           logoText="Admin dashboard"
@@ -61,13 +59,13 @@ class Dashboard extends React.Component {
           color="blue"
           {...rest}
         />
-        <div className={classes.mainPanel} ref={this.mainPanel}>
+        <div className="dashboard__main-panel" ref={this.mainPanel}>
           <Header
             routes={routes.admin.children}
             handleDrawerToggle={this.handleDrawerToggle}
             {...rest}
           />
-          <div className={classes.content}>
+          <div className="dashboard__content">
             <DashboardRouter />
           </div>
           <Footer />
@@ -77,4 +75,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default withStyles(dashboardStyle)(Dashboard)
+export default Dashboard

@@ -1,48 +1,24 @@
 import React from 'react'
-import styled from 'styled-components'
-import GridItem from '../../../../shared/Grid/GridItem'
-import GridContainer from '../../../../shared/Grid/GridContainer'
+import './EntityPage.styl'
+import Grid from '../../../../shared/Grid/Grid'
 import Table from '../../../../shared/Table/Table'
-import Card from '../../../../shared/Card/Card'
-import CardHeader from '../../../../shared/Card/CardHeader'
-import CardBody from '../../../../shared/Card/CardBody'
-
-const Title = styled.h4`
-  color: #fff;
-  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif,
-  margin: 0;
-  font-size: 18px;
-  margin-top: 0;
-  margin-bottom: '0';
-  cursor: default;
-`
-
-const SubTitle = styled.p`
-  color: #fff;
-  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif,
-  min-height: auto;
-  font-weight: 300;
-  margin-bottom: 3px;
-  text-decoration: 'none';
-  margin-top: 0;
-  margin-bottom: 3px;
-  cursor: default;
-`
+import { Card, CardBody, CardHeader, CardFooter } from '../../../../shared/Card/Card'
 
 const EntityPage = ({ title, subtitle, cols, data }) => (
-  <GridContainer>
-    <GridItem xs={12} sm={12} md={12}>
+  <Grid>
+    <Grid xs={12} sm={12} md={12}>
       <Card>
         <CardHeader color="primary">
-          <Title>{title}</Title>
-          <SubTitle>{subtitle}</SubTitle>
+          <h4 className="title">{title}</h4>
+          <p className="subtitle">{subtitle}</p>
         </CardHeader>
         <CardBody>
           <Table cols={cols} data={data} />
         </CardBody>
+        <CardFooter>Footer</CardFooter>
       </Card>
-    </GridItem>
-  </GridContainer>
+    </Grid>
+  </Grid>
 )
 
 export default EntityPage

@@ -1,0 +1,37 @@
+.sidebar
+  &__logo
+    position: relative
+    padding: 15px 15px
+    z-index: 4
+    &:after
+      content: ""
+      position: absolute
+      bottom: 0
+      height: 1px
+      left: 15px
+      width: calc(100% - 30px)
+      background-color: rgba(180 180 180 0.3)
+  &__logo-link
+    text-transform: uppercase
+    padding: 5px 0
+    display: block
+    font-size: 18px
+    text-align: left
+    font-weight: 400
+    line-height: 30px
+    text-decoration: none
+    background-color: transparent
+    &:hover
+      color: #FFFFFF
+  &__logo-image
+    width: 30px
+    display: inline-block
+    max-height: 30px
+    margin-left: 10px
+    margin-right: 15px
+  img.logo
+    width: 35px
+    top: 22px
+    position: absolute
+    vertical-align: middle
+    border: 0

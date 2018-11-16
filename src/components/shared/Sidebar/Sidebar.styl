@@ -1,0 +1,54 @@
+.sidebar
+  z-index: 1200
+  &__wrapper
+    position: relative
+    height: calc(100vh - 75px)
+    overflow: auto
+    width: 260px
+    z-index: 4
+    overflow-scrolling: touch
+  &__paper
+    border: none
+    position: fixed
+    top: 0
+    bottom: 0
+    left: 0
+    z-index: 1
+    box-shadow: 0 10px 30px -12px rgba(0 0 0 0.42) 0 4px 25px 0px rgba(0 0 0 0.12) 0 8px 10px -5px rgba(0 0 0 0.2)
+    width: 260px
+    @media(max-width: 600px)
+      display: block
+      top: 0
+      height: 100vh
+      left: 0
+      right: auto
+      zIndex: 1032
+      visibility: visible
+      overflow-y: visible
+      border-top: none
+      text-align: left
+      padding-right: 0px
+      padding-left: 0
+      transform: translate3d(260px 0 0)
+      transition: all 0.33s cubic-bezier(0.685 0.0473 0.346 1)
+  &__background
+    position: absolute
+    z-index: 1
+    height: 100%
+    width: 100%
+    display: block
+    top: 0
+    left: 0
+    background-size: cover
+    background-position: center center
+    &:after
+      position: absolute
+      z-index: 3
+      width: 100%
+      height: 100%
+      content: ""
+      display: block
+      background: #000
+      opacity: .8
+  &_white
+    color: #FFFFFF
