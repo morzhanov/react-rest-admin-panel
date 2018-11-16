@@ -1,8 +1,12 @@
 import React from 'react'
 import './Card.styl'
 
-const Base = ({ baseClassName, className, children, ...rest }) => (
-  <div className={`${baseClassName} ${className}`} {...rest}>
+const Base = ({ baseClassName, className, children, color, ...rest }) => (
+  <div
+    style={color ? { background: color } : null}
+    className={`${baseClassName} ${className || ''}`}
+    {...rest}
+  >
     {children}
   </div>
 )

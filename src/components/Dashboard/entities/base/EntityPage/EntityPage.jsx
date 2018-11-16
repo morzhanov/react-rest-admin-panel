@@ -8,7 +8,7 @@ const EntityPage = ({ title, subtitle, cols, data }) => (
   <Grid>
     <Grid xs={12} sm={12} md={12}>
       <Card>
-        <CardHeader color="primary">
+        <CardHeader>
           <h4 className="title">{title}</h4>
           <p className="subtitle">{subtitle}</p>
         </CardHeader>

@@ -1,5 +1,6 @@
 .sidebar
   z-index: 1200
+  width: 260px
   &__wrapper
     position: relative
     height: calc(100vh - 75px)
@@ -7,7 +8,7 @@
     width: 260px
     z-index: 4
     overflow-scrolling: touch
-  &__paper
+  &__papper
     border: none
     position: fixed
     top: 0
@@ -16,13 +17,13 @@
     z-index: 1
     box-shadow: 0 10px 30px -12px rgba(0 0 0 0.42) 0 4px 25px 0px rgba(0 0 0 0.12) 0 8px 10px -5px rgba(0 0 0 0.2)
     width: 260px
-    @media(max-width: 600px)
+    @media (max-width: 600px)
       display: block
       top: 0
       height: 100vh
       left: 0
       right: auto
-      zIndex: 1032
+      z-index: 1032
       visibility: visible
       overflow-y: visible
       border-top: none

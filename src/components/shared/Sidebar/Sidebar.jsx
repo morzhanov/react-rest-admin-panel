@@ -45,10 +45,10 @@ const BaseDrawer = ({
 const Sidebar = props => (
   <div className="sidebar">
     <Hidden mdUp implementation="css">
-      <BaseDrawer {...props} />
+      <BaseDrawer mobile {...props} />
     </Hidden>
     <Hidden smDown implementation="css">
-      <BaseDrawer mobile {...props} />
+      <BaseDrawer {...props} />
     </Hidden>
   </div>
 )

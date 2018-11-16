@@ -59,7 +59,7 @@ class Dashboard extends React.Component {
           color="blue"
           {...rest}
         />
-        <div className="dashboard__main-panel" ref={this.mainPanel}>
+        <div className="dashboard__main" ref={this.mainPanel}>
           <Header
             routes={routes.admin.children}
             handleDrawerToggle={this.handleDrawerToggle}
