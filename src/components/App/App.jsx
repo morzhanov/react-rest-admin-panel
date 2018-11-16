@@ -1,4 +1,3 @@
-import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import React from 'react'
 import { Provider } from 'mobx-react'
 import { Router } from 'react-router'

@@ -1,4 +1,5 @@
 import React from 'react'
+import './SidebarList.styl'
 import classnames from 'classnames'
 import { NavLink } from 'react-router-dom'
 import List from '@material-ui/core/List'
@@ -26,8 +27,8 @@ const SidebarList = ({ activeRoute, routes }) => (
             activeClassName="active"
             key={prop.path}
           >
-            <ListItem button className={`sidebar__item-link${listItemClasses}`}>
-              <ListItemIcon className={`sidebar__item-icon${whiteFontClasses}`}>
+            <ListItem button className={`sidebar__item-link ${listItemClasses}`}>
+              <ListItemIcon className={`sidebar__item-icon ${whiteFontClasses}`}>
                 {typeof prop.icon === 'string' ? <Icon>{prop.icon}</Icon> : <prop.icon />}
               </ListItemIcon>
               <ListItemText

@@ -1,46 +1,49 @@
 .sidebar
-  &__list
-    margin-top: 20px
-    padding-left: 0
-    padding-top: 0
-    padding-bottom: 0
-    margin-bottom: 0
-    list-style: none
-    position: unset
-  &__item
-    position: relative
-    display: block
-    text-decoration: none
-    &:hover, &:focus, &:visited
+  .sidebar
+    &__list
+      color: #fff
+      font-size: 14px
+      line-height: 24px
+      margin-top: 20px
+      padding-left: 0
+      padding-top: 0
+      padding-bottom: 0
+      margin-bottom: 0
+      list-style: none
+    &__item
+      color: #ffffff
+      display: block;
+      position: relative;
+      text-decoration: none;
+    &__item-link
+      width: auto
+      display: block;
+      max-height: 44px;
+      position: relative;
+      transition: all 300ms linear;
+      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+      font-weight: 300;
+      border-radius: 3px;
+      margin: 10px 15px 0 !important
+      border-radius: 3px
+      position: relative
+      display: block
+      background-color: transparent
+      transition: all 300ms linear;
+      &.active, &:hover
+        background-color: #00acc1 !important
+        box-shadow: 0 12px 20px -10px rgba(0,188,212,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(0,188,212,.2)
+    &__item-icon
+      color: #fff !important
+      width: 24px
+      height: 24px
+      font-size: 24px
+      float: left
+      margin-right: 15px
+      text-align: center
+      vertical-align: middle
+    &__item-text
+      margin: 0
+      font-size: 14px
       color: #FFFFFF
-    &_active
-      background-color: #00acc1,
-      box-shadow: 0 12px 20px -10px rgba(0,188,212,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(0,188,212,.2)
-      &:hover
-        background-color: #00acc1
-        box-shadow:  0 12px 20px -10px rgba(0,188,212,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(0,188,212,.2)
-  &__item-link
-    width: auto
-    transition: all 300ms linear
-    margin: 10px 15px 0
-    border-radius: 3px
-    position: relative
-    display: block
-    padding: 10px 15px
-    background-color: transparent
-  &__item-icon
-    width: 24px
-    height: 30px
-    font-size: 24px
-    line-height: 30px
-    float: left
-    margin-right: 15px
-    text-align: center
-    vertical-align: middle
-    color: rgba(255 255 255 0.8)
-  &__item-text
-    margin: 0
-    line-height: 30px
-    font-size: 14px
-    color: #FFFFFF
 

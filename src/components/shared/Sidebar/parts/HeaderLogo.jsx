@@ -1,4 +1,5 @@
 import React from 'react'
+import './HeaderLogo.styl'
 
 const HeaderLogo = ({ logo, logoText }) => (
   <div className="sidebar__logo">

@@ -1,54 +1,9 @@
-.ct-grid {
-  stroke: rgba(255, 255, 255, 0.2);
-  stroke-width: 1px;
-  stroke-dasharray: 2px;
-}
-
-.ct-series-a .ct-point,
-.ct-series-a .ct-line,
-.ct-series-a .ct-bar,
-.ct-series-a .ct-slice-donut {
-  stroke: rgba(255, 255, 255, 0.8);
-}
-
-.ct-label.ct-horizontal.ct-end {
-  -webkit-box-align: flex-start;
-  -webkit-align-items: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-  -webkit-box-pack: flex-start;
-  -webkit-justify-content: flex-start;
-  -ms-flex-pack: flex-start;
-  justify-content: flex-start;
-  text-align: left;
-  text-anchor: start;
-}
-
-.ct-label {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.ct-chart-line .ct-label,
-.ct-chart-bar .ct-label {
-  display: block;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-}
-
-.ct-label {
-  fill: rgba(0, 0, 0, 0.4);
-  line-height: 1;
-}
 html * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 body {
   background-color: #eeeeee;
-  color: #3c4858;
   margin: 0;
   font-family: Roboto, Helvetica, Arial, sans-serif;
   font-weight: 300;
@@ -98,7 +53,6 @@ h6 {
 
 body {
   background-color: #eeeeee;
-  color: #3c4858;
 }
 
 blockquote p {
@@ -118,13 +72,11 @@ h6 {
 }
 
 a {
-  color: #9c27b0;
   text-decoration: none;
 }
 
 a:hover,
 a:focus {
-  color: #89229b;
   text-decoration: none;
 }
 
@@ -169,7 +121,6 @@ output {
 label {
   font-size: 14px;
   line-height: 1.42857;
-  color: #aaaaaa;
   font-weight: 400;
 }
 
@@ -188,7 +139,6 @@ footer ul li {
 }
 
 footer ul li a {
-  color: inherit;
   padding: 15px;
   font-weight: 500;
   font-size: 12px;

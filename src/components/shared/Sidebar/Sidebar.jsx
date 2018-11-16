@@ -25,12 +25,10 @@ const BaseDrawer = ({
       anchor="left"
       open={mobile ? open : true}
       classes={{
-        paper: 'sidebar__papper'
+        paper: 'sidebar sidebar__papper'
       }}
       onClose={handleDrawerToggle}
-      ModalProps={{
-        keepMounted: true
-      }}
+      ModalProps={{ keepMounted: true }}
     >
       <HeaderLogo logo={logo} logoText={logoText} />
       <div className="sidebar__wrapper">
@@ -47,7 +45,7 @@ const Sidebar = props => (
     <Hidden mdUp implementation="css">
       <BaseDrawer mobile {...props} />
     </Hidden>
-    <Hidden smDown implementation="css">
+    <Hidden className="sidebar" smDown implementation="css">
       <BaseDrawer {...props} />
     </Hidden>
   </div>
