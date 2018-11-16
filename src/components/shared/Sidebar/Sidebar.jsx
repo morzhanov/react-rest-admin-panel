@@ -21,7 +21,7 @@ const BaseDrawer = ({
   const activeRoute = routeName => pathname.indexOf(routeName) > -1
   return (
     <Drawer
-      variant={mobile ? 'permanent' : 'temporary'}
+      variant={mobile ? 'temporary' : 'permanent'}
       anchor="left"
       open={mobile ? open : true}
       classes={{

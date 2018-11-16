@@ -3,7 +3,8 @@ import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import App from './components/App/App'
 
-import './assets/css/material-dashboard-react.css?v=1.5.0'
+// TODO: might by redundant
+import './assets/styles/main.css'
 
 render(
   <AppContainer>
