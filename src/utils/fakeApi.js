@@ -1,6 +1,4 @@
-import AuthSession from './AuthSession'
-import Logger from './Logger'
-import 
+import axios from 'axios'
 
 class FakeApi {
   static getData(url, params) {

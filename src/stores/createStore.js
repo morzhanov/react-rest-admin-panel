@@ -1,7 +1,9 @@
 import UiStore from './rootStore'
 import RouterStore from './routerStore'
 import UserModel from '../models/UserModel'
+import UserStore from '../components/Dashboard/entities/User/UserStore'
 import userData from '../fixtures/user'
+import usersData from '../fixtures/users'
 
 // TODO: remove dev logic
 // TODO: inject all stores for entities or create single entity store for each entity
@@ -17,9 +19,11 @@ const createStore = history => {
   }
   const rootStore = UiStore.create({ user }, { user: UserModel })
   const router = new RouterStore(history)
+  const usersStore = UserStore.create({ entities: usersData })
   return {
     rootStore,
-    router
+    router,
+    usersStore
   }
 }
 

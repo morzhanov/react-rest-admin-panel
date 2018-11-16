@@ -3,7 +3,7 @@ import Person from '@material-ui/icons/Person'
 import Auth from '../components/Auth/Auth'
 import DashboardPage from '../components/Dashboard/Dashboard'
 import ChangePassword from '../components/Dashboard/ChangePassword/ChangePassword'
-import Users from '../components/Dashboard/entities/Users/Users'
+import User from '../components/Dashboard/entities/User/User'
 import Tasks from '../components/Dashboard/entities/Tasks/Tasks'
 
 export default {
@@ -31,7 +31,7 @@ export default {
           sidebarName: 'Users List',
           navbarName: 'Users List',
           icon: Person,
-          component: Users
+          component: User
         }
       }
     }

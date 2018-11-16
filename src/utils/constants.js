@@ -10,3 +10,5 @@ export const errorMessages = {
   maxFileSize: size => `You can't upload file more than ${size}Mb`,
   validUrl: 'Enter a valid URL.'
 }
+
+export const baseApiUrl = ''

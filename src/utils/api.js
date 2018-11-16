@@ -1,15 +1,13 @@
 import axios from 'axios'
-// -
-import { baseAPIUrl } from './constants'
-import AuthSession from './AuthSession'
-import Logger from './Logger'
+import { baseApiUrl } from './constants'
+// import AuthSession from './AuthSession'
+import logger from './logger'
 
 axios.defaults.headers['Content-Type'] = 'application/json'
 axios.defaults.headers['Accept-Language'] = 'en'
-axios.defaults.headers['demo-access-token'] = localStorage.getItem(
-  AuthSession.adminKey
-)
-axios.defaults.baseURL = baseAPIUrl()
+// axios.defaults.headers['demo-access-token'] = localStorage.getItem(AuthSession.adminKey)
+axios.defaults.baseURL = baseApiUrl
+
 axios.interceptors.response.use(
   response => response,
   error => {
@@ -19,50 +17,50 @@ axios.interceptors.response.use(
         error.response.data.detail &&
         error.response.data.detail.toLowerCase().includes('invalid token.')
       ) {
-        AuthSession.remove()
+        // AuthSession.remove()
         window.location.reload(true)
       }
     } catch (err) {
-      Logger.error(err)
+      logger.error(err)
     }
     return Promise.reject(error)
   }
 )
 
-class API {
-  static getData(url, params) {
+const api = {
+  get(url, params) {
     return axios({
       method: 'GET',
       url,
       params
     })
-  }
+  },
 
-  static postData(url, data) {
+  post(url, data) {
     return axios({
       method: 'POST',
       url,
       data
     })
-  }
+  },
 
-  static patchData(url, data) {
+  patch(url, data) {
     return axios({
       method: 'PATCH',
       url,
       data
     })
-  }
+  },
 
-  static putData(url, data) {
+  put(url, data) {
     return axios({
       method: 'PUT',
       url,
       data
     })
-  }
+  },
 
-  static deleteData(url, data) {
+  delete(url, data) {
     return axios({
       method: 'DELETE',
       url,
@@ -72,4 +70,4 @@ class API {
 }
 
 // TODO: add valid api endpoint and remove faker
-export default (baseAPIUrl ? API : import('./fakeApi'))
+export default (baseApiUrl ? api : import('./fakeApi'))
