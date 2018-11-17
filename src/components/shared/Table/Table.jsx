@@ -14,7 +14,7 @@ const Table = ({ cols, data, isPending, firstCustomRow, rowLinks, withButton }) 
       cols={cols}
       firstCustomRow={firstCustomRow}
     />
-    {!isPending && !data.length && <div>No data</div>}
+    {!isPending && !data.length && <TableBody>No data</TableBody>}
   </MuiTable>
 )
 

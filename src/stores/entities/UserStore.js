@@ -1,9 +1,9 @@
 import { types } from 'mobx-state-tree'
-import EntityStore from '../../../../stores/entityStore'
-import UserModel from './UserModel'
+import EntityStore from '../EntityStore'
+import UserModel from '../../models/entities/UserModel'
 
 const UserStore = types.model('UserStore', {
-  entities: types.optional(types.array(UserModel), [])
+  data: types.optional(types.array(UserModel), [])
 })
 
 const UserEntityStore = types

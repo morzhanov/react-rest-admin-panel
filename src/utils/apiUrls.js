@@ -1,9 +1,11 @@
-export const apiURLs = {
-  // TODO: remove fake api endpoints
+export default {
+  // INFO: this is example fake api endpoints that works with fake API
+  // Added your own endpoints which will work with utils/api
   fake: {
-    login: '../fixtures/auth/login',
-    users: '../fixtures/users',
-    tasks: '../fixtures/tasks',
-    user: '../fixtures/user'
+    login: 'login',
+    signup: 'signup',
+    users: 'users',
+    tasks: 'tasks',
+    user: 'user'
   }
 }

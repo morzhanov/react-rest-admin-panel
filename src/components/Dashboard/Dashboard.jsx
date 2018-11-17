@@ -1,4 +1,5 @@
 import React from 'react'
+import { inject, observer } from 'mobx-react'
 import './Dashboard.styl'
 import logo from '../../assets/img/reactlogo.png'
 import Header from '../shared/Header/Header'
@@ -13,6 +14,8 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
+    const { rootStore } = this.props
+    rootStore.fetchUser()
     window.addEventListener('resize', this.resizeFunction)
     this.mainPanel = React.createRef()
   }
@@ -75,4 +78,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard
+export default inject('rootStore')(observer(Dashboard))

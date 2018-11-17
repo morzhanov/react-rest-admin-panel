@@ -68,7 +68,7 @@ const cols = [
 ]
 
 const list = {
-  pagination: { pageSize: 5 },
+  pagination: { pageSize: 10, pageNumber: 1 },
   filters,
   cols,
   sort,
@@ -77,4 +77,4 @@ const list = {
     onSort: () => {}
   }
 }
-export const usersEntityConfig = DataTable.create(list)
+export const userTableConfig = DataTable.create(list)

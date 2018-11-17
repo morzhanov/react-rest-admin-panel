@@ -3,16 +3,16 @@ import { types } from 'mobx-state-tree'
 export const Pagination = types
   .model('Pagination', {
     pageNumber: 1,
-    pageSize: 12,
+    pageSize: 10,
     startIndex: 0,
     endIndex: 0,
-    count: 0,
+    count: 0
   })
-  .views((self) => ({
+  .views(self => ({
     get data() {
-      let params = {}
-      if (self.pageSize) params['page_size'] = self.pageSize
-      if (self.pageNumber > 1) params['page'] = self.pageNumber
+      const params = {}
+      if (self.pageSize) params.page_size = self.pageSize
+      if (self.pageNumber > 1) params.page = self.pageNumber
       return params
     },
     get pagesCount() {
@@ -29,36 +29,41 @@ export const Pagination = types
     },
     get nextPageIsDisabled() {
       return self.pageNumber >= self.pagesCount
-    },
+    }
   }))
-  .actions((self) => {
-    const goToFirstPage = (cb) => {
+  .actions(self => {
+    const setCount = count => {
+      self.count = count
+    }
+
+    const goToFirstPage = cb => {
       if (self.firstPageIsDisabled) return
       self.pageNumber = 1
-      cb && cb()
+      if (cb) cb()
     }
 
-    const goToPrevPage = (cb) => {
+    const goToPrevPage = cb => {
       if (self.prevPageIsDisabled) return
-      self.pageNumber = self.pageNumber - 1
-      cb && cb()
+      self.pageNumber -= 1
+      if (cb) cb()
     }
 
-    const goToNextPage = (cb) => {
+    const goToNextPage = cb => {
       if (self.nextPageIsDisabled) return
-      self.pageNumber = self.pageNumber + 1
-      cb && cb()
+      self.pageNumber += 1
+      if (cb) cb()
     }
 
-    const goToLastPage = (cb) => {
+    const goToLastPage = cb => {
       if (self.lastPageIsDisabled) return
       self.pageNumber = self.pagesCount
-      cb && cb()
+      if (cb) cb()
     }
     return {
+      setCount,
       goToFirstPage,
       goToPrevPage,
       goToNextPage,
-      goToLastPage,
+      goToLastPage
     }
   })

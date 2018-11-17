@@ -2,6 +2,7 @@ import axios from 'axios'
 import { baseApiUrl } from './constants'
 // import AuthSession from './AuthSession'
 import logger from './logger'
+import fakeApi from './fakeApi'
 
 axios.defaults.headers['Content-Type'] = 'application/json'
 axios.defaults.headers['Accept-Language'] = 'en'
@@ -69,5 +70,5 @@ const api = {
   }
 }
 
-// TODO: add valid api endpoint and remove faker
-export default (baseApiUrl ? api : import('./fakeApi'))
+// INFO: add valid api endpoint and remove fake API
+export default (baseApiUrl ? api : fakeApi)
