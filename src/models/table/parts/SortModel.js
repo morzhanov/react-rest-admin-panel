@@ -9,7 +9,11 @@ export default types
     const toggleSort = () => {
       const currentDirection = self.direction
       getRoot(self).setSort(self)
-      self.direction = typeof currentDirection === 'boolean' ? !currentDirection : true
+      self.direction = currentDirection
+        ? false
+        : currentDirection === false
+        ? undefined
+        : true
     }
 
     const resetSort = () => {

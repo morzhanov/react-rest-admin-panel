@@ -10,8 +10,7 @@ const TableHeadItem = ({
     }
   }
 }) => {
-  const hasSorting = sort && sort.tableOrdering
-  const onClick = () => hasSorting && sort.onChangeSortDirection()
+  const onClick = () => sort && sort.toggleSort()
 
   const sortItem = !sort
     ? null

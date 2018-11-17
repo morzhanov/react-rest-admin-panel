@@ -12,16 +12,25 @@ export default types
     pagination: types.maybe(PaginationModel, {}),
     search: types.maybe(types.string)
   })
+  .volatile(() => ({
+    onChangeListener: types.function
+  }))
   .actions(self => {
+    const setOnChangeListener = listener => {
+      self.onChangeListener = listener
+    }
+
     const setSort = sort => {
       self.cols.forEach(col => {
         const { head } = col.actions
-        if (head.sort) head.sort.resetSort()
+        if (head.sort && head.sort !== sort) head.sort.resetSort()
       })
 
       self.sort.name = sort.name
       self.sort.direction = sort.direction
+
+      if (self.onChangeListener) self.onChangeListener('sort')
     }
 
-    return { setSort }
+    return { setOnChangeListener, setSort }
   })

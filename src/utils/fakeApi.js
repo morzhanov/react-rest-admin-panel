@@ -13,7 +13,8 @@ const fakeAPi = {
   tasks,
   users,
 
-  async get(url, { size, page, sort, filters, search } = {}) {
+  async get(url, params = {}) {
+    const { size, page, sort, filters, search } = params
     if (includes([urls.fake.login, urls.fake.signup, urls.fake.user], url)) {
       return { data: this[url] }
     }
@@ -22,8 +23,8 @@ const fakeAPi = {
 
     if (sort) {
       data = sort.direction
-        ? sortBy(data, [`${[sort.name]}`])
-        : sortBy(data, [`${[sort.name]}`]).reverse()
+        ? sortBy(data, [`${[sort.name]}`]).reverse()
+        : sortBy(data, [`${[sort.name]}`])
     }
 
     const count = data.length

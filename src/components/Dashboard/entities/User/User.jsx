@@ -4,21 +4,27 @@ import { inject, observer } from 'mobx-react'
 import apiUrls from '../../../../utils/apiUrls'
 import EntityPage from '../base/EntityPage/EntityPage'
 import createTableConfig from './userTableConfig'
+import logger from '../../../../utils/logger'
 
 @inject('userStore')
 @observer
 class Users extends React.Component {
   @observable
-  list = createTableConfig(this.fetchData)
+  list = createTableConfig(this.onTableDataChange)
 
   async componentDidMount() {
     await this.fetchData()
   }
 
-  fetchData = async ({ sort } = {}) => {
+  onTableDataChange = type => {
+    logger.log(type)
+    this.fetchData()
+  }
+
+  fetchData = async () => {
     const { userStore } = this.props
     const params = {
-      sort,
+      sort: this.list.sort,
       size: this.list.pagination.pageSize,
       page: this.list.pagination.pageNumber,
       filters: this.list.filters,
