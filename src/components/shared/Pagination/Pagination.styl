@@ -2,7 +2,7 @@
     display: flex
     margin: auto
     padding: 8px
-    button 
+    &__first, &__prev, &__next, &__last 
         min-width: 36px
         cursor: pointer
         border: none
@@ -14,14 +14,15 @@
         width: auto
         display: block;
         max-height: 44px;
-        position: relative;
         transition: all 300ms linear;
         font-family: "Roboto", "Helvetica", "Arial", sans-serif;
         font-weight: 300;
         border-radius: 3px
         position: relative
-        display: block
-        transition: all 300ms linear; 
+        &_disabled
+            color: #aaa
+            background: linear-gradient(60deg, #ddd, #fff)
+            box-shadow: 0 12px 20px -10px #ddd, 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(0,188,212,.2)
     &__indicator
         margin: 0 12px 0 4px
         font-size: 18px

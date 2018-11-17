@@ -31,19 +31,19 @@ const Pagination = ({
   // classNames
   const classesForFirstPage = classnames({
     pagination__first: true,
-    disabled: firstPageIsDisabled
+    pagination__first_disabled: firstPageIsDisabled
   })
   const classesForPrevPage = classnames({
     pagination__prev: true,
-    disabled: prevPageIsDisabled
+    pagination__prev_disabled: prevPageIsDisabled
   })
   const classesForNextPage = classnames({
     pagination__next: true,
-    disabled: nextPageIsDisabled
+    pagination__next_disabled: nextPageIsDisabled
   })
   const classesForLastPage = classnames({
     pagination__last: true,
-    disabled: lastPageIsDisabled
+    pagination__last_disabled: lastPageIsDisabled
   })
 
   const goTo = func => () => func(onChangePageNumber)
