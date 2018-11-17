@@ -12,6 +12,10 @@ class Users extends React.Component {
   list = userTableConfig
 
   async componentDidMount() {
+    await this.fetchData()
+  }
+
+  fetchData = async () => {
     const { userStore } = this.props
     const params = {
       sort: this.list.sort,
@@ -32,6 +36,7 @@ class Users extends React.Component {
         list={this.list}
         title="User"
         subtitle="User entity"
+        fetchData={this.fetchData}
       />
     )
   }

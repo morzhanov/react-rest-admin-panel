@@ -17,8 +17,7 @@ const Pagination = ({
     goToNextPage,
     goToLastPage
   },
-  onChangePageNumber,
-  onEdgesClicked
+  onChangePageNumber
 }) => {
   if (!count) {
     return null
@@ -50,14 +49,7 @@ const Pagination = ({
 
   return (
     <div className="pagination">
-      <button
-        type="button"
-        className={classesForFirstPage}
-        onClick={() => {
-          onEdgesClicked && onEdgesClicked()
-          goTo(goToFirstPage)()
-        }}
-      >
+      <button type="button" className={classesForFirstPage} onClick={goTo(goToFirstPage)}>
         <span />
       </button>
       <button type="button" className={classesForPrevPage} onClick={goTo(goToPrevPage)}>
@@ -67,14 +59,7 @@ const Pagination = ({
       <button type="button" className={classesForNextPage} onClick={goTo(goToNextPage)}>
         <span />
       </button>
-      <button
-        type="button"
-        className={classesForLastPage}
-        onClick={() => {
-          onEdgesClicked && onEdgesClicked()
-          goTo(goToLastPage)()
-        }}
-      >
+      <button type="button" className={classesForLastPage} onClick={goTo(goToLastPage)}>
         <span />
       </button>
     </div>

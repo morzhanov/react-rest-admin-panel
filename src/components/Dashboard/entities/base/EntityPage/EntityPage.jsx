@@ -10,6 +10,7 @@ const EntityPage = ({
   title,
   subtitle,
   data,
+  fetchData,
   list: { cols, pagination, sort, search, filters }
 }) => (
   <Grid>
@@ -22,12 +23,7 @@ const EntityPage = ({
         <Table cols={cols} data={data} />
       </CardBody>
       <CardFooter>
-        <Pagination
-          pagination={pagination}
-          onChangePageNumber={() => {
-            // this.getFindProjectList(true) && DOM.scrollTop(200, 500)
-          }}
-        />
+        <Pagination pagination={pagination} onChangePageNumber={fetchData} />
       </CardFooter>
     </Card>
   </Grid>
