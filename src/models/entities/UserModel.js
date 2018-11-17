@@ -3,7 +3,8 @@ import Entity from '../EntityModel'
 
 const User = types.model('User', {
   email: types.string,
-  name: types.string
+  name: types.string,
+  type: types.string
 })
 
 export default types.compose(

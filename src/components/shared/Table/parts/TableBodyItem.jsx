@@ -3,24 +3,19 @@ import TableCell from '@material-ui/core/TableCell'
 
 const TableBodyItem = ({
   item: {
-    getValue,
-    getParam,
+    name,
     actions: {
       body: { custom }
     }
   },
   row
 }) => {
-  const value = getValue(row)
-  const param = getParam(row)
-
-  return custom.TD ? (
-    <custom.TD data={value} param={param} />
-  ) : value ? (
+  const value = row[name]
+  return (
     <TableCell>
-      {custom.Component ? <custom.Component data={value} param={param} /> : value}
+      {custom && custom.Component ? <custom.Component data={value} /> : value}
     </TableCell>
-  ) : null
+  )
 }
 
 export default TableBodyItem

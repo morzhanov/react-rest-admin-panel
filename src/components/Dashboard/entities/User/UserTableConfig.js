@@ -1,80 +1,68 @@
-import { DataTable } from '../../../../models/list/DataTable.model'
+import TableModel from '../../../../models/table/TableModel'
 
-const filters = {
-  id: {
-    name: 'id',
-    value: ''
-  },
-  name: {
-    name: 'name',
-    value: ''
-  },
-  email: {
-    name: 'email',
-    value: ''
+export default () => {
+  const filters = {
+    type: {
+      name: 'type',
+      value: ''
+    }
   }
-}
 
-const sort = {
-  ordering: {
-    name: 'ordering',
-    value: '-created'
-  }
-}
-
-const cols = [
-  {
-    name: 'Id',
-    pathToValue: ['id'],
-    pathToParam: ['id'],
-    actions: {
-      head: {
-        sort: {
-          name: 'id'
+  const cols = [
+    {
+      title: 'Id',
+      name: 'id',
+      actions: {
+        head: {
+          sort: {
+            name: 'id'
+          }
         }
       }
-    }
-  },
-  {
-    name: 'Name',
-    pathToValue: ['name'],
-    actions: {
-      head: {
-        sort: {
-          name: 'name'
+    },
+    {
+      title: 'Name',
+      name: 'name',
+      actions: {
+        head: {
+          sort: {
+            name: 'name'
+          }
         }
       }
+    },
+    {
+      title: 'Email',
+      name: 'email',
+      actions: {
+        head: {
+          sort: {
+            name: 'email'
+          }
+        }
+        // body: {
+        //   custom: {
+        //     Component: ({ data, param }) => (
+        //       <div className="table-row-column">
+        //         <div className={`status-label status-${param}`}>
+        //           <span>{data}</span>
+        //         </div>
+        //       </div>
+        //     ),
+        //   },
+        // },
+      }
+    },
+    {
+      title: 'Type',
+      name: 'type',
+      actions: {}
     }
-  },
-  {
-    name: 'Email',
-    pathToValue: ['email'],
-    pathToParam: ['email'],
-    actions: {
-      head: {}
-      // body: {
-      //   custom: {
-      //     TD: ({ data, param }) => (
-      //       <div className="table-row-column">
-      //         <div className={`status-label status-${param}`}>
-      //           <span>{data}</span>
-      //         </div>
-      //       </div>
-      //     ),
-      //   },
-      // },
-    }
-  }
-]
+  ]
 
-const list = {
-  pagination: { pageSize: 10, pageNumber: 1 },
-  filters,
-  cols,
-  sort,
-  url: 'url',
-  globalActions: {
-    onSort: () => {}
-  }
+  return TableModel.create({
+    pagination: { pageSize: 10, pageNumber: 1 },
+    filters,
+    cols
+  })
 }
-export const userTableConfig = DataTable.create(list)

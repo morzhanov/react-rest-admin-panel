@@ -1,7 +1,7 @@
 import { types } from 'mobx-state-tree'
 
-export const Pagination = types
-  .model('Pagination', {
+export default types
+  .model('PaginationModel', {
     pageNumber: 1,
     pageSize: 10,
     startIndex: 0,

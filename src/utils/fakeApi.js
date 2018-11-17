@@ -1,4 +1,4 @@
-import { includes } from 'lodash'
+import { includes, sortBy } from 'lodash'
 import login from './fixtures/auth/login'
 import signup from './fixtures/auth/signup'
 import user from './fixtures/user'
@@ -19,6 +19,13 @@ const fakeAPi = {
     }
 
     let data = this[url]
+
+    if (sort) {
+      data = sort.direction
+        ? sortBy(data, [`${[sort.name]}`])
+        : sortBy(data, [`${[sort.name]}`]).reverse()
+    }
+
     const count = data.length
     if (size) {
       if (page) {
