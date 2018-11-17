@@ -1,4 +1,5 @@
 import React from 'react'
+import './Pagination.styl'
 import { observer } from 'mobx-react'
 import classnames from 'classnames'
 
@@ -29,19 +30,19 @@ const Pagination = ({
 
   // classNames
   const classesForFirstPage = classnames({
-    'to-first-page': true,
+    pagination__first: true,
     disabled: firstPageIsDisabled
   })
   const classesForPrevPage = classnames({
-    'to-prev-page': true,
+    pagination__prev: true,
     disabled: prevPageIsDisabled
   })
   const classesForNextPage = classnames({
-    'to-next-page': true,
+    pagination__next: true,
     disabled: nextPageIsDisabled
   })
   const classesForLastPage = classnames({
-    'to-last-page': true,
+    pagination__last: true,
     disabled: lastPageIsDisabled
   })
 
@@ -50,17 +51,17 @@ const Pagination = ({
   return (
     <div className="pagination">
       <button type="button" className={classesForFirstPage} onClick={goTo(goToFirstPage)}>
-        <span />
+        {'<<'}
       </button>
       <button type="button" className={classesForPrevPage} onClick={goTo(goToPrevPage)}>
-        <span />
+        {'<'}
       </button>
-      <span className="page-indicator">{`${pageNumber}/${pagesCount}`}</span>
+      <span className="pagination__indicator">{`${pageNumber}/${pagesCount}`}</span>
       <button type="button" className={classesForNextPage} onClick={goTo(goToNextPage)}>
-        <span />
+        {'>'}
       </button>
       <button type="button" className={classesForLastPage} onClick={goTo(goToLastPage)}>
-        <span />
+        {'>>'}
       </button>
     </div>
   )
