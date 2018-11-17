@@ -1,23 +1,27 @@
 import React from 'react'
-import { observer } from 'mobx-react'
 import './EntityPage.styl'
+import { observer } from 'mobx-react'
+import { compose, withState, withHandlers } from 'recompose'
 import Grid from '../../../../shared/Grid/Grid'
 import Table from '../../../../shared/Table/Table'
 import { Card, CardBody, CardHeader, CardFooter } from '../../../../shared/Card/Card'
 import Pagination from '../../../../shared/Pagination/Pagination'
+import Search from '../../../../shared/Search/Search'
 
 const EntityPage = ({
   title,
   subtitle,
   data,
   fetchData,
-  list: { cols, pagination, sort, search, filters }
+  onSearchChange,
+  table: { cols, pagination, searchValue, filters }
 }) => (
   <Grid>
-    <Card>
+    <Card className="entity-page">
       <CardHeader>
         <h4 className="title">{title}</h4>
         <p className="subtitle">{subtitle}</p>
+        <Search value={searchValue} onChange={onSearchChange} />
       </CardHeader>
       <CardBody>
         <Table cols={cols} data={data} />
@@ -29,4 +33,15 @@ const EntityPage = ({
   </Grid>
 )
 
-export default observer(EntityPage)
+export default observer(
+  compose(
+    withState('searchValue', 'changeSearch', ''),
+    withHandlers({
+      onSearchChange: ({ table: { setSearch }, changeSearch, fetchData }) => event => {
+        changeSearch(event.target.value)
+        setSearch(event.target.value)
+        fetchData()
+      }
+    })
+  )(EntityPage)
+)

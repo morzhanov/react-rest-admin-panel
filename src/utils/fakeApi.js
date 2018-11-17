@@ -1,4 +1,4 @@
-import { includes, sortBy } from 'lodash'
+import { includes, sortBy, filter } from 'lodash'
 import login from './fixtures/auth/login'
 import signup from './fixtures/auth/signup'
 import user from './fixtures/user'
@@ -13,6 +13,8 @@ const fakeAPi = {
   tasks,
   users,
 
+  // INFO: performing GET request to fetch entities
+  // With sorting, filters, search and pagination
   async get(url, params = {}) {
     const { size, page, sort, filters, search } = params
     if (includes([urls.fake.login, urls.fake.signup, urls.fake.user], url)) {
@@ -20,6 +22,10 @@ const fakeAPi = {
     }
 
     let data = this[url]
+
+    // INFO: in this example we only implement search by "name" key
+    // On your server it's up to you
+    if (search) data = filter(data, el => el.name.indexOf(search) >= 0)
 
     if (sort) {
       data = sort.direction

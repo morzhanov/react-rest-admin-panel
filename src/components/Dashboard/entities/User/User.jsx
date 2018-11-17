@@ -10,7 +10,7 @@ import logger from '../../../../utils/logger'
 @observer
 class Users extends React.Component {
   @observable
-  list = createTableConfig(this.onTableDataChange)
+  table = createTableConfig(this.onTableDataChange)
 
   async componentDidMount() {
     await this.fetchData()
@@ -24,14 +24,14 @@ class Users extends React.Component {
   fetchData = async () => {
     const { userStore } = this.props
     const params = {
-      sort: this.list.sort,
-      size: this.list.pagination.pageSize,
-      page: this.list.pagination.pageNumber,
-      filters: this.list.filters,
-      search: this.list.search
+      sort: this.table.sort,
+      size: this.table.pagination.pageSize,
+      page: this.table.pagination.pageNumber,
+      filters: this.table.filters,
+      search: this.table.search
     }
     const count = await userStore.fetch(apiUrls.fake.users, params)
-    this.list.pagination.setCount(count)
+    this.table.pagination.setCount(count)
   }
 
   render() {
@@ -39,7 +39,7 @@ class Users extends React.Component {
     return (
       <EntityPage
         data={userStore.data}
-        list={this.list}
+        table={this.table}
         title="User"
         subtitle="User entity"
         fetchData={this.fetchData}

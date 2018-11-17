@@ -20,6 +20,10 @@ export default types
       self.onChangeListener = listener
     }
 
+    const setSearch = search => {
+      self.search = search
+    }
+
     const setSort = sort => {
       self.cols.forEach(col => {
         const { head } = col.actions
@@ -32,5 +36,5 @@ export default types
       if (self.onChangeListener) self.onChangeListener('sort')
     }
 
-    return { setOnChangeListener, setSort }
+    return { setOnChangeListener, setSort, setSearch }
   })
