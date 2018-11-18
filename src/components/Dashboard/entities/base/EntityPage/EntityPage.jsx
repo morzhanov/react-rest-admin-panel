@@ -13,7 +13,7 @@ const EntityPage = ({
   subtitle,
   store: {
     data,
-    table: { cols, pagination, searchValue, filters, setFilter, setSearch }
+    table: { cols, pagination, search, filters, setFilter, setSearch }
   }
 }) => (
   <div className="entity-page">
@@ -22,7 +22,7 @@ const EntityPage = ({
         <CardHeader>
           <h4 className="title">{title}</h4>
           <p className="subtitle">{subtitle}</p>
-          <Search value={searchValue} onChange={setSearch} />
+          <Search value={search} onChange={setSearch} />
           <div className="filters">
             {filters.map(filter => (
               <Filter key={filter.name} filter={filter} onChange={setFilter} />

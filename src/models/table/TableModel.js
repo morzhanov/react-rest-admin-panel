@@ -10,7 +10,7 @@ export default types
     filters: types.maybe(types.array(FilterModel), []),
     sort: types.maybe(SortModel, {}),
     pagination: types.maybe(PaginationModel, {}),
-    search: types.maybe(types.string, '')
+    search: types.optional(types.string, '')
   })
   .actions(self => {
     const setFilter = (name, value) => {

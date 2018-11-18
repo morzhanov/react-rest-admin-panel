@@ -2,12 +2,14 @@ import React from 'react'
 import './Pagination.styl'
 import { observer } from 'mobx-react'
 import classnames from 'classnames'
+import PageSize from '../PageSize/PageSize'
 
 // TODO: refactor
 const Pagination = ({
   pagination: {
     pageNumber,
     count,
+    pageSize,
     pagesCount,
     firstPageIsDisabled,
     prevPageIsDisabled,
@@ -17,14 +19,15 @@ const Pagination = ({
     goToFirstPage,
     goToPrevPage,
     goToNextPage,
-    goToLastPage
+    goToLastPage,
+    changePageSize
   }
 }) => {
   if (!count) {
     return null
   }
 
-  if (!pagesCount || pagesCount <= 1) {
+  if (!pagesCount) {
     return null
   }
 
@@ -46,15 +49,20 @@ const Pagination = ({
     pagination__last_disabled: lastPageIsDisabled
   })
 
+  const from = pageNumber === 1 ? pageNumber : (pageNumber - 1) * pageSize + 1
+  const to =
+    pagesCount === 1 ? count : pageNumber === pagesCount ? count : pageNumber * pageSize
+
   return (
     <div className="pagination">
+      <PageSize value={pageSize} onChange={changePageSize} />
       <button type="button" className={classesForFirstPage} onClick={goToFirstPage}>
         {'<<'}
       </button>
       <button type="button" className={classesForPrevPage} onClick={goToPrevPage}>
         {'<'}
       </button>
-      <span className="pagination__indicator">{`${pageNumber}/${pagesCount}`}</span>
+      <span className="pagination__indicator">{`${from}-${to}/${count}`}</span>
       <button type="button" className={classesForNextPage} onClick={goToNextPage}>
         {'>'}
       </button>

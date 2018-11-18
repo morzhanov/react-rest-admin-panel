@@ -1,13 +1,22 @@
 .search
+    *
+        transition: all 300ms ease
     input
         width: 300px
         font-size: 18px
-        color: #ddd
+        color: #eee
         border-bottom: 1px solid #aaa
         transition: all 300ms ease
         &:hover, &:focus, &:active
-            border-bottom: 1px solid #ddd
+            border-bottom: 1px solid #eee
         &::placeholder
-            color: #ddd
+            color: #eee
     svg 
         margin-left: -24px
+        margin-bottom: -6px
+        color: #aaa
+    &.active, &:hover, &:focus
+        input
+            border-bottom: 1px solid #eee
+        svg
+            color: #eee

@@ -1,2 +1,18 @@
 .filter
-    width: 150px
+    *
+        transition: all 300ms ease
+        color: #aaa !important
+        &:hover, &:focus, &:active
+            color: #eee
+    &.active
+        *
+            color: #eee !important
+    .filter
+        &__select
+            color: #eee
+            border-bottom: 1px solid #aaa
+            &_active,
+            &:hover
+                border-bottom: 1px solid #eee
+            input, svg
+                color: #eee

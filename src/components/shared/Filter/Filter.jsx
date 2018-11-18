@@ -1,18 +1,51 @@
 import React from 'react'
 import { observer } from 'mobx-react'
-import Select from 'react-select'
+import { MenuItem, Select, InputLabel, FormControl } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles'
 import './Filter.styl'
 
-const Filter = ({ filter: { name, value, options }, onChange }) => (
-  <div className="filter">
-    <Select
-      placeholder={name}
-      isClearable
-      defaultValue={value}
-      options={options.map(item => ({ label: item, value: item }))}
-      onChange={e => onChange(name, e ? e.value : '')}
-    />
-  </div>
+const styles = theme => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap'
+  },
+  formControl: {
+    margin: theme.spacing.unit,
+    minWidth: 120
+  },
+  selectEmpty: {
+    marginTop: theme.spacing.unit * 2
+  },
+  selectMenu: {
+    color: '#ddd'
+  }
+})
+
+const Filter = ({ classes, filter: { name, value, options }, onChange }) => (
+  <form className={`filter ${classes.root} ${value ? 'active' : ''}`} autoComplete="off">
+    <FormControl className={classes.formControl}>
+      <InputLabel htmlFor="age-simple">{name}</InputLabel>
+      <Select
+        disableUnderline
+        className="filter__select"
+        value={value}
+        onChange={({ target }) => onChange(name, target.value)}
+        inputProps={{
+          name: 'age',
+          id: 'age-simple'
+        }}
+      >
+        <MenuItem value="">
+          <em>None</em>
+        </MenuItem>
+        {options.map(option => (
+          <MenuItem key={option} value={option}>
+            {option}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+  </form>
 )
 
-export default observer(Filter)
+export default withStyles(styles)(observer(Filter))

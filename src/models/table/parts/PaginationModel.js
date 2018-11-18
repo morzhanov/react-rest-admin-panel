@@ -59,11 +59,18 @@ export default types
       self.pageNumber = self.pagesCount
       getRoot(self).fetch()
     }
+
+    const changePageSize = size => {
+      self.pageSize = size
+      getRoot(self).fetch()
+    }
+
     return {
       setCount,
       goToFirstPage,
       goToPrevPage,
       goToNextPage,
-      goToLastPage
+      goToLastPage,
+      changePageSize
     }
   })

@@ -49,9 +49,10 @@ const fakeAPi = {
     const count = data.length
     if (size) {
       if (page) {
-        data = data.slice((size - 1) * (page - 1), (size - 1) * page)
+        data = data.slice(size * (page - 1), size * page)
+      } else {
+        data = data.slice(0, size)
       }
-      data = data.slice(0, size - 1)
     }
 
     return { data: { results: data, count } }
