@@ -17,7 +17,7 @@ const Table = ({ cols, data, firstCustomRow, rowLinks, withButton }) => (
         firstCustomRow={firstCustomRow}
       />
     </MuiTable>
-    <NoData />
+    {!data.length && <NoData />}
   </>
 )
 

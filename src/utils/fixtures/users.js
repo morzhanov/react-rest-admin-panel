@@ -2,7 +2,7 @@ import faker from 'faker'
 
 export const users = []
 
-Array.from(Array(0)).forEach((id, idx) =>
+Array.from(Array(31)).forEach((id, idx) =>
   users.push({
     id: idx + 1,
     name: faker.name.findName(),
