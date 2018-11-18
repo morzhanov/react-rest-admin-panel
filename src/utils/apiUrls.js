@@ -5,6 +5,7 @@ export default {
     login: 'login',
     signup: 'signup',
     users: 'users',
+    usersFilters: 'usersFilters',
     tasks: 'tasks',
     user: 'user'
   }

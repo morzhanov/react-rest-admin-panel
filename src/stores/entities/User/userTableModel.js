@@ -3,6 +3,8 @@ import TableModel from '../../../models/table/TableModel'
 const userTableConfig = {
   pagination: { pageSize: 20, pageNumber: 1 },
 
+  // INFO: you can pass options for filters here or defing filterUrl
+  // in entity store to fetch filters data
   filters: [
     {
       name: 'type',

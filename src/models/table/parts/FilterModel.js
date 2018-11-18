@@ -1,13 +1,7 @@
-import { types, getRoot } from 'mobx-state-tree'
-import { uniq } from 'lodash'
+import { types } from 'mobx-state-tree'
 
-export default types
-  .model('FilterModel', {
-    name: types.maybe(types.string),
-    value: types.maybe(types.string)
-  })
-  .views(self => ({
-    get options() {
-      return uniq(getRoot(self).data.map(item => item[self.name]))
-    }
-  }))
+export default types.model('FilterModel', {
+  name: types.maybe(types.string),
+  value: types.maybe(types.string),
+  options: types.array(types.string)
+})

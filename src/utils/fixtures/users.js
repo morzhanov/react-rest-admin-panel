@@ -1,6 +1,6 @@
 import faker from 'faker'
 
-const users = []
+export const users = []
 
 Array.from(Array(30)).forEach((id, idx) =>
   users.push({
@@ -11,4 +11,4 @@ Array.from(Array(30)).forEach((id, idx) =>
   })
 )
 
-export default users
+export const usersFilters = [{ name: 'type', options: ['Client', 'Author'] }]

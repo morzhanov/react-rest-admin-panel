@@ -9,6 +9,7 @@ const UserStore = types.model('UserStore', {
   data: types.optional(types.array(UserModel), []),
   // INFO: Base entity API Uri, could be changed in a CRUD methods as last param
   url: apiUrls.fake.users,
+  filtersUrl: apiUrls.fake.usersFilters,
   table: TableModel
 })
 
