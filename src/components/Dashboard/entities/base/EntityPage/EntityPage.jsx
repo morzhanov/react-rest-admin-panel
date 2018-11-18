@@ -3,7 +3,7 @@ import './EntityPage.styl'
 import { observer } from 'mobx-react'
 import Grid from '../../../../shared/Grid/Grid'
 import Table from '../../../../shared/Table/Table'
-import { Card, CardBody, CardHeader, CardFooter } from '../../../../shared/Card/Card'
+import Card from '../../../../shared/Card/Card'
 import Pagination from '../../../../shared/Pagination/Pagination'
 import Search from '../../../../shared/Search/Search'
 import Filter from '../../../../shared/Filter/Filter'
@@ -19,7 +19,7 @@ const EntityPage = ({
   <div className="entity-page">
     <Grid>
       <Card>
-        <CardHeader>
+        <Card className="card__header">
           <h4 className="title">{title}</h4>
           <p className="subtitle">{subtitle}</p>
           {!!data.length && <Search value={search} onChange={setSearch} />}
@@ -29,13 +29,13 @@ const EntityPage = ({
                 <Filter key={filter.name} filter={filter} onChange={setFilter} />
               ))}
           </div>
-        </CardHeader>
-        <CardBody>
+        </Card>
+        <Card className="card__body">
           <Table cols={cols} data={data} />
-        </CardBody>
-        <CardFooter>
+        </Card>
+        <Card className="card__footer">
           <Pagination pagination={pagination} />
-        </CardFooter>
+        </Card>
       </Card>
     </Grid>
   </div>
