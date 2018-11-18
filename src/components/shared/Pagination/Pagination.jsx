@@ -3,6 +3,7 @@ import './Pagination.styl'
 import { observer } from 'mobx-react'
 import classnames from 'classnames'
 
+// TODO: refactor
 const Pagination = ({
   pagination: {
     pageNumber,
@@ -17,8 +18,7 @@ const Pagination = ({
     goToPrevPage,
     goToNextPage,
     goToLastPage
-  },
-  onChange
+  }
 }) => {
   if (!count) {
     return null
@@ -46,21 +46,19 @@ const Pagination = ({
     pagination__last_disabled: lastPageIsDisabled
   })
 
-  const goTo = func => () => func(onChange)
-
   return (
     <div className="pagination">
-      <button type="button" className={classesForFirstPage} onClick={goTo(goToFirstPage)}>
+      <button type="button" className={classesForFirstPage} onClick={goToFirstPage}>
         {'<<'}
       </button>
-      <button type="button" className={classesForPrevPage} onClick={goTo(goToPrevPage)}>
+      <button type="button" className={classesForPrevPage} onClick={goToPrevPage}>
         {'<'}
       </button>
       <span className="pagination__indicator">{`${pageNumber}/${pagesCount}`}</span>
-      <button type="button" className={classesForNextPage} onClick={goTo(goToNextPage)}>
+      <button type="button" className={classesForNextPage} onClick={goToNextPage}>
         {'>'}
       </button>
-      <button type="button" className={classesForLastPage} onClick={goTo(goToLastPage)}>
+      <button type="button" className={classesForLastPage} onClick={goToLastPage}>
         {'>>'}
       </button>
     </div>

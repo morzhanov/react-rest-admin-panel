@@ -64,7 +64,13 @@ const userTableConfig = {
     {
       title: 'Type',
       name: 'type',
-      actions: {}
+      actions: {
+        head: {
+          sort: {
+            name: 'type'
+          }
+        }
+      }
     }
   ]
 }

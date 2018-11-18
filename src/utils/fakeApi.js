@@ -40,9 +40,10 @@ const fakeAPi = {
     if (search) data = filter(data, el => el.name.indexOf(search) >= 0)
 
     if (sort) {
-      data = sort.direction
-        ? sortBy(data, [`${[sort.name]}`]).reverse()
-        : sortBy(data, [`${[sort.name]}`])
+      data =
+        sort[0] === '-'
+          ? sortBy(data, [`${[sort.substring(1)]}`])
+          : sortBy(data, [`${[sort]}`]).reverse()
     }
 
     const count = data.length

@@ -34,9 +34,5 @@ export default types
       getRoot(self).fetch()
     }
 
-    const setPagination = pagination => {
-      console.log(pagination)
-    }
-
-    return { setSort, setSearch, setFilter, setPagination }
+    return { setSort, setSearch, setFilter }
   })

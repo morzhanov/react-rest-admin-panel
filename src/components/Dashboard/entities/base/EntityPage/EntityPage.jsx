@@ -13,7 +13,7 @@ const EntityPage = ({
   subtitle,
   store: {
     data,
-    table: { cols, pagination, searchValue, filters, setFilter, setSearch, setPagination }
+    table: { cols, pagination, searchValue, filters, setFilter, setSearch }
   }
 }) => (
   <div className="entity-page">
@@ -33,7 +33,7 @@ const EntityPage = ({
           <Table cols={cols} data={data} />
         </CardBody>
         <CardFooter>
-          <Pagination pagination={pagination} onChange={setPagination} />
+          <Pagination pagination={pagination} />
         </CardFooter>
       </Card>
     </Grid>
