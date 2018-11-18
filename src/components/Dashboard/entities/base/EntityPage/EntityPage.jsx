@@ -22,11 +22,12 @@ const EntityPage = ({
         <CardHeader>
           <h4 className="title">{title}</h4>
           <p className="subtitle">{subtitle}</p>
-          <Search value={search} onChange={setSearch} />
+          {!!data.length && <Search value={search} onChange={setSearch} />}
           <div className="filters">
-            {filters.map(filter => (
-              <Filter key={filter.name} filter={filter} onChange={setFilter} />
-            ))}
+            {!!data.length &&
+              filters.map(filter => (
+                <Filter key={filter.name} filter={filter} onChange={setFilter} />
+              ))}
           </div>
         </CardHeader>
         <CardBody>

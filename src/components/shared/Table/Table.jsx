@@ -3,19 +3,22 @@ import { observer } from 'mobx-react'
 import MuiTable from '@material-ui/core/Table'
 import TableHead from './parts/TableHead'
 import TableBody from './parts/TableBody'
+import NoData from './parts/NoData'
 
-const Table = ({ cols, data, isPending, firstCustomRow, rowLinks, withButton }) => (
-  <MuiTable>
-    <TableHead cols={cols} />
-    <TableBody
-      withButton={withButton}
-      rowLinks={rowLinks}
-      rows={data}
-      cols={cols}
-      firstCustomRow={firstCustomRow}
-    />
-    {!isPending && !data.length && <TableBody>No data</TableBody>}
-  </MuiTable>
+const Table = ({ cols, data, firstCustomRow, rowLinks, withButton }) => (
+  <>
+    <MuiTable>
+      <TableHead cols={cols} />
+      <TableBody
+        withButton={withButton}
+        rowLinks={rowLinks}
+        rows={data}
+        cols={cols}
+        firstCustomRow={firstCustomRow}
+      />
+    </MuiTable>
+    <NoData />
+  </>
 )
 
 Table.defaultProps = {
