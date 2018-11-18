@@ -1,12 +1,14 @@
 import TableModel from '../../../../models/table/TableModel'
 
 export default onChangeListener => {
-  const filters = {
-    type: {
+  const pagination = { pageSize: 20, pageNumber: 1 }
+
+  const filters = [
+    {
       name: 'type',
       value: ''
     }
-  }
+  ]
 
   const sort = {
     name: 'id'
@@ -65,7 +67,7 @@ export default onChangeListener => {
   ]
 
   const config = TableModel.create({
-    pagination: { pageSize: 10, pageNumber: 1 },
+    pagination,
     filters,
     sort,
     cols

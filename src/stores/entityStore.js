@@ -1,4 +1,5 @@
 import { types, flow } from 'mobx-state-tree'
+import { uniq } from 'lodash'
 import logger from '../utils/logger'
 import api from '../utils/api'
 
@@ -6,6 +7,11 @@ const EntityStore = types
   .model('EntityStore', {
     // INFO: "data" field should be provided in child's store
   })
+  .views(self => ({
+    getFilterOptions(filterName) {
+      return uniq(self.data.map(item => item[filterName]))
+    }
+  }))
   .actions(self => {
     const fetch = flow(function* fetch(url, params) {
       try {

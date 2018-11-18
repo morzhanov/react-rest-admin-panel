@@ -9,8 +9,8 @@ import logger from '../../../../utils/logger'
 @inject('userStore')
 @observer
 class Users extends React.Component {
-  @observable
-  table = createTableConfig(this.onTableDataChange)
+  // @observable
+  // table = createTableConfig(this.onTableDataChange)
 
   async componentDidMount() {
     await this.fetchData()
@@ -38,7 +38,7 @@ class Users extends React.Component {
     const { userStore } = this.props
     return (
       <EntityPage
-        data={userStore.data}
+        store={userStore}
         table={this.table}
         title="User"
         subtitle="User entity"

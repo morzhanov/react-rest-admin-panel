@@ -1,4 +1,5 @@
 import React from 'react'
+import { observer } from 'mobx-react'
 import './Search.styl'
 import { Input } from '@material-ui/core'
 import { Search as SearchIcon } from '@material-ui/icons'
@@ -10,10 +11,10 @@ const Search = ({ value, onChange }) => (
       placeholder="Search"
       type="text"
       value={value}
-      onChange={onChange}
+      onChange={({ target }) => onChange(target.value)}
     />
     <SearchIcon />
   </div>
 )
 
-export default Search
+export default observer(Search)
