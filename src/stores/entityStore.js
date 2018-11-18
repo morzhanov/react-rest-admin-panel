@@ -1,31 +1,35 @@
 import { types, flow } from 'mobx-state-tree'
-import { uniq } from 'lodash'
 import logger from '../utils/logger'
 import api from '../utils/api'
 
 const EntityStore = types
   .model('EntityStore', {
-    // INFO: "data" field should be provided in child's store
+    // INFO: "table", "data" and "url" fields should be provided in child's store
   })
-  .views(self => ({
-    getFilterOptions(filterName) {
-      return uniq(self.data.map(item => item[filterName]))
-    }
-  }))
   .actions(self => {
-    const fetch = flow(function* fetch(url, params) {
+    const afterCreate = () => self.fetch()
+
+    const fetch = flow(function* fetch(url = self.url) {
+      const params = {
+        sort: self.table.sort,
+        size: self.table.pagination.pageSize,
+        page: self.table.pagination.pageNumber,
+        filters: self.table.filters,
+        search: self.table.search
+      }
       try {
         const { data } = yield api.get(url, params)
         const { results, count } = data
+        self.table.pagination.count = count
         self.data = results
-        return count
+        return self.data
       } catch (error) {
         logger.error(error)
         return null
       }
     })
 
-    const getOne = flow(function* getOne(url, id) {
+    const getOne = flow(function* getOne(id, url = self.url) {
       try {
         const res = yield api.get(`${url}/${id}`)
         return res.data
@@ -35,7 +39,7 @@ const EntityStore = types
       }
     })
 
-    const create = flow(function* create(url, entity) {
+    const create = flow(function* create(entity, url = self.url) {
       try {
         yield api.post(url, entity)
         self.addOne(entity)
@@ -48,7 +52,7 @@ const EntityStore = types
       self.data.push(entity)
     }
 
-    const update = flow(function* update(url, entity, id) {
+    const update = flow(function* update(entity, id, url = self.url) {
       try {
         yield api.put(`${url}/${id}`, entity)
         self.fetch()
@@ -57,7 +61,7 @@ const EntityStore = types
       }
     })
 
-    const patch = flow(function* patch(url, entity, id) {
+    const patch = flow(function* patch(entity, id, url = self.url) {
       try {
         yield api.put(`${url}/${id}`, entity)
         self.fetch()
@@ -66,7 +70,7 @@ const EntityStore = types
       }
     })
 
-    const remove = flow(function* remove(url, id) {
+    const remove = flow(function* remove(id, url = self.url) {
       try {
         yield api.delete(`${url}/${id}`)
         self.fetch()
@@ -76,6 +80,7 @@ const EntityStore = types
     })
 
     return {
+      afterCreate,
       fetch,
       getOne,
       create,

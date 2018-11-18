@@ -3,7 +3,7 @@ import { observer } from 'mobx-react'
 import { MenuItem, Select, InputLabel, Input } from '@material-ui/core'
 import './Filter.styl'
 
-const Filter = ({ options, filter: { name, value }, onChange }) => (
+const Filter = ({ filter: { name, value, options }, onChange }) => (
   <div className="filter">
     <InputLabel htmlFor="filter__input">{name}</InputLabel>
     <Select

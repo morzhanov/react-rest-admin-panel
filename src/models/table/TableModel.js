@@ -1,5 +1,4 @@
-import { types } from 'mobx-state-tree'
-import { autorun } from 'mobx'
+import { types, getRoot } from 'mobx-state-tree'
 import TableItemModel from './TableItemModel'
 import PaginationModel from './parts/PaginationModel'
 import SortModel from './parts/SortModel'
@@ -13,22 +12,15 @@ export default types
     pagination: types.maybe(PaginationModel, {}),
     search: types.maybe(types.string, '')
   })
-  .volatile(() => ({
-    onChangeListener: types.function
-  }))
   .actions(self => {
-    const setOnChangeListener = listener => {
-      self.onChangeListener = listener
-    }
-
     const setFilter = (name, value) => {
       self.filters[0].value = value
-      if (self.onChangeListener) self.onChangeListener('filter')
+      getRoot(self).fetch()
     }
 
     const setSearch = search => {
       self.search = search
-      if (self.onChangeListener) self.onChangeListener('search')
+      getRoot(self).fetch()
     }
 
     const setSort = sort => {
@@ -39,11 +31,8 @@ export default types
 
       self.sort.name = sort.name
       self.sort.direction = sort.direction
-
-      if (self.onChangeListener) self.onChangeListener('sort')
+      getRoot(self).fetch()
     }
 
-    return { setOnChangeListener, setSort, setSearch, setFilter }
+    return { setSort, setSearch, setFilter }
   })
-
-  autorun(() => {})

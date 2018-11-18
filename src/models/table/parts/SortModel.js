@@ -8,7 +8,7 @@ export default types
   .actions(self => {
     const toggleSort = () => {
       const currentDirection = self.direction
-      getRoot(self).setSort(self)
+      getRoot(self).table.setSort(self)
       self.direction = currentDirection
         ? false
         : currentDirection === false

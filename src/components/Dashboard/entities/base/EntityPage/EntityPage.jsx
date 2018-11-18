@@ -11,9 +11,10 @@ import Filter from '../../../../shared/Filter/Filter'
 const EntityPage = ({
   title,
   subtitle,
-  store: { data, getFilterOptions },
-  fetchData,
-  table: { cols, pagination, searchValue, filters, setFilter, setSearch }
+  store: {
+    data,
+    table: { cols, pagination, searchValue, filters, setFilter, setSearch, setPagination }
+  }
 }) => (
   <div className="entity-page">
     <Grid>
@@ -24,12 +25,7 @@ const EntityPage = ({
           <Search value={searchValue} onChange={setSearch} />
           <div className="filters">
             {filters.map(filter => (
-              <Filter
-                key={filter.name}
-                options={getFilterOptions(filter.name)}
-                filter={filter}
-                onChange={setFilter}
-              />
+              <Filter key={filter.name} filter={filter} onChange={setFilter} />
             ))}
           </div>
         </CardHeader>
@@ -37,7 +33,7 @@ const EntityPage = ({
           <Table cols={cols} data={data} />
         </CardBody>
         <CardFooter>
-          <Pagination pagination={pagination} onChangePageNumber={fetchData} />
+          <Pagination pagination={pagination} onChange={setPagination} />
         </CardFooter>
       </Card>
     </Grid>

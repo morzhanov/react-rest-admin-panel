@@ -18,7 +18,7 @@ const Pagination = ({
     goToNextPage,
     goToLastPage
   },
-  onChangePageNumber
+  onChange
 }) => {
   if (!count) {
     return null
@@ -46,7 +46,7 @@ const Pagination = ({
     pagination__last_disabled: lastPageIsDisabled
   })
 
-  const goTo = func => () => func(onChangePageNumber)
+  const goTo = func => () => func(onChange)
 
   return (
     <div className="pagination">

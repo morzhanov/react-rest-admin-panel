@@ -2,8 +2,7 @@ import UiStore from './RootStore'
 import RouterStore from './RouterStore'
 import AdminModel from '../models/AdminModel'
 // entities
-import UserStore from './entities/UserStore'
-// import userTableConfig from '../components/Dashboard/entities/User/userTableConfig'
+import userStore from './entities/User/userStore'
 
 const createStore = history => {
   let user
@@ -13,9 +12,7 @@ const createStore = history => {
   }
   const rootStore = UiStore.create({ user }, { user: AdminModel })
   const router = new RouterStore(history)
-  // entities
-  const config = userTableConfig()
-  const userStore = UserStore.create({ table: config })
+
   return {
     rootStore,
     router,
