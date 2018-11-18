@@ -1,4 +1,4 @@
-import { types } from 'mobx-state-tree'
+import { types, getRoot } from 'mobx-state-tree'
 
 export default types
   .model('PaginationModel', {
@@ -36,28 +36,28 @@ export default types
       self.count = count
     }
 
-    const goToFirstPage = cb => {
+    const goToFirstPage = () => {
       if (self.firstPageIsDisabled) return
       self.pageNumber = 1
-      if (cb) cb()
+      getRoot(self).fetch()
     }
 
-    const goToPrevPage = cb => {
+    const goToPrevPage = () => {
       if (self.prevPageIsDisabled) return
       self.pageNumber -= 1
-      if (cb) cb()
+      getRoot(self).fetch()
     }
 
-    const goToNextPage = cb => {
+    const goToNextPage = () => {
       if (self.nextPageIsDisabled) return
       self.pageNumber += 1
-      if (cb) cb()
+      getRoot(self).fetch()
     }
 
-    const goToLastPage = cb => {
+    const goToLastPage = () => {
       if (self.lastPageIsDisabled) return
       self.pageNumber = self.pagesCount
-      if (cb) cb()
+      getRoot(self).fetch()
     }
     return {
       setCount,
