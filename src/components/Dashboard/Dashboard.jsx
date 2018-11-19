@@ -5,7 +5,7 @@ import logo from '../../assets/img/reactlogo.png'
 import Header from '../shared/Header/Header'
 import Footer from '../shared/Footer/Footer'
 import Sidebar from '../shared/Sidebar/Sidebar'
-import routes from '../../router/routes'
+import { dashboardRoutes } from '../../router/routes'
 import createRouter from '../../router/createRouter'
 
 class Dashboard extends React.Component {
@@ -49,12 +49,12 @@ class Dashboard extends React.Component {
     const { classes, ...rest } = this.props
     const { mobileOpen } = this.state
 
-    const DashboardRouter = createRouter(routes.admin.children)
+    const DashboardRouter = createRouter(dashboardRoutes)
 
     return (
       <div className="dashboard">
         <Sidebar
-          routes={routes.admin.children}
+          routes={dashboardRoutes.entities}
           logoText="Admin dashboard"
           logo={logo}
           handleDrawerToggle={this.handleDrawerToggle}
@@ -64,7 +64,7 @@ class Dashboard extends React.Component {
         />
         <div className="dashboard__main" ref={this.mainPanel}>
           <Header
-            routes={routes.admin.children}
+            routes={dashboardRoutes.entities}
             handleDrawerToggle={this.handleDrawerToggle}
             {...rest}
           />

@@ -33,7 +33,7 @@ const BaseDrawer = ({
       <HeaderLogo logo={logo} logoText={logoText} />
       <div className="sidebar__wrapper">
         {mobile && <HeaderLinks user={user} />}
-        <SidebarList routes={routes.entities} activeRoute={activeRoute} />
+        <SidebarList routes={routes} activeRoute={activeRoute} />
       </div>
       <div className="sidebar__background" style={{ backgroundColor: '#444' }} />
     </Drawer>

@@ -1,4 +1,5 @@
 import React from 'react'
+import './Form.styl'
 import { observer } from 'mobx-react'
 import MobxReactForm from 'mobx-react-form'
 import validatorjs from 'validatorjs'
