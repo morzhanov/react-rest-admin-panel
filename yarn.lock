@@ -5788,7 +5788,7 @@ lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
 
-"lodash@>=3.5 <5", lodash@^4.13.1, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0:
+"lodash@>=3.5 <5", lodash@^4.13.1, lodash@^4.16.2, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.2, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
 
@@ -6131,6 +6131,12 @@ mkdirp@0.5.x, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkdirp@~0.5.1:
   resolved "http://registry.npmjs.org/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
     minimist "0.0.8"
+
+mobx-react-form@^1.35.1:
+  version "1.35.1"
+  resolved "https://registry.yarnpkg.com/mobx-react-form/-/mobx-react-form-1.35.1.tgz#892aec6729224e11c2978fb82e67adc4e80e3a6a"
+  dependencies:
+    lodash "^4.16.2"
 
 mobx-react-router@^4.0.5:
   version "4.0.5"
@@ -9092,6 +9098,10 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
+
+validatorjs@^3.15.1:
+  version "3.15.1"
+  resolved "https://registry.yarnpkg.com/validatorjs/-/validatorjs-3.15.1.tgz#e674b6330c1432913a81128cdb7ff679463d4d2d"
 
 value-equal@^0.4.0:
   version "0.4.0"

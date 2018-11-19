@@ -5,6 +5,8 @@ import DashboardPage from '../components/Dashboard/Dashboard'
 import ChangePassword from '../components/Dashboard/ChangePassword/ChangePassword'
 import User from '../components/Dashboard/entities/User/User'
 import Tasks from '../components/Dashboard/entities/Tasks/Tasks'
+// eslint-disable-next-line
+import UpdateEntityPage from '../components/Dashboard/entities/base/UpdateEntityPage/UpdateEntityPage'
 
 export default {
   admin: {
@@ -32,6 +34,13 @@ export default {
           navbarName: 'Users List',
           icon: Person,
           component: User
+        },
+        example: {
+          path: '/admin/example',
+          sidebarName: 'Form',
+          navbarName: 'Form',
+          icon: Person,
+          component: UpdateEntityPage
         }
       }
     }
