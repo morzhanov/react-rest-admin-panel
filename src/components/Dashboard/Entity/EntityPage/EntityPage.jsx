@@ -1,12 +1,12 @@
 import React from 'react'
 import './EntityPage.styl'
 import { observer } from 'mobx-react'
-import Grid from '../../../../shared/Grid/Grid'
-import Table from '../../../../shared/Table/Table'
-import Card from '../../../../shared/Card/Card'
-import Pagination from '../../../../shared/Pagination/Pagination'
-import Search from '../../../../shared/Search/Search'
-import Filter from '../../../../shared/Filter/Filter'
+import Grid from '../../../shared/Grid/Grid'
+import Table from '../../../shared/Table/Table'
+import Card from '../../../shared/Card/Card'
+import Pagination from '../../../shared/Pagination/Pagination'
+import Search from '../../../shared/Search/Search'
+import Filter from '../../../shared/Filter/Filter'
 
 const EntityPage = ({
   title,

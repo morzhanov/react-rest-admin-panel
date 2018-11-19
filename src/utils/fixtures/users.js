@@ -7,7 +7,8 @@ Array.from(Array(31)).forEach((id, idx) =>
     id: idx + 1,
     name: faker.name.findName(),
     email: faker.internet.email(),
-    type: idx % 2 ? 'Author' : 'Client'
+    type: idx % 2 ? 'Author' : 'Client',
+    isManager: !!(idx % 2)
   })
 )
 

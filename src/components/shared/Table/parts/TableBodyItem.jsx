@@ -9,13 +9,14 @@ const TableBodyItem = ({
     }
   },
   row
-}) => {
-  const value = row[name]
-  return (
-    <TableCell>
-      {custom && custom.Component ? <custom.Component data={value} /> : value}
-    </TableCell>
-  )
-}
+}) => (
+  <TableCell>
+    {custom && custom.Component ? (
+      <custom.Component data={`${row[name]}`} />
+    ) : (
+      `${row[name]}`
+    )}
+  </TableCell>
+)
 
 export default TableBodyItem

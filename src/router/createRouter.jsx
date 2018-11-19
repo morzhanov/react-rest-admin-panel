@@ -1,11 +1,11 @@
 import React from 'react'
 import { Route, Redirect, Switch } from 'react-router'
 
-const renderRoute = ({ path, to, redirect, component, exact }) =>
+const renderRoute = ({ path, to, redirect, exact, children, ...rest }) =>
   redirect ? (
     <Redirect from={path} to={to} key={path} />
   ) : (
-    <Route exact={exact} path={path} component={component} key={path} />
+    <Route exact={exact} path={path} key={path} {...rest} />
   )
 
 const renderRoutes = parent =>

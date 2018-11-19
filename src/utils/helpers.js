@@ -51,3 +51,5 @@ export const logOut = () => {
   localStorage.removeItem('refreshToken')
   localStorage.removeItem('user')
 }
+
+export const capitalize = string => string.charAt(0).toUpperCase() + string.slice(1)

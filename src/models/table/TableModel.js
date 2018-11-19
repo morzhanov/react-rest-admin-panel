@@ -8,7 +8,7 @@ export default types
   .model('TableModel', {
     cols: types.array(TableItemModel),
     filters: types.maybe(types.array(FilterModel), []),
-    sort: types.maybe(SortModel, {}),
+    sort: types.optional(SortModel, { name: 'id' }),
     pagination: types.maybe(PaginationModel, {}),
     search: types.optional(types.string, '')
   })
