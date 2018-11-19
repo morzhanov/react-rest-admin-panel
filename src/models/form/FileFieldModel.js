@@ -1,8 +1,6 @@
-import { flow, getRoot, types } from 'mobx-state-tree'
-// import ReactAlert from 'react-s-alert'
+import { flow, getRoot, types, compose } from 'mobx-state-tree'
 import API from '../../utils/API'
-// import Logger from '../../utils/Logger'
-// import { errorMessages } from '../../utils/constants'
+import { FieldModel } from './FieldModel'
 
 export const FileFieldModel = types
   .model('FileFieldModel', {
@@ -65,3 +63,8 @@ export const FileFieldModel = types
 
     return { onFileChange, removeFile }
   })
+
+export default compose(
+  FileFieldModel,
+  FieldModel
+)

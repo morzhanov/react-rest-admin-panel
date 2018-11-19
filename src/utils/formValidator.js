@@ -1,8 +1,7 @@
 import isEmail from 'validator/lib/isEmail'
-// import isMobilePhone from 'validator/lib/isMobilePhone'
 import { getParent } from 'mobx-state-tree'
 import moment from 'moment'
-import { errorMessages, helpers } from '../../../utils/constants'
+import { errorMessages, helpers } from '../constants'
 
 export default {
   required: () => ({ value }) =>

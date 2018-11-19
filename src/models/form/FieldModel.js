@@ -1,7 +1,8 @@
 import { getRoot, types } from 'mobx-state-tree'
+import { FieldValidationModel } from './FieldValidationModel'
 
-export const PureField = types
-  .model('PureField', {
+export const FieldModel = types
+  .model('FieldModel', {
     name: types.string,
     initValue: types.frozen(),
     value: types.frozen(),
@@ -66,3 +67,8 @@ export const PureField = types
       }
     }
   })
+
+export default types.compose(
+  FieldModel,
+  FieldValidationModel
+)

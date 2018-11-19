@@ -32,6 +32,7 @@
     "mobx-react": "^5.2.8",
     "mobx-react-router": "^4.0.5",
     "mobx-state-tree": "^3.3.0",
+    "moment": "^2.22.2",
     "perfect-scrollbar": "^1.4.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.0",

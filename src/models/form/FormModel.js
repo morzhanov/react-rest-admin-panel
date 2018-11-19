@@ -3,15 +3,15 @@ import { types } from 'mobx-state-tree'
 
 export const formTypes = {
   post: 'post',
-  patch: 'patch'
+  patch: 'patch',
+  put: 'put'
 }
 
 export const FormModel = types
   .model('Form', {
-    serverErrors: types.optional(types.frozen(), {}),
+    errors: types.optional(types.frozen(), {}),
     submitted: false,
     isPending: false,
-    // type of form patch or post
     type: types.optional(types.enumeration(Object.values(formTypes)), formTypes.post)
   })
   .actions(self => {
@@ -23,25 +23,15 @@ export const FormModel = types
       self.submitted = true
 
       if (self.isValid && !self.isPending) {
-        if (!request || typeof request !== 'function') {
-          throw new Error(
-            'Property "request" is required and this property must be a function!',
-            'Form.model.js'
-          )
-        }
         self.setPendingStatus(true)
 
         request(self.data, self.setErrors)
           .then(response => {
-            if (response.detail) {
-              // ReactAlert.success(response.detail, configs.alertConfig)
-            }
+            // TODO: handle response
             self.setPendingStatus(false)
           })
           .catch(error => {
-            if (error.detail) {
-              // ReactAlert.error(error.detail, configs.alertConfig)
-            }
+            // TODO: handle error
             self.setPendingStatus(false)
           })
       }
@@ -54,14 +44,14 @@ export const FormModel = types
     const setErrors = errors => {
       Object.keys(errors).forEach(key => {
         const targetField = self.fields.values().find(field => field.name === key)
-        targetField && targetField.setServerErrors(errors[key])
+        targetField && targetField.seterrors(errors[key])
       })
       const { non_field_errors: nonFieldErrors } = errors
-      self.serverErrors = { nonFieldErrors }
+      self.errors = { nonFieldErrors }
     }
 
     const clearErrors = () => {
-      self.serverErrors = {}
+      self.errors = {}
     }
 
     return {
