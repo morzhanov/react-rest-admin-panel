@@ -25,6 +25,7 @@ const renderEntityItemComponent = item =>
     observer(props => (
       <EntityItemPage
         fields={item.fields}
+        entity={item}
         store={props[`${item.name}Store`]}
         title={`${capitalize(item.name)}`}
         subtitle={`${capitalize(item.name)} entity`}

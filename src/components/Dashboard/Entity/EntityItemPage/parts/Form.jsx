@@ -23,6 +23,7 @@ const Form = ({ form }) => (
   <form onSubmit={form.onSubmit}>
     {[...form.fields.values()].map(({ name, extra, type }) => (
       <div key={name}>
+        {/* eslint-disable-next-line */}
         <label htmlFor={form.$(name).id}>{form.$(name).label}</label>
         <FieldInput form={form} name={name} extra={extra} type={type} />
         <p>{form.$(name).error}</p>

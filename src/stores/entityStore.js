@@ -33,16 +33,6 @@ const EntityStore = types
       }
     })
 
-    const fetchSingle = flow(function* fetchSingle(id, url = self.url) {
-      try {
-        self.single = yield api.get(`${url}/${id}`)
-        return self.data
-      } catch (error) {
-        logger.error(error)
-        return null
-      }
-    })
-
     const fetchFilters = flow(function* fetchFilters() {
       try {
         const { data } = yield api.get(self.filtersUrl)
@@ -65,57 +55,16 @@ const EntityStore = types
       }
     })
 
-    const create = flow(function* create(entity, url = self.url) {
-      try {
-        yield api.post(url, entity)
-        self.addOne(entity)
-      } catch (error) {
-        logger.error(error)
-      }
-    })
-
     const addOne = entity => {
       self.data.push(entity)
     }
 
-    const update = flow(function* update(entity, id, url = self.url) {
-      try {
-        yield api.put(`${url}/${id}`, entity)
-        self.fetch()
-      } catch (error) {
-        logger.error(error)
-      }
-    })
-
-    const patch = flow(function* patch(entity, id, url = self.url) {
-      try {
-        yield api.put(`${url}/${id}`, entity)
-        self.fetch()
-      } catch (error) {
-        logger.error(error)
-      }
-    })
-
-    const remove = flow(function* remove(id, url = self.url) {
-      try {
-        yield api.delete(`${url}/${id}`)
-        self.fetch()
-      } catch (error) {
-        logger.error(error)
-      }
-    })
-
     return {
       getItemById,
       fetchData,
-      fetchSingle,
       fetchFilters,
       getOne,
-      create,
-      addOne,
-      update,
-      patch,
-      remove
+      addOne
     }
   })
 

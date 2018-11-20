@@ -8,7 +8,7 @@ import EntityModel from '../models/EntityModel'
 import TableModel from '../models/table/TableModel'
 import EntityStore from './EntityStore'
 
-const createEntityModel = ({ fields }) => {
+export const createEntityModel = ({ fields, url }) => {
   const schema = {}
   fields.forEach(field => {
     switch (field.type) {
@@ -23,6 +23,7 @@ const createEntityModel = ({ fields }) => {
         break
     }
   })
+  schema.url = url
   return types.compose(
     types.model(schema),
     EntityModel
