@@ -27,6 +27,11 @@ const fakeAPi = {
       return { data: this[url] }
     }
 
+    const entityId = url.substring(url.lastIndexOf('/') + 1)
+    if (Number.isInteger(+entityId)) {
+      return this.getSingleEntity(url, entityId)
+    }
+
     let data = this[url]
 
     // INFO: in this example we only implement filtering by type field
@@ -56,6 +61,11 @@ const fakeAPi = {
     }
 
     return { data: { results: data, count } }
+  },
+
+  async getSingleEntity(url, entityId) {
+    const entityName = url.substring(0, url.lastIndexOf('/'))
+    return this[entityName][entityId - 1]
   },
 
   async post(url, data) {

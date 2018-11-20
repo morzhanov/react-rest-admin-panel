@@ -1,5 +1,6 @@
 import React from 'react'
 import './EntityPage.styl'
+import { lifecycle } from 'recompose'
 import { observer } from 'mobx-react'
 import Grid from '../../../shared/Grid/Grid'
 import Table from '../../../shared/Table/Table'
@@ -41,4 +42,11 @@ const EntityPage = ({
   </div>
 )
 
-export default observer(EntityPage)
+const withDidMount = lifecycle({
+  componentDidMount() {
+    const { store } = this.props
+    store.fetchData()
+  }
+})
+
+export default withDidMount(observer(EntityPage))

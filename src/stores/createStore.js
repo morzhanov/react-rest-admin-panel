@@ -59,7 +59,8 @@ const createEntityStore = entity => {
   const entityTableModel = createTableModel(entity)
 
   const PendingStore = types.model(`${capitalize(name)}Store`, {
-    data: types.optional(types.array(CurrentEntityModel), []),
+    data: types.array(CurrentEntityModel),
+    single: types.maybe(CurrentEntityModel),
     url,
     filtersUrl,
     table: TableModel

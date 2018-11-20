@@ -2,7 +2,7 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import { MenuItem, Select, InputLabel, FormControl } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
-import './Filter.styl'
+import './Dropdown.styl'
 
 const styles = theme => ({
   root: {
@@ -21,18 +21,18 @@ const styles = theme => ({
   }
 })
 
-const Filter = ({ classes, filter: { name, value, options }, onChange }) => (
-  <form className={`filter ${classes.root} ${value ? 'active' : ''}`} autoComplete="off">
+const Dropdown = ({ classes, data: { name, value, options }, onChange, showLabel }) => (
+  <div className={`dropdown ${classes.root} ${value ? 'active' : ''}`} autoComplete="off">
     <FormControl className={classes.formControl}>
-      <InputLabel htmlFor="filter-simple">{name}</InputLabel>
+      {showLabel && <InputLabel htmlFor="age-simple">{name}</InputLabel>}
       <Select
         disableUnderline
-        className="filter__select"
+        className="dropdown__select"
         value={value}
-        onChange={({ target }) => onChange(name, target.value)}
+        onChange={({ target }) => onChange(target.value)}
         inputProps={{
-          name: 'filter',
-          id: 'filter-simple'
+          name: 'dropdown',
+          id: `dropdown-${name}`
         }}
       >
         <MenuItem value="">
@@ -45,7 +45,7 @@ const Filter = ({ classes, filter: { name, value, options }, onChange }) => (
         ))}
       </Select>
     </FormControl>
-  </form>
+  </div>
 )
 
-export default withStyles(styles)(observer(Filter))
+export default withStyles(styles)(observer(Dropdown))

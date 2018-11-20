@@ -37,11 +37,14 @@ export default {
     },
     {
       name: 'email',
-      type: 'string'
+      type: 'string',
+      // specific rules to validate field
+      rules: 'email'
     },
     {
       name: 'type',
-      type: 'string'
+      type: 'dropdown',
+      options: ['Client', 'Author']
     },
     {
       name: 'isManager',

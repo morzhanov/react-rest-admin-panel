@@ -9,12 +9,9 @@ const EntityStore = types
     // should be provided in child's store
   })
   .actions(self => {
-    const afterCreate = () => {
-      self.fetch()
-      if (self.filtersUrl) self.fetchFilters()
-    }
+    const getItemById = id => find(self.data, { id })
 
-    const fetch = flow(function* fetch(url = self.url) {
+    const fetchData = flow(function* fetchData(url = self.url) {
       // INFO: this params configuration might be changed depending on your server's logic
       const params = {
         sort: `${self.table.sort.direction ? '' : '-'}${self.table.sort.name}`,
@@ -28,6 +25,17 @@ const EntityStore = types
         const { results, count } = data
         self.table.pagination.count = count
         self.data = results
+        if (self.filtersUrl) self.fetchFilters()
+        return self.data
+      } catch (error) {
+        logger.error(error)
+        return null
+      }
+    })
+
+    const fetchSingle = flow(function* fetchSingle(id, url = self.url) {
+      try {
+        self.single = yield api.get(`${url}/${id}`)
         return self.data
       } catch (error) {
         logger.error(error)
@@ -98,8 +106,9 @@ const EntityStore = types
     })
 
     return {
-      afterCreate,
-      fetch,
+      getItemById,
+      fetchData,
+      fetchSingle,
       fetchFilters,
       getOne,
       create,
