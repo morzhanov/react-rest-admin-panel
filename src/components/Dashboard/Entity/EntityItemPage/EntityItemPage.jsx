@@ -12,7 +12,11 @@ import logger from '../../../../utils/logger'
 import { createEntityModel } from '../../../../stores/createStore'
 
 export const PageType = Object.freeze({ CREATE: 'CREATE', UPDATE: 'UPDATE' })
-export const FooterClickType = Object.freeze({ CONTINUE: 0, RELOAD: 1, SAVE: 2 })
+export const FooterClickType = Object.freeze({
+  CONTINUE: 0,
+  SAVE_AND_ADD_ANOTHER: 1,
+  SAVE: 2
+})
 
 @observer
 class EntityItemPage extends React.Component {
@@ -77,8 +81,8 @@ class EntityItemPage extends React.Component {
       case FooterClickType.SAVE:
         history.push(path.substring(0, path.lastIndexOf('/')))
         break
-      case FooterClickType.RELOAD:
-        history.push(path)
+      case FooterClickType.SAVE_AND_ADD_ANOTHER:
+        history.push(`${path.substring(0, path.lastIndexOf('/'))}/add`)
         break
       default:
         break

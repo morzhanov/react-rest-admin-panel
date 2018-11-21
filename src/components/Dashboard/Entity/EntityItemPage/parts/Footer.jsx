@@ -5,7 +5,7 @@ import { PageType, FooterClickType } from '../EntityItemPage'
 
 const UpdateEntityFooter = ({ type, onClick }) => {
   const saveAndContinue = e => onClick(e, FooterClickType.CONTINUE)
-  const saveAndReload = e => onClick(e, FooterClickType.RELOAD)
+  const saveAndAddAnother = e => onClick(e, FooterClickType.SAVE_AND_ADD_ANOTHER)
   const save = e => onClick(e, FooterClickType.SAVE)
 
   return (
@@ -16,7 +16,7 @@ const UpdateEntityFooter = ({ type, onClick }) => {
             Delete
           </button>
           <div className="right">
-            <button type="button" onClick={saveAndReload}>
+            <button type="button" onClick={saveAndAddAnother}>
               Save and add another
             </button>
             <button type="button" onClick={saveAndContinue}>
@@ -31,6 +31,9 @@ const UpdateEntityFooter = ({ type, onClick }) => {
         <div className="right">
           <button type="button" onClick={save}>
             Save
+          </button>
+          <button type="button" onClick={saveAndAddAnother}>
+            Save and add another
           </button>
         </div>
       )}
