@@ -12,13 +12,15 @@ const Table = ({
   rowLinks,
   withButton,
   customHeadElements,
-  customBodyElements
+  customBodyElements,
+  deleteEntityModal
 }) => (
   <>
     <MuiTable className="table">
       <TableHead customHeadElements={customHeadElements} cols={cols} />
       <TableBody
         customBodyElements={customBodyElements}
+        deleteEntityModal={deleteEntityModal}
         withButton={withButton}
         rowLinks={rowLinks}
         rows={data}

@@ -10,7 +10,8 @@ class PromptModal extends React.Component {
     isOpen: false
   }
 
-  openModal = () => {
+  openModal = extra => {
+    this.extra = extra
     this.setState({ isOpen: true })
   }
 
@@ -20,7 +21,7 @@ class PromptModal extends React.Component {
 
   handleOkClicked = () => {
     const { onOk } = this.props
-    if (onOk) onOk()
+    if (onOk) onOk(this.extra)
     this.setState({ isOpen: false })
   }
 

@@ -113,6 +113,7 @@ class EntityItemPage extends React.Component {
     logger.error(form.errors())
   }
 
+  // TODO: refactor this methods in Entity pages
   onDeleteClicked = () => {
     this.deleteEntityModal.current.openModal()
   }

@@ -1,4 +1,6 @@
+import React from 'react'
 import { types } from 'mobx-state-tree'
+import { Edit, Delete } from '@material-ui/icons'
 import RootStore from './RootStore'
 import RouterStore from './RouterStore'
 import { capitalize } from '../utils/helpers'
@@ -57,16 +59,44 @@ const createTableModel = entity => {
     return res
   })
 
-  const model = TableModel.create({
+  // add edit and remove elements actions col
+  cols.push({
+    name: 'actions',
+    title: 'Actions',
+    actions: {
+      head: {},
+      body: {
+        custom: true
+      }
+    }
+  })
+
+  customBodyElements.push({
+    name: 'actions',
+    custom: ({ id, history, deleteEntityModal }) => {
+      const { pathname } = history.location
+      const editPath = `${pathname}/${id}`
+      return (
+        <div className="table__actions">
+          <Edit onClick={() => history.push(editPath)} />
+          <Delete
+            onClick={() => deleteEntityModal.current.openModal({ id, name: entity.name })}
+          />
+        </div>
+      )
+    }
+  })
+
+  const tableModel = TableModel.create({
     filters: entity.filters,
     pagination: entity.pagination,
     cols
   })
 
-  customHeadElements.forEach(elem => model.addCustomHeadElement(elem))
-  customBodyElements.forEach(elem => model.addCustomBodyElement(elem))
+  customHeadElements.forEach(elem => tableModel.addCustomHeadElement(elem))
+  customBodyElements.forEach(elem => tableModel.addCustomBodyElement(elem))
 
-  return model
+  return tableModel
 }
 
 const createEntityStore = entity => {
@@ -77,7 +107,6 @@ const createEntityStore = entity => {
 
   const PendingStore = types.model(`${capitalize(name)}Store`, {
     data: types.array(CurrentEntityModel),
-    single: types.maybe(CurrentEntityModel),
     url,
     filtersUrl,
     table: TableModel

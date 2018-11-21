@@ -13,7 +13,8 @@ const TableBodyItem = ({
   },
   row,
   history,
-  customBodyElements
+  customBodyElements,
+  deleteEntityModal
 }) => {
   const Action = custom ? find(customBodyElements, { name }).custom : null
 
@@ -24,7 +25,9 @@ const TableBodyItem = ({
           className={className}
           history={history}
           name={name}
+          id={row.id}
           value={`${row[name]}`}
+          deleteEntityModal={deleteEntityModal}
         />
       ) : (
         `${row[name]}`

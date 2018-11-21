@@ -39,30 +39,30 @@ export default types
     const goToFirstPage = () => {
       if (self.firstPageIsDisabled) return
       self.pageNumber = 1
-      getRoot(self).fetch()
+      getRoot(self).fetchData()
     }
 
     const goToPrevPage = () => {
       if (self.prevPageIsDisabled) return
       self.pageNumber -= 1
-      getRoot(self).fetch()
+      getRoot(self).fetchData()
     }
 
     const goToNextPage = () => {
       if (self.nextPageIsDisabled) return
       self.pageNumber += 1
-      getRoot(self).fetch()
+      getRoot(self).fetchData()
     }
 
     const goToLastPage = () => {
       if (self.lastPageIsDisabled) return
       self.pageNumber = self.pagesCount
-      getRoot(self).fetch()
+      getRoot(self).fetchData()
     }
 
     const changePageSize = size => {
       self.pageSize = size
-      getRoot(self).fetch()
+      getRoot(self).fetchData()
     }
 
     return {

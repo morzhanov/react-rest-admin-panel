@@ -42,5 +42,11 @@ export default types
       getRoot(self).fetch()
     }
 
-    return { addCustomHeadElement, addCustomBodyElement, setSort, setSearch, setFilter }
+    return {
+      addCustomHeadElement,
+      addCustomBodyElement,
+      setSort,
+      setSearch,
+      setFilter
+    }
   })

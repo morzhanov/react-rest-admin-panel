@@ -10,7 +10,8 @@ const TableBody = ({
   rowLinks,
   withButton,
   router,
-  customBodyElements
+  customBodyElements,
+  deleteEntityModal
 }) => (
   <MuiTableBody>
     {firstCustomRow && <div>{firstCustomRow}</div>}
@@ -23,6 +24,7 @@ const TableBody = ({
         key={row.id || i}
         row={row}
         cols={cols}
+        deleteEntityModal={deleteEntityModal}
       />
     ))}
   </MuiTableBody>
