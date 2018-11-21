@@ -9,7 +9,10 @@ const FieldInput = observer(({ form, name, extra, type }) => (
     {extra ? (
       <Dropdown
         placeholder={name}
-        onChange={value => form.$(name).set(value)}
+        onChange={value => {
+          form.$(name).set(value)
+          form.$(name).resetValidation()
+        }}
         data={{ name, value: form.$(name).value, options: form.$(name).extra }}
       />
     ) : type === 'checkbox' ? (
@@ -31,8 +34,10 @@ const Form = ({ form }) => (
       <div className="entity-item__form-row" key={name}>
         {/* eslint-disable-next-line */}
         <label htmlFor={form.$(name).id}>{`${form.$(name).label}:`}</label>
-        <FieldInput form={form} name={name} extra={extra} type={type} />
-        <p>{form.$(name).error}</p>
+        <div className="entity-item__field-group">
+          <FieldInput form={form} name={name} extra={extra} type={type} />
+          <p className="entity-item__error-field">{form.$(name).error}</p>
+        </div>
       </div>
     ))}
     <p>{form.error}</p>

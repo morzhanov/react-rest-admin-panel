@@ -56,15 +56,13 @@ class EntityItemPage extends React.Component {
   }
 
   submitAddNew = async form => {
-    const { model } = this.state
-    this.postSubmitAction(await model.create(form.values()))
+    this.postSubmitAction(await this.model.create(form.values()))
   }
 
   submitUpdate = async form => {
-    const { model } = this.state
     const { entity } = this.props
     this.postSubmitAction(
-      await model.update(form.values(), model.id, entity.updateUrlMethod)
+      await this.model.update(form.values(), this.model.id, entity.updateUrlMethod)
     )
   }
 
