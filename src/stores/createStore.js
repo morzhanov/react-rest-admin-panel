@@ -78,12 +78,12 @@ const createEntityStore = entity => {
 }
 
 const createStore = history => {
-  let user
-  const localStorageUser = localStorage.getItem('user')
+  let admin
+  const localStorageUser = localStorage.getItem('admin')
   if (localStorageUser) {
-    user = AdminModel.create(JSON.parse(localStorageUser))
+    admin = AdminModel.create(JSON.parse(localStorageUser))
   }
-  const rootStore = RootStore.create({ user }, { user: AdminModel })
+  const rootStore = RootStore.create({ admin }, { admin: AdminModel })
   const router = new RouterStore(history)
 
   const resultStore = {

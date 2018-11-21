@@ -21,11 +21,18 @@ const styles = theme => ({
   }
 })
 
-const Dropdown = ({ classes, data: { name, value, options }, onChange, showLabel }) => (
+const Dropdown = ({
+  classes,
+  data: { name, value, options },
+  onChange,
+  showLabel,
+  placeholder
+}) => (
   <div className={`dropdown ${classes.root} ${value ? 'active' : ''}`} autoComplete="off">
     <FormControl className={classes.formControl}>
       {showLabel && <InputLabel htmlFor="age-simple">{name}</InputLabel>}
       <Select
+        placeholder={placeholder}
         disableUnderline
         className="dropdown__select"
         value={value}

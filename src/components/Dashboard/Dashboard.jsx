@@ -15,7 +15,7 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     const { rootStore } = this.props
-    rootStore.fetchUser()
+    rootStore.fetchAdmin()
     window.addEventListener('resize', this.resizeFunction)
     this.mainPanel = React.createRef()
   }

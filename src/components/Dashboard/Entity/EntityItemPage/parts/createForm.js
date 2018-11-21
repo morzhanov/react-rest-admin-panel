@@ -39,21 +39,9 @@ const createFieldsConfig = ({ fields, data }) =>
     }))
     .filter(e => e.name !== 'id')
 
-const createForm = ({ onSubmit, onError, fields, data }) => {
+const createForm = ({ onSuccess, onError, fields, data }) => {
   const fieldsConfig = createFieldsConfig({ fields, data })
-
-  const hooks = {
-    onSuccess(form) {
-      // get field values
-      console.log('Form Values!', form.values())
-      onSubmit()
-    },
-    onError(form) {
-      // get all form errors
-      console.log('All form errors', form.errors())
-      onError()
-    }
-  }
+  const hooks = { onSuccess, onError }
 
   return new MobxReactForm({ fields: fieldsConfig }, { plugins, hooks })
 }

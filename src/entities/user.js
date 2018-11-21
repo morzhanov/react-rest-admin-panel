@@ -1,6 +1,9 @@
 import Person from '@material-ui/icons/Person'
 import apiUrls from '../utils/apiUrls'
 
+// TODO: move this somwhere else
+export const UpdateEntityUrlMethod = Object.freeze({ PATCH: 0, PUT: 1 })
+
 export default {
   name: 'user',
 
@@ -9,9 +12,12 @@ export default {
 
   // You can provide api url to utils/apiUrl
   // or just copy string value here
-  url: apiUrls.fake.users,
+  url: apiUrls.fake.user,
 
-  filtersUrl: apiUrls.fake.usersFilters,
+  // update entity url method, default is PATCH
+  updateUrlMethod: UpdateEntityUrlMethod.PATCH,
+
+  filtersUrl: apiUrls.fake.userFilters,
 
   // [optional] table pagination configuration
   pagination: { pageSize: 20, pageNumber: 1 },

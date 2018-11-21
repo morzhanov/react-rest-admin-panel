@@ -8,23 +8,29 @@ const FieldInput = observer(({ form, name, extra, type }) => (
   <>
     {extra ? (
       <Dropdown
+        placeholder={name}
         onChange={value => form.$(name).set(value)}
         data={{ name, value: form.$(name).value, options: form.$(name).extra }}
       />
     ) : type === 'checkbox' ? (
-      <Checkbox {...form.$(name).bind()} value={`${form.$(name).value}`} />
+      <Checkbox
+        color="default"
+        className="entity-item__form-input-checkbox"
+        {...form.$(name).bind()}
+        value={`${form.$(name).value}`}
+      />
     ) : (
-      <Input {...form.$(name).bind()} />
+      <Input className="entity-item__form-input" {...form.$(name).bind()} />
     )}
   </>
 ))
 
 const Form = ({ form }) => (
-  <form onSubmit={form.onSubmit}>
+  <form className="entity-item__form">
     {[...form.fields.values()].map(({ name, extra, type }) => (
-      <div key={name}>
+      <div className="entity-item__form-row" key={name}>
         {/* eslint-disable-next-line */}
-        <label htmlFor={form.$(name).id}>{form.$(name).label}</label>
+        <label htmlFor={form.$(name).id}>{`${form.$(name).label}:`}</label>
         <FieldInput form={form} name={name} extra={extra} type={type} />
         <p>{form.$(name).error}</p>
       </div>

@@ -1,10 +1,11 @@
 import { types, flow } from 'mobx-state-tree'
 import logger from '../utils/logger'
 import api from '../utils/api'
+import { UpdateEntityUrlMethod } from '../entities/user'
 
 const Entity = types
   .model('Entity', {
-    id: types.integer
+    id: types.optional(types.integer, 0)
   })
   .actions(self => {
     const fetch = flow(function* fetch(id, url = self.url) {
@@ -22,35 +23,27 @@ const Entity = types
 
     const create = flow(function* create(entity, url = self.url) {
       try {
-        yield api.post(url, entity)
-        self.addOne(entity)
+        return yield api.post(url, entity)
       } catch (error) {
         logger.error(error)
+        return null
       }
     })
 
-    const update = flow(function* update(entity, id, url = self.url) {
+    const update = flow(function* update(entity, id, method, url = self.url) {
       try {
-        yield api.put(`${url}/${id}`, entity)
-        self.fetch()
+        return method === UpdateEntityUrlMethod.PUT
+          ? yield api.put(`${url}/${id}`, entity)
+          : yield api.patch(`${url}/${id}`, entity)
       } catch (error) {
         logger.error(error)
-      }
-    })
-
-    const patch = flow(function* patch(entity, id, url = self.url) {
-      try {
-        yield api.put(`${url}/${id}`, entity)
-        self.fetch()
-      } catch (error) {
-        logger.error(error)
+        return null
       }
     })
 
     const remove = flow(function* remove(id, url = self.url) {
       try {
         yield api.delete(`${url}/${id}`)
-        self.fetch()
       } catch (error) {
         logger.error(error)
       }
@@ -60,7 +53,6 @@ const Entity = types
       fetch,
       create,
       update,
-      patch,
       remove
     }
   })

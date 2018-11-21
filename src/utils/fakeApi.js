@@ -1,18 +1,18 @@
 import { includes, sortBy, filter } from 'lodash'
 import login from './fixtures/auth/login'
 import signup from './fixtures/auth/signup'
-import user from './fixtures/user'
-import { users, usersFilters } from './fixtures/users'
-import tasks from './fixtures/tasks'
+import admin from './fixtures/admin'
+import { user, userFilters } from './fixtures/user'
+import task from './fixtures/task'
 import urls from './apiUrls'
 
 const fakeAPi = {
   login,
   signup,
+  admin,
+  task,
   user,
-  tasks,
-  users,
-  usersFilters,
+  userFilters,
 
   // INFO: performing GET request to fetch entities
   // With sorting, filters, search and pagination
@@ -20,7 +20,7 @@ const fakeAPi = {
     const { size, page, sort, filters, search } = params
     if (
       includes(
-        [urls.fake.login, urls.fake.signup, urls.fake.user, urls.fake.usersFilters],
+        [urls.fake.login, urls.fake.signup, urls.fake.admin, urls.fake.userFilters],
         url
       )
     ) {
@@ -68,22 +68,28 @@ const fakeAPi = {
     return this[entityName][entityId - 1]
   },
 
+  async checkForErrorField(data) {
+    return Object.values(data).reduce((acc, item) => item === 'Error', false)
+  },
+
   async post(url, data) {
-    const res = this[url]
-    res.push(data)
-    return { data: res }
+    if (this.checkForErrorField(data)) throw new Error('Example error')
+    return data
   },
 
   async patch(url, data) {
-    // TODO: implement
+    if (this.checkForErrorField(data)) throw new Error('Example error')
+    return data
   },
 
   async put(url, data) {
-    // TODO: implement
+    if (this.checkForErrorField(data)) throw new Error('Example error')
+    return data
   },
 
-  async delete(url, data) {
-    // TODO: implement
+  async delete(url, entityId) {
+    const entityName = url.substring(0, url.lastIndexOf('/'))
+    return this[entityName][entityId - 1]
   }
 }
 

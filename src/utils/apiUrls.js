@@ -4,9 +4,10 @@ export default {
   fake: {
     login: 'login',
     signup: 'signup',
-    users: 'users',
-    usersFilters: 'usersFilters',
-    tasks: 'tasks',
-    user: 'user'
+    admin: 'admin',
+    // entities
+    user: 'user',
+    userFilters: 'userFilters',
+    task: 'task'
   }
 }

@@ -13,7 +13,7 @@ const Header = ({ handleDrawerToggle, rootStore }) => (
     <Toolbar className="app-bar__container">
       <div className="app-bar__flex" />
       <Hidden smDown implementation="css">
-        <HeaderLinks user={rootStore.user} />
+        <HeaderLinks user={rootStore.admin} />
       </Hidden>
       <Hidden className="app-bar__burger" mdUp implementation="css">
         <IconButton color="inherit" aria-label="open drawer" onClick={handleDrawerToggle}>

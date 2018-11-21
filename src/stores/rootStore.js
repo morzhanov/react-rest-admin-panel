@@ -6,22 +6,22 @@ import UserModel from '../models/AdminModel'
 
 const rootStore = types
   .model('rootStore', {
-    user: types.optional(types.maybe(UserModel), undefined)
+    admin: types.optional(types.maybe(UserModel), undefined)
   })
   .actions(self => {
-    const fetchUser = flow(function* fetchUser() {
+    const fetchAdmin = flow(function* fetchAdmin() {
       try {
         // INFO: replace fake API call with appropriate one
-        const res = yield api.get(apiUrls.fake.user)
-        self.user = res.data
-        localStorage.setItem('user', JSON.stringify(res.data))
+        const res = yield api.get(apiUrls.fake.admin)
+        self.admin = res.data
+        localStorage.setItem('admin', JSON.stringify(res.data))
       } catch (error) {
         logger.error(error)
       }
     })
 
     return {
-      fetchUser
+      fetchAdmin
     }
   })
 

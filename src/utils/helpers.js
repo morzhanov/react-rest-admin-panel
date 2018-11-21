@@ -52,4 +52,12 @@ export const logOut = () => {
   localStorage.removeItem('user')
 }
 
-export const capitalize = string => string.charAt(0).toUpperCase() + string.slice(1)
+export const capitalize = string => {
+  const lower = string.toLowerCase()
+  return lower.charAt(0).toUpperCase() + lower.slice(1)
+}
+
+export const parseId = id => {
+  const parsed = +id.substring(id.lastIndexOf('/') + 1)
+  return typeof parsed === 'number' ? parsed : null
+}
