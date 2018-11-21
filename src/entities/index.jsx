@@ -1,7 +1,6 @@
 import React from 'react'
 // connect your entities here
 import user from './user'
-import Entity from '../models/EntityModel'
 // import task from './task'
 
 // INFO: provide your entities here
@@ -13,8 +12,12 @@ entities.forEach(entity => {
     type: 'number',
     actions: {
       body: {
-        custom: ({ value, history }) => (
-          <button type="button" onClick={() => history.push(`${Entity.url}/${value}`)}>
+        custom: ({ value, history, ...rest }) => (
+          <button
+            type="button"
+            onClick={() => history.push(`${entity.url}/${value}`)}
+            {...rest}
+          >
             {value}
           </button>
         ),

@@ -13,25 +13,22 @@ const Table = ({
   withButton,
   customHeadElements,
   customBodyElements
-}) => {
-  console.log(cols)
-  return (
-    <>
-      <MuiTable>
-        <TableHead customHeadElements={customHeadElements} cols={cols} />
-        <TableBody
-          customBodyElements={customBodyElements}
-          withButton={withButton}
-          rowLinks={rowLinks}
-          rows={data}
-          cols={cols}
-          firstCustomRow={firstCustomRow}
-        />
-      </MuiTable>
-      {!data.length && <NoData />}
-    </>
-  )
-}
+}) => (
+  <>
+    <MuiTable className="table">
+      <TableHead customHeadElements={customHeadElements} cols={cols} />
+      <TableBody
+        customBodyElements={customBodyElements}
+        withButton={withButton}
+        rowLinks={rowLinks}
+        rows={data}
+        cols={cols}
+        firstCustomRow={firstCustomRow}
+      />
+    </MuiTable>
+    {!data.length && <NoData />}
+  </>
+)
 
 Table.defaultProps = {
   data: [],

@@ -1,4 +1,5 @@
 import React from 'react'
+import './TableBodyItem.styl'
 import { find } from 'lodash'
 import { withRouter } from 'react-router-dom'
 import TableCell from '@material-ui/core/TableCell'
