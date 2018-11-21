@@ -74,6 +74,14 @@ class EntityItemPage extends React.Component {
     )
   }
 
+  deleteItem = async () => {
+    const { entity, history } = this.props
+    const { pathname } = history.location
+    await this.model.remove(this.model.id)
+    toast.success(`${capitalize(entity.name)} item successfully deleted`)
+    history.push(pathname.substring(0, pathname.lastIndexOf('/')))
+  }
+
   postSubmitAction = res => {
     if (!res) return
 
@@ -132,7 +140,7 @@ class EntityItemPage extends React.Component {
             </Card>
           </Card>
         </Grid>
-        <DeleteEntityModal ref={this.deleteEntityModal} />
+        <DeleteEntityModal onOk={this.deleteItem} ref={this.deleteEntityModal} />
       </div>
     )
   }
