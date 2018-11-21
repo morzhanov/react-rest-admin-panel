@@ -16,7 +16,16 @@ const EntityPage = ({
   history,
   store: {
     data,
-    table: { cols, pagination, search, filters, setFilter, setSearch },
+    table: {
+      cols,
+      pagination,
+      search,
+      filters,
+      setFilter,
+      setSearch,
+      customHeadElements,
+      customBodyElements
+    },
     url
   }
 }) => {
@@ -42,7 +51,12 @@ const EntityPage = ({
             </div>
           </Card>
           <Card className="card__body">
-            <Table cols={cols} data={data} />
+            <Table
+              customHeadElements={customHeadElements}
+              customBodyElements={customBodyElements}
+              cols={cols}
+              data={data}
+            />
           </Card>
           <Card className="card__footer">
             <Pagination pagination={pagination} />

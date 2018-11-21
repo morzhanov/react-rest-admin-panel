@@ -34,10 +34,6 @@ export default {
 
   fields: [
     {
-      name: 'id',
-      type: 'number'
-    },
-    {
       name: 'name',
       type: 'string',
       rules: 'required'

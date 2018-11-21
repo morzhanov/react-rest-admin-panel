@@ -1,22 +1,35 @@
 import React from 'react'
+import { find } from 'lodash'
+import { withRouter } from 'react-router-dom'
 import TableCell from '@material-ui/core/TableCell'
 
 const TableBodyItem = ({
   item: {
     name,
     actions: {
-      body: { custom }
+      body: { custom, className }
     }
   },
-  row
-}) => (
-  <TableCell>
-    {custom && custom.Component ? (
-      <custom.Component data={`${row[name]}`} />
-    ) : (
-      `${row[name]}`
-    )}
-  </TableCell>
-)
+  row,
+  history,
+  customBodyElements
+}) => {
+  const Action = custom ? find(customBodyElements, { name }).custom : null
 
-export default TableBodyItem
+  return (
+    <TableCell>
+      {Action ? (
+        <Action
+          className={className}
+          history={history}
+          name={name}
+          value={`${row[name]}`}
+        />
+      ) : (
+        `${row[name]}`
+      )}
+    </TableCell>
+  )
+}
+
+export default withRouter(TableBodyItem)

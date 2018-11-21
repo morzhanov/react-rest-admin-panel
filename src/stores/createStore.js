@@ -31,26 +31,42 @@ export const createEntityModel = ({ fields, url }) => {
 }
 
 const createTableModel = entity => {
+  const customHeadElements = []
+  const customBodyElements = []
   const cols = entity.fields.map(({ title, name, actions }) => {
     const res = {
       title: title || name,
       name
     }
     res.actions = { head: { sort: { name } } }
-    if (actions && actions.head) {
-      res.actions.head = { ...res.actions.head, ...actions.head }
+    if (actions && actions.head && actions.head.custom) {
+      customHeadElements.push({ name, custom: actions.head.custom })
+      res.actions.head = {
+        ...res.actions.head,
+        custom: true,
+        className: actions.head.className
+      }
     }
-    if (actions && actions.body) {
-      res.actions.body = actions.body
+    if (actions && actions.body && actions.body.custom) {
+      customBodyElements.push({ name, custom: actions.body.custom })
+      res.actions.body = {
+        custom: true,
+        className: actions.body.className
+      }
     }
     return res
   })
 
-  return TableModel.create({
+  const model = TableModel.create({
     filters: entity.filters,
     pagination: entity.pagination,
     cols
   })
+
+  customHeadElements.forEach(elem => model.addCustomHeadElement(elem))
+  customBodyElements.forEach(elem => model.addCustomBodyElement(elem))
+
+  return model
 }
 
 const createEntityStore = entity => {

@@ -12,7 +12,15 @@ export default types
     pagination: types.maybe(PaginationModel, {}),
     search: types.optional(types.string, '')
   })
+  .volatile(() => ({
+    customHeadElements: [],
+    customBodyElements: []
+  }))
   .actions(self => {
+    const addCustomHeadElement = elem => self.customHeadElements.push(elem)
+
+    const addCustomBodyElement = elem => self.customBodyElements.push(elem)
+
     const setFilter = (name, value) => {
       self.filters[0].value = value
       getRoot(self).fetch()
@@ -34,5 +42,5 @@ export default types
       getRoot(self).fetch()
     }
 
-    return { setSort, setSearch, setFilter }
+    return { addCustomHeadElement, addCustomBodyElement, setSort, setSearch, setFilter }
   })
