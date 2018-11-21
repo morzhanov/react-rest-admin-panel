@@ -68,7 +68,7 @@ const fakeAPi = {
     return this[entityName][entityId - 1]
   },
 
-  async checkForErrorField(data) {
+  checkForErrorField(data) {
     return Object.values(data).reduce((acc, item) => item === 'Error', false)
   },
 

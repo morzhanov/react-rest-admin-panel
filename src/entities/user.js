@@ -39,22 +39,25 @@ export default {
     },
     {
       name: 'name',
-      type: 'string'
+      type: 'string',
+      rules: 'required'
     },
     {
       name: 'email',
       type: 'string',
       // specific rules to validate field
-      rules: 'email'
+      rules: 'email|required'
     },
     {
       name: 'type',
       type: 'dropdown',
+      rules: 'required',
       options: ['Client', 'Author']
     },
     {
       name: 'isManager',
-      type: 'boolean'
+      type: 'boolean',
+      rules: 'required'
     }
   ]
 }

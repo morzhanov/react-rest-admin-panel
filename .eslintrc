@@ -10,6 +10,7 @@
   "parserOptions": { "ecmaVersion": 6 },
   "rules": {
     "max-len": [2, 90],
+    "react/no-multi-comp": "off",
     "prettier/prettier": "error",
     "no-unused-vars": 2,
     "no-param-reassign": "off",

@@ -1,29 +1,41 @@
 import React from 'react'
 import './Footer.styl'
 import { observer } from 'mobx-react'
-import { PageType } from '../EntityItemPage'
+import { PageType, FooterClickType } from '../EntityItemPage'
 
-const UpdateEntityFooter = ({ type, onSubmit }) => (
-  <>
-    {type === PageType.UPDATE ? (
-      <>
-        <button className="delete" type="button">
-          Delete
-        </button>
+const UpdateEntityFooter = ({ type, onClick }) => {
+  const saveAndContinue = e => onClick(e, FooterClickType.CONTINUE)
+  const saveAndReload = e => onClick(e, FooterClickType.RELOAD)
+  const save = e => onClick(e, FooterClickType.SAVE)
+
+  return (
+    <>
+      {type === PageType.UPDATE ? (
+        <>
+          <button className="delete" type="button">
+            Delete
+          </button>
+          <div className="right">
+            <button type="button" onClick={saveAndReload}>
+              Save and add another
+            </button>
+            <button type="button" onClick={saveAndContinue}>
+              Save and continue
+            </button>
+            <button type="button" onClick={save}>
+              Save
+            </button>
+          </div>
+        </>
+      ) : (
         <div className="right">
-          <button type="button">Save and add another</button>
-          <button type="button">Save and continue</button>
-          <button type="button">Save</button>
+          <button type="button" onClick={save}>
+            Save
+          </button>
         </div>
-      </>
-    ) : (
-      <div className="right">
-        <button type="button" onClick={onSubmit}>
-          Save
-        </button>
-      </div>
-    )}
-  </>
-)
+      )}
+    </>
+  )
+}
 
 export default observer(UpdateEntityFooter)

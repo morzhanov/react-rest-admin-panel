@@ -12,13 +12,17 @@ import logger from '../../../../utils/logger'
 import { createEntityModel } from '../../../../stores/createStore'
 
 export const PageType = Object.freeze({ CREATE: 'CREATE', UPDATE: 'UPDATE' })
+export const FooterClickType = Object.freeze({ CONTINUE: 0, RELOAD: 1, SAVE: 2 })
 
 @observer
 class EntityItemPage extends React.Component {
+  onSubmit = null
+
   constructor(props) {
     super(props)
     const {
       entity,
+      fields,
       history: {
         location: { pathname }
       }
@@ -26,48 +30,70 @@ class EntityItemPage extends React.Component {
 
     const id = parseId(pathname)
     const Model = createEntityModel(entity)
-    const model = Model.create({ id: id || 0 })
+    this.model = Model.create({ id: id || 0 })
 
-    if (id >= 0) model.fetch(id)
+    if (id >= 0) {
+      this.model.fetch(id).then(res => this.form.update(res))
+    }
 
-    this.state = { model, pageType: id >= 0 ? PageType.UPDATE : PageType.CREATE }
+    const pageType = id >= 0 ? PageType.UPDATE : PageType.CREATE
+
+    this.state = { pageType }
+
+    this.onSubmit = pageType === PageType.CREATE ? this.submitAddNew : this.submitUpdate
+
+    this.form = createForm({
+      fields,
+      data: this.model,
+      onSuccess: this.onSubmit,
+      onError: this.handleFormError
+    })
+  }
+
+  onFooterButtonClick = (event, type) => {
+    this.setState({ footerButtonClickType: type })
+    this.form.onSubmit(event)
   }
 
   submitAddNew = async form => {
     const { model } = this.state
-    const { history } = this.props
-    const res = await model.create(form.values())
-    if (res) {
-      const path = history.location.pathname
-      history.push(path.substring(0, path.lastIndexOf('/')))
-    }
+    this.postSubmitAction(await model.create(form.values()))
   }
 
   submitUpdate = async form => {
     const { model } = this.state
-    const { history, entity } = this.props
-    const res = await model.update(form.values(), model.id, entity.updateUrlMethod)
-    if (res) {
-      const path = history.location.pathname
-      history.push(path.substring(0, path.lastIndexOf('/')))
+    const { entity } = this.props
+    this.postSubmitAction(
+      await model.update(form.values(), model.id, entity.updateUrlMethod)
+    )
+  }
+
+  postSubmitAction = res => {
+    if (!res) return
+
+    const { history } = this.props
+    const { footerButtonClickType } = this.state
+    const path = history.location.pathname
+
+    switch (footerButtonClickType) {
+      case FooterClickType.SAVE:
+        history.push(path.substring(0, path.lastIndexOf('/')))
+        break
+      case FooterClickType.RELOAD:
+        history.push(path)
+        break
+      default:
+        break
     }
   }
 
-  handleFormError = form => {
-    logger.error(form.errors())
+  handleFormError = async form => {
+    logger.error('in handle', form.errors())
   }
 
   render() {
-    const { fields, entity } = this.props
-    const { model, pageType } = this.state
-
-    const onSubmit = pageType === PageType.CREATE ? this.submitAddNew : this.submitUpdate
-    const form = createForm({
-      fields,
-      data: model,
-      onSuccess: onSubmit,
-      onError: this.handleFormError
-    })
+    const { entity } = this.props
+    const { pageType } = this.state
 
     return (
       <div className="entity-item">
@@ -77,10 +103,10 @@ class EntityItemPage extends React.Component {
               {`${capitalize(pageType)} ${capitalize(entity.name)}`}
             </Card>
             <Card className="card__body">
-              <Form form={form} onSubmit={onSubmit} />
+              <Form form={this.form} onSubmit={this.onSubmit} />
             </Card>
             <Card className="card__footer">
-              <Footer type={pageType} onSubmit={form.onSubmit} />
+              <Footer type={pageType} onClick={this.onFooterButtonClick} />
             </Card>
           </Card>
         </Grid>
