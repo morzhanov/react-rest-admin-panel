@@ -69,7 +69,7 @@ const fakeAPi = {
   },
 
   checkForErrorField(data) {
-    return Object.values(data).reduce((acc, item) => item === 'Error', false)
+    return Object.values(data).reduce((acc, item) => acc || item === 'Error', false)
   },
 
   async post(url, data) {

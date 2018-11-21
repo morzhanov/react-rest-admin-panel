@@ -1,3 +1,10 @@
+/*
+*
+* Base application styles
+* You can add custom styles here
+*
+*/
+
 html * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

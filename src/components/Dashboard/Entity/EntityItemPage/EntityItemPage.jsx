@@ -1,5 +1,6 @@
 import React from 'react'
 import './EntityItemPage.styl'
+import { toast } from 'react-toastify'
 import { withRouter } from 'react-router-dom'
 import { observer } from 'mobx-react'
 import Grid from '../../../shared/Grid/Grid'
@@ -10,6 +11,7 @@ import createForm from './parts/createForm'
 import { parseId, capitalize } from '../../../../utils/helpers'
 import logger from '../../../../utils/logger'
 import { createEntityModel } from '../../../../stores/createStore'
+import DeleteEntityModal from './parts/DeleteEntityModal'
 
 export const PageType = Object.freeze({ CREATE: 'CREATE', UPDATE: 'UPDATE' })
 export const FooterClickType = Object.freeze({
@@ -31,6 +33,8 @@ class EntityItemPage extends React.Component {
         location: { pathname }
       }
     } = props
+
+    this.deleteEntityModal = React.createRef()
 
     const id = parseId(pathname)
     const Model = createEntityModel(entity)
@@ -73,6 +77,14 @@ class EntityItemPage extends React.Component {
   postSubmitAction = res => {
     if (!res) return
 
+    const { entity } = this.props
+    const { pageType } = this.state
+    toast.success(
+      `${capitalize(entity.name)} successfully ${
+        pageType === PageType.CREATE ? 'created' : 'updated'
+      }`
+    )
+
     const { history } = this.props
     const { footerButtonClickType } = this.state
     const path = history.location.pathname
@@ -90,7 +102,11 @@ class EntityItemPage extends React.Component {
   }
 
   handleFormError = async form => {
-    logger.error('in handle', form.errors())
+    logger.error(form.errors())
+  }
+
+  onDeleteClicked = () => {
+    this.deleteEntityModal.current.openModal()
   }
 
   render() {
@@ -108,10 +124,15 @@ class EntityItemPage extends React.Component {
               <Form form={this.form} onSubmit={this.onSubmit} />
             </Card>
             <Card className="card__footer">
-              <Footer type={pageType} onClick={this.onFooterButtonClick} />
+              <Footer
+                onClickDelete={this.onDeleteClicked}
+                type={pageType}
+                onClick={this.onFooterButtonClick}
+              />
             </Card>
           </Card>
         </Grid>
+        <DeleteEntityModal ref={this.deleteEntityModal} />
       </div>
     )
   }

@@ -1,10 +1,11 @@
 import * as React from 'react'
+import './assets/styles/main.css'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
+import Modal from 'react-modal'
 import App from './components/App/App'
 
-// TODO: might by redundant
-import './assets/styles/main.css'
+Modal.setAppElement('#root')
 
 render(
   <AppContainer>

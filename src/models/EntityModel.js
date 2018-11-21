@@ -1,4 +1,5 @@
 import { types, flow } from 'mobx-state-tree'
+import { toast } from 'react-toastify'
 import logger from '../utils/logger'
 import api from '../utils/api'
 import { UpdateEntityUrlMethod } from '../entities/user'
@@ -17,6 +18,7 @@ const Entity = types
         return data
       } catch (error) {
         logger.error(error)
+        toast.error(error.message)
         return null
       }
     })
@@ -26,6 +28,7 @@ const Entity = types
         return yield api.post(url, entity)
       } catch (error) {
         logger.error(error)
+        toast.error(error.message)
         return null
       }
     })
@@ -37,6 +40,7 @@ const Entity = types
           : yield api.patch(`${url}/${id}`, entity)
       } catch (error) {
         logger.error(error)
+        toast.error(error.message)
         return null
       }
     })
@@ -46,6 +50,7 @@ const Entity = types
         yield api.delete(`${url}/${id}`)
       } catch (error) {
         logger.error(error)
+        toast.error(error.message)
       }
     })
 
