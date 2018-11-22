@@ -3,7 +3,7 @@ import login from './fixtures/auth/login'
 import signup from './fixtures/auth/signup'
 import admin from './fixtures/admin'
 import { user, userFilters } from './fixtures/user'
-import task from './fixtures/task'
+import { task, taskFilters } from './fixtures/task'
 import urls from './apiUrls'
 
 const fakeAPi = {
@@ -13,6 +13,7 @@ const fakeAPi = {
   task,
   user,
   userFilters,
+  taskFilters,
 
   // INFO: performing GET request to fetch entities
   // With sorting, filters, search and pagination
@@ -20,7 +21,13 @@ const fakeAPi = {
     const { size, page, sort, filters, search } = params
     if (
       includes(
-        [urls.fake.login, urls.fake.signup, urls.fake.admin, urls.fake.userFilters],
+        [
+          urls.fake.login,
+          urls.fake.signup,
+          urls.fake.admin,
+          urls.fake.userFilters,
+          urls.fake.taskFilters
+        ],
         url
       )
     ) {
@@ -34,10 +41,10 @@ const fakeAPi = {
 
     let data = this[url]
 
-    // INFO: in this example we only implement filtering by type field
-    // On your server it's up to you how to filter items
-    if (filters[0]) {
-      data = filter(data, el => el.type === filters[0])
+    if (filters.length) {
+      filters.forEach(({ value, name }) => {
+        data = filter(data, el => el[name] === value)
+      })
     }
 
     // INFO: in this example we only implement search by "name" key

@@ -8,6 +8,7 @@ export default {
     // entities
     user: 'user',
     userFilters: 'userFilters',
-    task: 'task'
+    task: 'task',
+    taskFilters: 'taskFilters'
   }
 }

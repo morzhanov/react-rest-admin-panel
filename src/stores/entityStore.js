@@ -19,7 +19,9 @@ const EntityStore = types
         page: self.table.pagination.pageNumber,
         search: self.table.search
       }
-      params.filters = filter(self.table.filters, f => f.value).map(f => f.value)
+      params.filters = filter(self.table.filters, f => f.value).map(
+        ({ value, name }) => ({ value, name })
+      )
       try {
         const { data } = yield api.get(url, params)
         const { results, count } = data

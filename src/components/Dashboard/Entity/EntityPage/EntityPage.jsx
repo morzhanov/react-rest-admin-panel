@@ -59,16 +59,15 @@ class EntityPage extends React.Component {
             <Card className="card__header">
               <h4 className="title">{title}</h4>
               <p className="subtitle">{subtitle}</p>
-              {!!data.length && <Search value={search} onChange={setSearch} />}
+              <Search value={search} onChange={setSearch} />
               <div className="card__row">
                 <button type="button" onClick={this.handleAddNewClick}>
                   Add new
                 </button>
                 <div className="filters">
-                  {!!data.length &&
-                    filters.map(filter => (
-                      <Filter key={filter.name} filter={filter} onChange={setFilter} />
-                    ))}
+                  {filters.map(filter => (
+                    <Filter key={filter.name} filter={filter} onChange={setFilter} />
+                  ))}
                 </div>
               </div>
             </Card>

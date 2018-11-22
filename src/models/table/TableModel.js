@@ -1,4 +1,5 @@
 import { types, getRoot } from 'mobx-state-tree'
+import { find } from 'lodash'
 import TableItemModel from './TableItemModel'
 import PaginationModel from './parts/PaginationModel'
 import SortModel from './parts/SortModel'
@@ -22,13 +23,13 @@ export default types
     const addCustomBodyElement = elem => self.customBodyElements.push(elem)
 
     const setFilter = (name, value) => {
-      self.filters[0].value = value
-      getRoot(self).fetch()
+      find(self.filters, { name }).value = value
+      getRoot(self).fetchData()
     }
 
     const setSearch = search => {
       self.search = search
-      getRoot(self).fetch()
+      getRoot(self).fetchData()
     }
 
     const setSort = sort => {
@@ -39,7 +40,7 @@ export default types
 
       self.sort.name = sort.name
       self.sort.direction = sort.direction
-      getRoot(self).fetch()
+      getRoot(self).fetchData()
     }
 
     return {
