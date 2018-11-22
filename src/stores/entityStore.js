@@ -12,6 +12,7 @@ const EntityStore = types
     const getItemById = id => find(self.data, { id })
 
     const fetchData = flow(function* fetchData(url = self.url) {
+      self.table.setPending(true)
       // INFO: this params configuration might be changed depending on your server's logic
       const params = {
         sort: `${self.table.sort.direction ? '' : '-'}${self.table.sort.name}`,
@@ -28,9 +29,11 @@ const EntityStore = types
         self.table.pagination.count = count
         self.data = results
         if (self.filtersUrl) self.fetchFilters()
+        self.table.setPending(false)
         return self.data
       } catch (error) {
         logger.error(error)
+        self.table.setPending(false)
         return null
       }
     })

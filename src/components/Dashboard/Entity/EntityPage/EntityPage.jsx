@@ -43,6 +43,7 @@ class EntityPage extends React.Component {
         table: {
           cols,
           pagination,
+          isPending,
           search,
           filters,
           setFilter,
@@ -78,6 +79,7 @@ class EntityPage extends React.Component {
                 cols={cols}
                 data={data}
                 deleteEntityModal={this.deleteEntityModal}
+                isPending={isPending}
               />
             </Card>
             <Card className="card__footer">

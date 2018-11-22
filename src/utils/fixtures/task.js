@@ -2,7 +2,7 @@ import faker from 'faker'
 
 export const task = []
 
-Array.from(Array(62)).forEach((id, idx) =>
+Array.from(Array(61)).forEach((id, idx) =>
   task.push({
     id: idx + 1,
     name: faker.random.word(),

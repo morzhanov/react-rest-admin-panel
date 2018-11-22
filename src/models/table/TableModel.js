@@ -11,7 +11,8 @@ export default types
     filters: types.maybe(types.array(FilterModel), []),
     sort: types.optional(SortModel, { name: 'id' }),
     pagination: types.maybe(PaginationModel, {}),
-    search: types.optional(types.string, '')
+    search: types.optional(types.string, ''),
+    isPending: false
   })
   .volatile(() => ({
     customHeadElements: [],
@@ -43,11 +44,16 @@ export default types
       getRoot(self).fetchData()
     }
 
+    const setPending = pending => {
+      self.isPending = pending
+    }
+
     return {
       addCustomHeadElement,
       addCustomBodyElement,
       setSort,
       setSearch,
-      setFilter
+      setFilter,
+      setPending
     }
   })

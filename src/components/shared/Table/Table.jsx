@@ -4,11 +4,12 @@ import MuiTable from '@material-ui/core/Table'
 import TableHead from './parts/TableHead'
 import TableBody from './parts/TableBody'
 import NoData from './parts/NoData'
+import Loading from './parts/Loading'
 
 const Table = ({
   cols,
   data,
-  firstCustomRow,
+  isPending,
   rowLinks,
   withButton,
   customHeadElements,
@@ -25,10 +26,9 @@ const Table = ({
         rowLinks={rowLinks}
         rows={data}
         cols={cols}
-        firstCustomRow={firstCustomRow}
       />
     </MuiTable>
-    {!data.length && <NoData />}
+    {!data.length ? isPending ? <Loading /> : <NoData /> : null}
   </>
 )
 

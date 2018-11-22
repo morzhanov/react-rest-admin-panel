@@ -62,7 +62,12 @@ const fakeAPi = {
       }
     }
 
-    return { data: { results: data, count } }
+    // imitate network delay
+    return new Promise(resolve =>
+      setTimeout(() => {
+        resolve({ data: { results: data, count } })
+      }, 1100)
+    )
   },
 
   async getSingleEntity(url, entityId) {

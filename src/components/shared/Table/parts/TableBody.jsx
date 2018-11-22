@@ -6,7 +6,6 @@ import TableRow from './TableRow'
 const TableBody = ({
   rows = [],
   cols,
-  firstCustomRow,
   rowLinks,
   withButton,
   router,
@@ -14,7 +13,6 @@ const TableBody = ({
   deleteEntityModal
 }) => (
   <MuiTableBody>
-    {firstCustomRow && <div>{firstCustomRow}</div>}
     {rows.map((row, i) => (
       <TableRow
         customBodyElements={customBodyElements}
