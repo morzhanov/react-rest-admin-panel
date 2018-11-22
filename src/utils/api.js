@@ -1,32 +1,13 @@
 import axios from 'axios'
 import { baseApiUrl } from './constants'
-// import AuthSession from './AuthSession'
-import logger from './logger'
 import fakeApi from './fakeApi'
+import { setupInterceptors } from './interceptors'
 
 axios.defaults.headers['Content-Type'] = 'application/json'
 axios.defaults.headers['Accept-Language'] = 'en'
-// axios.defaults.headers['demo-access-token'] = localStorage.getItem(AuthSession.adminKey)
 axios.defaults.baseURL = baseApiUrl
 
-axios.interceptors.response.use(
-  response => response,
-  error => {
-    try {
-      if (
-        error.response &&
-        error.response.data.detail &&
-        error.response.data.detail.toLowerCase().includes('invalid token.')
-      ) {
-        // AuthSession.remove()
-        window.location.reload(true)
-      }
-    } catch (err) {
-      logger.error(err)
-    }
-    return Promise.reject(error)
-  }
-)
+setupInterceptors()
 
 const api = {
   get(url, params) {
@@ -67,6 +48,10 @@ const api = {
       url,
       data
     })
+  },
+
+  setHeader(name, data) {
+    axios.defaults.headers[name] = data
   }
 }
 

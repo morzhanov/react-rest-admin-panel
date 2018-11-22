@@ -10,6 +10,13 @@ const rootStore = types
     admin: types.optional(types.maybe(UserModel), undefined)
   })
   .actions(self => {
+    const afterCreate = () => {
+      const token = localStorage.getItem('token')
+      if (token) {
+        api.setHeader('authorization', token)
+      }
+    }
+
     const fetchAdmin = flow(function* fetchAdmin() {
       try {
         // INFO: replace fake API call with appropriate one
@@ -44,6 +51,7 @@ const rootStore = types
     }
 
     return {
+      afterCreate,
       fetchAdmin,
       logOut,
       login
