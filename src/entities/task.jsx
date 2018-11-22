@@ -16,7 +16,7 @@ export default {
 
   filtersUrl: apiUrls.fake.taskFilters,
 
-  pagination: { pageSize: 15, pageNumber: 1 },
+  pagination: { pageSize: 20, pageNumber: 1 },
 
   filters: [
     {

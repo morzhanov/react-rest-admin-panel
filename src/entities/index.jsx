@@ -13,11 +13,7 @@ entities.forEach(entity => {
     actions: {
       body: {
         custom: ({ value, history, className }) => (
-          <button
-            type="button"
-            onClick={() => history.push(`${entity.url}/${value}`)}
-            className={className}
-          >
+          <button type="button" onClick={() => history.push(value)} className={className}>
             {value}
           </button>
         ),

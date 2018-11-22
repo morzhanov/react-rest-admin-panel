@@ -44,14 +44,17 @@ const getEntitiesRoutes = items => {
       navbarName: `${capitalize(item.name)}s`,
       icon: item.icon,
       component: renderEntityComponent(item),
+      exact: true,
       children: {
         update: {
           path: `/admin/${item.name}/:id`,
-          component: renderEntityItemComponent(item)
+          component: renderEntityItemComponent(item),
+          exact: true
         },
         add: {
           path: `/admin/${item.name}/add`,
-          component: renderEntityItemComponent(item)
+          component: renderEntityItemComponent(item),
+          exact: true
         }
       }
     }

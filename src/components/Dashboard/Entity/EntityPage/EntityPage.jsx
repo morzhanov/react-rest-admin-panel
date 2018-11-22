@@ -30,8 +30,8 @@ class EntityPage extends React.Component {
   }
 
   handleAddNewClick = () => {
-    const { history, url } = this.props
-    history.push(`${url}/add`)
+    const { history } = this.props
+    history.push('add')
   }
 
   render() {
