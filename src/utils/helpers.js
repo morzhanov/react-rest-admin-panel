@@ -50,3 +50,9 @@ export const parseId = id => {
   const parsed = +id.substring(id.lastIndexOf('/') + 1)
   return typeof parsed === 'number' ? parsed : null
 }
+
+export const logOut = () => {
+  localStorage.removeItem('token')
+  localStorage.removeItem('admin')
+  window.location.reload()
+}

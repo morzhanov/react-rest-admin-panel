@@ -1,5 +1,6 @@
 import { types, flow } from 'mobx-state-tree'
 import { toast } from 'react-toastify'
+import { logOut } from '../utils/helpers'
 import api from '../utils/api'
 import apiUrls from '../utils/apiUrls'
 import logger from '../utils/logger'
@@ -43,12 +44,6 @@ const rootStore = types
         return null
       }
     })
-
-    const logOut = () => {
-      localStorage.removeItem('token')
-      localStorage.removeItem('admin')
-      window.location.reload()
-    }
 
     return {
       afterCreate,

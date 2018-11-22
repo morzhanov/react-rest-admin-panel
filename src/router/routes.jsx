@@ -63,7 +63,7 @@ const getEntitiesRoutes = items => {
 
 export const dashboardRoutes = {
   changePassword: {
-    path: '/admin/password_change',
+    path: '/admin/password-change',
     component: ChangePassword
   },
   entities: getEntitiesRoutes(entities)

@@ -89,7 +89,9 @@ const fakeAPi = {
   async delete(url, entityId) {
     const entityName = url.substring(0, url.lastIndexOf('/'))
     return this[entityName][entityId - 1]
-  }
+  },
+
+  setHeader: () => 'mock'
 }
 
 export default fakeAPi

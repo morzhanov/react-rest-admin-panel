@@ -6,7 +6,7 @@ import { withState, compose } from 'recompose'
 
 const ChangePassword = ({
   rootStore: {
-    user: { changePassword }
+    admin: { changePassword }
   },
   oldPassword,
   setOldPassword,
@@ -34,7 +34,7 @@ const ChangePassword = ({
         id="repeatPassword"
         value={repeatPassword}
         onChange={setRepeatPassword}
-        placeholder="Enter email*"
+        placeholder="Repeat password*"
       />
       <FormLabel htmlFor="password">Password</FormLabel>
       <Input

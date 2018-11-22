@@ -1,12 +1,12 @@
 import axios from 'axios'
-import assistant from './assistant'
+import { logOut } from './helpers'
 
 export const setupInterceptors = () =>
   axios.interceptors.response.use(
     res => res,
     err => {
       if (err.response && err.response.status === 401) {
-        assistant.logOut()
+        logOut()
       }
       return Promise.reject(err)
     }
