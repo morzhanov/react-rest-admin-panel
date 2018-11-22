@@ -1,4 +1,5 @@
 import { types, flow } from 'mobx-state-tree'
+import { toast } from 'react-toastify'
 import api from '../utils/api'
 import apiUrls from '../utils/apiUrls'
 import logger from '../utils/logger'
@@ -20,8 +21,32 @@ const rootStore = types
       }
     })
 
+    const login = flow(function* login(data) {
+      try {
+        const {
+          data: { token }
+        } = yield api.get(apiUrls.fake.auth, data)
+        localStorage.setItem('token', token)
+        logger.log('logged in')
+        toast.success('Successfully logged in!')
+        return token
+      } catch (error) {
+        logger.error(error)
+        toast.error(error.message)
+        return null
+      }
+    })
+
+    const logOut = () => {
+      localStorage.removeItem('token')
+      localStorage.removeItem('admin')
+      window.location.reload()
+    }
+
     return {
-      fetchAdmin
+      fetchAdmin,
+      logOut,
+      login
     }
   })
 

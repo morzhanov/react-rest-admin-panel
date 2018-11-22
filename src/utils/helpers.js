@@ -41,17 +41,6 @@ export default {
   isNumber: n => !Number.isNaN(parseFloat(n)) && Number.isFinite(n)
 }
 
-export const saveTokens = ({ accessToken, refreshToken }) => {
-  localStorage.setItem('accessToken', accessToken)
-  localStorage.setItem('refreshToken', refreshToken)
-}
-
-export const logOut = () => {
-  localStorage.removeItem('accessToken')
-  localStorage.removeItem('refreshToken')
-  localStorage.removeItem('user')
-}
-
 export const capitalize = string => {
   const lower = string.toLowerCase()
   return lower.charAt(0).toUpperCase() + lower.slice(1)

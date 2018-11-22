@@ -8,10 +8,18 @@
   &__change-type-link
     margin-top: 20px;
     display: block;
+    border: none
+    cursor: pointer;
+    font-size: 14px;
+    color: #22f;
+    padding: 0;
   form
-    : 300px
+    display: flex
+    flex-direction: column
     *
       width: 100%
+    > div
+      min-width: 300px  
     label
       width : 100%
       font-weight: 600
@@ -21,11 +29,25 @@
       display: block
       margin-top: 24px
     input
-      margin-bottom: 10px
-      border-radius: 10px
-      margin-top: 12px
-      padding: 5px 5px 5px 0px
-      transition: 200ms ease all
+        margin-bottom: 2px
+        border-radius: 10px
+        margin-top: 12px
+        padding: 5px 5px 5px 0px
+        transition: 200ms ease all
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover, 
+        &:-webkit-autofill:focus, 
+        &:-webkit-autofill:active
+          -webkit-box-shadow: 0 0 0 30px white inset;
+  &__submit-button
+    line-height: 40px
+    padding: 0
+    display: block
+    margin-top: 24
+    background: #4877bf
+    height: 40px
+    width: 100%
+    color: #fff
   header 
     margin-top: -100px
     display: flex
@@ -39,4 +61,4 @@
       width: 100%
       color: #4877bf
       font-family: Helvetica, sans-serif
-      margin-bottom: 50px
+      margin-bottom: 30px

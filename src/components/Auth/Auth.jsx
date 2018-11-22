@@ -4,31 +4,13 @@ import { inject, observer } from 'mobx-react'
 import { Button, Input, FormLabel } from '@material-ui/core'
 import routes from '../../router/routes'
 import logger from '../../utils/logger'
-import { saveTokens } from '../../utils/helpers'
 
-const AUTH_TYPE_LOGIN = 0
-const AUTH_TYPE_REGISTER = 1
-
-@inject('router')
+@inject('router', 'rootStore')
 @observer
 class Auth extends React.Component {
   state = {
     email: '',
     password: ''
-  }
-
-  componentDidMount() {
-    const { location } = this.props
-    this.setState(state => ({
-      ...state,
-      type: location.pathname.indexOf('login') >= 0 ? AUTH_TYPE_LOGIN : AUTH_TYPE_REGISTER
-    }))
-  }
-
-  onAuthorized = ({ login }) => {
-    const { router } = this.props
-    saveTokens(login)
-    router.push(routes.home)
   }
 
   onAuthorizationError = error => logger.log(error)
@@ -37,17 +19,21 @@ class Auth extends React.Component {
 
   handlePwdChange = e => this.setState({ password: e.target.value })
 
-  performAuth = (email, pwd) => {
-    // TODO: login
+  performAuth = async () => {
+    const { email, password } = this.state
+    const { history, rootStore } = this.props
+    if (await rootStore.login({ email, password })) {
+      history.push(routes.admin.path)
+    }
   }
 
   render() {
-    const { email, password, type } = this.state
+    const { email, password } = this.state
     return (
       <div className="auth">
         <>
           <header>
-            <h1>Auth</h1>
+            <h1>Sign In</h1>
           </header>
           <form>
             <FormLabel htmlFor="email">Email</FormLabel>
@@ -73,20 +59,11 @@ class Auth extends React.Component {
                 height: 40,
                 color: '#fff'
               }}
-              onClick={this.performAuth(email, password)}
+              className="auth__submit-button"
+              onClick={this.performAuth}
             >
-              Sign {type === AUTH_TYPE_LOGIN ? ' In' : ' Up'}
+              Sign In
             </Button>
-            <a
-              className="auth__change-type-link"
-              href={
-                type === AUTH_TYPE_LOGIN
-                  ? routes.auth.signup.path
-                  : routes.auth.login.path
-              }
-            >
-              Go to Sign{type === AUTH_TYPE_LOGIN ? 'Up' : ' In'}
-            </a>
           </form>
         </>
       </div>

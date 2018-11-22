@@ -1,11 +1,28 @@
 import React from 'react'
-import { Route, Redirect, Switch } from 'react-router'
+import { Redirect, Switch } from 'react-router'
+import GuardRoute from './GuardRoute'
 
-const renderRoute = ({ path, to, redirect, exact, children, ...rest }) =>
+const renderRoute = ({
+  path,
+  to,
+  redirect,
+  exact,
+  children,
+  guardFunction,
+  redirectPath,
+  ...rest
+}) =>
   redirect ? (
     <Redirect from={path} to={to} key={path} />
   ) : (
-    <Route exact={exact} path={path} key={path} {...rest} />
+    <GuardRoute
+      key={path}
+      exact={exact}
+      path={path}
+      guardFunction={guardFunction}
+      redirectRoute={redirectPath}
+      {...rest}
+    />
   )
 
 const renderRoutes = parent =>

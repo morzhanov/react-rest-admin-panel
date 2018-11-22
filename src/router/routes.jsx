@@ -8,6 +8,7 @@ import EntityPage from '../components/Dashboard/Entity/EntityPage/EntityPage'
 import EntityItemPage from '../components/Dashboard/Entity/EntityItemPage/EntityItemPage'
 import { capitalize } from '../utils/helpers'
 import entities from '../entities'
+import guards from './routerGuards'
 
 const renderEntityComponent = item =>
   inject(`${item.name}Store`)(
@@ -73,22 +74,17 @@ export default {
     path: '/admin',
     sidebarName: 'Dashboard',
     navbarName: 'Dashboard',
-    component: DashboardPage
+    component: DashboardPage,
+    guardFunction: guards.mustBeAuthorized,
+    redirectPath: '/auth'
   },
   auth: {
-    login: {
-      path: '/login',
-      sidebarName: 'Login',
-      navbarName: 'Login',
-      component: Auth
-    },
-    signup: {
-      path: '/signup',
-      sidebarName: 'Sign Up',
-      navbarName: 'Sign Up',
-      component: Auth,
-      exact: true
-    }
+    path: '/auth',
+    sidebarName: 'Auth',
+    navbarName: 'Auth',
+    component: Auth,
+    guardFunction: guards.mustBeUnauthorized,
+    redirectPath: '/admin'
   },
   notFound: {
     redirect: true,

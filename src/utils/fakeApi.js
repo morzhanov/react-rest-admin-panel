@@ -1,14 +1,12 @@
 import { includes, sortBy, filter } from 'lodash'
-import login from './fixtures/auth/login'
-import signup from './fixtures/auth/signup'
+import auth from './fixtures/auth'
 import admin from './fixtures/admin'
 import { user, userFilters } from './fixtures/user'
 import { task, taskFilters } from './fixtures/task'
 import urls from './apiUrls'
 
 const fakeAPi = {
-  login,
-  signup,
+  auth,
   admin,
   task,
   user,
@@ -21,13 +19,7 @@ const fakeAPi = {
     const { size, page, sort, filters, search } = params
     if (
       includes(
-        [
-          urls.fake.login,
-          urls.fake.signup,
-          urls.fake.admin,
-          urls.fake.userFilters,
-          urls.fake.taskFilters
-        ],
+        [urls.fake.auth, urls.fake.admin, urls.fake.userFilters, urls.fake.taskFilters],
         url
       )
     ) {
