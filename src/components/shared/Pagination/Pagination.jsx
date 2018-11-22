@@ -2,6 +2,7 @@ import React from 'react'
 import './Pagination.styl'
 import { observer } from 'mobx-react'
 import classnames from 'classnames'
+import { FirstPage, LastPage, ChevronLeft, ChevronRight } from '@material-ui/icons'
 import PageSize from '../PageSize/PageSize'
 
 // TODO: refactor
@@ -56,19 +57,11 @@ const Pagination = ({
   return (
     <div className="pagination">
       <PageSize value={pageSize} onChange={changePageSize} />
-      <button type="button" className={classesForFirstPage} onClick={goToFirstPage}>
-        {'<<'}
-      </button>
-      <button type="button" className={classesForPrevPage} onClick={goToPrevPage}>
-        {'<'}
-      </button>
+      <FirstPage className={classesForFirstPage} onClick={goToFirstPage} />
+      <ChevronLeft className={classesForPrevPage} onClick={goToPrevPage} />
       <span className="pagination__indicator">{`${from}-${to}/${count}`}</span>
-      <button type="button" className={classesForNextPage} onClick={goToNextPage}>
-        {'>'}
-      </button>
-      <button type="button" className={classesForLastPage} onClick={goToLastPage}>
-        {'>>'}
-      </button>
+      <ChevronRight className={classesForNextPage} onClick={goToNextPage} />
+      <LastPage className={classesForLastPage} onClick={goToLastPage} />
     </div>
   )
 }

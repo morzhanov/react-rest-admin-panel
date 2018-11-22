@@ -64,9 +64,7 @@ const fakeAPi = {
 
     // imitate network delay
     return new Promise(resolve =>
-      setTimeout(() => {
-        resolve({ data: { results: data, count } })
-      }, 1100)
+      setTimeout(() => resolve({ data: { results: data, count } }), 500)
     )
   },
 
