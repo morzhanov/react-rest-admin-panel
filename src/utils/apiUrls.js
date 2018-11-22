@@ -3,6 +3,7 @@ export default {
   // Added your own endpoints which will work with utils/api
   fake: {
     auth: 'auth',
+    changePassword: 'changePassword',
     admin: 'admin',
     // entities
     user: 'user',

@@ -13,7 +13,7 @@ const renderRoute = ({
   ...rest
 }) =>
   redirect ? (
-    <Redirect from={path} to={to} key={path} />
+    <Redirect exact={exact} from={path} to={to} key={path} />
   ) : (
     <GuardRoute
       key={path}

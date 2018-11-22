@@ -1,7 +1,8 @@
 .sidebar
   &__logo
     position: relative
-    padding: 15px 15px
+    padding: 10px 10px
+    padding-bottom: 4px
     z-index: 4
     &:after
       content: ""
@@ -12,6 +13,7 @@
       width: calc(100% - 30px)
       background-color: rgba(180 180 180 0.3)
   &__logo-link
+    cursor: pointer
     color: #fff
     text-transform: uppercase
     padding: 5px 0
@@ -19,9 +21,12 @@
     font-size: 18px
     text-align: left
     font-weight: 400
-    line-height: 30px
+    line-height: 48px
     text-decoration: none
     background-color: transparent
+    border: none;
+    padding: 0;
+    margin: 0;
   &__logo-image
     width: 30px
     display: inline-block

@@ -3,6 +3,7 @@ import React from 'react'
 import { inject, observer } from 'mobx-react'
 import Auth from '../components/Auth/Auth'
 import DashboardPage from '../components/Dashboard/Dashboard'
+import Home from '../components/Dashboard/Home/Home'
 import ChangePassword from '../components/Dashboard/ChangePassword/ChangePassword'
 import EntityPage from '../components/Dashboard/Entity/EntityPage/EntityPage'
 import EntityItemPage from '../components/Dashboard/Entity/EntityItemPage/EntityItemPage'
@@ -38,22 +39,19 @@ const getEntitiesRoutes = items => {
   const res = {}
   items.forEach(item => {
     res[item.name] = {
-      path: `/admin/${item.name}`,
+      path: `/admin/${item.name}/`,
       sidebarName: `${capitalize(item.name)}s`,
       navbarName: `${capitalize(item.name)}s`,
       icon: item.icon,
       component: renderEntityComponent(item),
-      exact: true,
       children: {
         update: {
           path: `/admin/${item.name}/:id`,
-          component: renderEntityItemComponent(item),
-          exact: true
+          component: renderEntityItemComponent(item)
         },
         add: {
           path: `/admin/${item.name}/add`,
-          component: renderEntityItemComponent(item),
-          exact: true
+          component: renderEntityItemComponent(item)
         }
       }
     }
@@ -62,9 +60,21 @@ const getEntitiesRoutes = items => {
 }
 
 export const dashboardRoutes = {
+  index: {
+    exact: true,
+    redirect: true,
+    path: '/admin',
+    to: '/admin/home'
+  },
   changePassword: {
+    exact: true,
     path: '/admin/password-change',
     component: ChangePassword
+  },
+  home: {
+    exact: true,
+    path: '/admin/home',
+    component: Home
   },
   entities: getEntitiesRoutes(entities)
 }
@@ -89,6 +99,6 @@ export default {
   notFound: {
     redirect: true,
     path: '*',
-    to: '/admin'
+    to: '/admin/'
   }
 }

@@ -5,6 +5,9 @@ import { user, userFilters } from './fixtures/user'
 import { task, taskFilters } from './fixtures/task'
 import urls from './apiUrls'
 
+// INFO: fake API for demonstration
+// NOTICE: data in this api not persistend and changes
+// after every page refresh
 const fakeAPi = {
   auth,
   admin,
