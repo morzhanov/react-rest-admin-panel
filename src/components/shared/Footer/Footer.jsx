@@ -19,7 +19,7 @@ const Footer = () => (
         <span>
           &copy; {1900 + new Date().getYear()}{' '}
           <a href="/" className="footer__copy">
-            React mobx admin
+            React rest admin panel
           </a>
         </span>
       </p>
