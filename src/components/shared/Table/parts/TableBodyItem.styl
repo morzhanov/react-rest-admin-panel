@@ -1,10 +1,12 @@
+@import "../../styles/variables.styl"
+
 .table
     .table
         &__item-link
             border: none
             cursor: pointer
             font-weight: bold
-            color: #00acc1
+            color: $color-controls-accent
             text-decoration: underline
         &__actions
             display: flex
@@ -12,6 +14,6 @@
                 margin: 0 8px
                 cursor: pointer
                 &:first-child
-                    color: #00acc1
+                    color: $color-controls-accent
                 &:last-child
-                    color: #d0002e
+                    color: $color-danger

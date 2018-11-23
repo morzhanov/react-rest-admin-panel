@@ -1,3 +1,5 @@
+@import "../../styles/variables.styl"
+
 .sidebar
   .sidebar
     &__list
@@ -12,27 +14,25 @@
       list-style: none
     &__item
       color: #ffffff
-      display: block;
-      position: relative;
-      text-decoration: none;
+      display: block
+      position: relative
+      text-decoration: none
     &__item-link
       width: auto
-      display: block;
-      max-height: 44px;
-      position: relative;
-      transition: all 300ms linear;
-      font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-      font-weight: 300;
-      border-radius: 3px;
+      display: block
+      max-height: 44px
+      position: relative
+      transition: all 300ms linear
+      font-weight: 300
+      border-radius: 3px
       margin: 10px 15px 0 !important
       border-radius: 3px
       position: relative
       display: block
       background-color: transparent
-      transition: all 300ms linear;
       &.active, &:hover
-        background-color: #00acc1 !important
-        box-shadow: 0 12px 20px -10px rgba(0,188,212,.28), 0 4px 20px 0 rgba(0,0,0,.12), 0 7px 8px -5px rgba(0,188,212,.2)
+        background-color: $color-controls-accent !important
+        box-shadow: $box-shadow-controls-accent
     &__item-icon
       color: #fff !important
       width: 24px

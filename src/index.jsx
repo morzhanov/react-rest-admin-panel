@@ -1,5 +1,5 @@
 import * as React from 'react'
-import './assets/styles/main.css'
+import './components/shared/styles/main.styl'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import Modal from 'react-modal'

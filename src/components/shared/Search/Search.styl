@@ -1,22 +1,24 @@
+@import "../styles/variables.styl"
+
 .search
     *
         transition: all 300ms ease
     input
         width: 300px
         font-size: 18px
-        color: #eee
-        border-bottom: 1px solid #aaa
+        color: $color-light-active
+        border-bottom: 1px solid $color-light-disabled
         transition: all 300ms ease
         &:hover, &:focus, &:active
-            border-bottom: 1px solid #eee
+            border-bottom: 1px solid $color-light-active
         &::placeholder
-            color: #eee
+            color: $color-light-active
     svg 
         margin-left: -24px
         margin-bottom: -6px
-        color: #aaa
+        color: $color-light-disabled
     &.active, &:hover, &:focus
         input
-            border-bottom: 1px solid #eee
+            border-bottom: 1px solid $color-light-active
         svg
-            color: #eee
+            color: $color-light-active
