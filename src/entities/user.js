@@ -1,8 +1,6 @@
 import Person from '@material-ui/icons/Person'
 import apiUrls from '../utils/apiUrls'
-
-// TODO: move this somwhere else
-export const UpdateEntityUrlMethod = Object.freeze({ PATCH: 0, PUT: 1 })
+import { UpdateEntityUrlMethod } from '../utils/constants'
 
 export default {
   name: 'user',

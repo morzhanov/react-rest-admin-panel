@@ -12,3 +12,5 @@ export const errorMessages = {
 }
 
 export const baseApiUrl = ''
+
+export const UpdateEntityUrlMethod = Object.freeze({ PATCH: 0, PUT: 1 })

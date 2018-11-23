@@ -2,7 +2,7 @@ import { types, flow } from 'mobx-state-tree'
 import { toast } from 'react-toastify'
 import logger from '../utils/logger'
 import api from '../utils/api'
-import { UpdateEntityUrlMethod } from '../entities/user'
+import { UpdateEntityUrlMethod } from '../utils/constants'
 
 const Entity = types
   .model('Entity', {

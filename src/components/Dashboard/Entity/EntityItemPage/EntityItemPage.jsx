@@ -10,7 +10,7 @@ import Footer from './parts/Footer'
 import createForm from './parts/createForm'
 import { parseId, capitalize } from '../../../../utils/helpers'
 import logger from '../../../../utils/logger'
-import { createEntityModel } from '../../../../stores/createStore'
+import { createEntityModel } from '../../../../stores/createEntityStore'
 import DeleteEntityModal from './parts/DeleteEntityModal'
 
 export const PageType = Object.freeze({ CREATE: 'CREATE', UPDATE: 'UPDATE' })

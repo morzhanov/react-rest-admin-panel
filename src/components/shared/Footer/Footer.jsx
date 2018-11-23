@@ -3,7 +3,6 @@ import './Footer.styl'
 import ListItem from '@material-ui/core/ListItem'
 import List from '@material-ui/core/List'
 
-// TODO: change footer, remove redundant items, add required
 const Footer = () => (
   <footer className="footer">
     <div className="footer__container">

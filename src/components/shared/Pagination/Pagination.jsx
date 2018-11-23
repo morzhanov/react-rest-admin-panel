@@ -5,7 +5,6 @@ import classnames from 'classnames'
 import { FirstPage, LastPage, ChevronLeft, ChevronRight } from '@material-ui/icons'
 import PageSize from '../PageSize/PageSize'
 
-// TODO: refactor
 const Pagination = ({
   pagination: {
     pageNumber,
@@ -32,7 +31,6 @@ const Pagination = ({
     return null
   }
 
-  // classNames
   const classesForFirstPage = classnames({
     pagination__first: true,
     pagination__first_disabled: firstPageIsDisabled

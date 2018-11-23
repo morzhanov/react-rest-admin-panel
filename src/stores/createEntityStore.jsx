@@ -1,11 +1,7 @@
 import React from 'react'
 import { types } from 'mobx-state-tree'
 import { Edit, Delete } from '@material-ui/icons'
-import RootStore from './RootStore'
-import RouterStore from './RouterStore'
 import { capitalize } from '../utils/helpers'
-import AdminModel from '../models/AdminModel'
-import entities from '../entities'
 import EntityModel from '../models/EntityModel'
 import TableModel from '../models/table/TableModel'
 import EntityStore from './EntityStore'
@@ -99,8 +95,27 @@ const createTableModel = entity => {
   return tableModel
 }
 
+const addSortAction = entity => {
+  entity.fields.unshift({
+    name: 'id',
+    type: 'number',
+    actions: {
+      body: {
+        custom: ({ value, history, className }) => (
+          <button type="button" onClick={() => history.push(value)} className={className}>
+            {value}
+          </button>
+        ),
+        className: 'table__item-link'
+      }
+    }
+  })
+}
+
 const createEntityStore = entity => {
   const { url, filtersUrl, name } = entity
+
+  addSortAction(entity)
 
   const CurrentEntityModel = createEntityModel(entity)
   const entityTableModel = createTableModel(entity)
@@ -122,25 +137,4 @@ const createEntityStore = entity => {
   return ComposedStore.create({ table: entityTableModel })
 }
 
-const createStore = history => {
-  let admin
-  const localStorageUser = localStorage.getItem('admin')
-  if (localStorageUser) {
-    admin = AdminModel.create(JSON.parse(localStorageUser))
-  }
-  const rootStore = RootStore.create({ admin }, { admin: AdminModel })
-  const router = new RouterStore(history)
-
-  const resultStore = {
-    rootStore,
-    router
-  }
-
-  entities.forEach(entity => {
-    resultStore[`${entity.name}Store`] = createEntityStore(entity)
-  })
-
-  return resultStore
-}
-
-export default createStore
+export default createEntityStore

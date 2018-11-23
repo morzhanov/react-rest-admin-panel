@@ -1,10 +1,9 @@
 import React from 'react'
 import Assignment from '@material-ui/icons/Assignment'
 import apiUrls from '../utils/apiUrls'
+import { UpdateEntityUrlMethod } from '../utils/constants'
 
-// TODO: move this somwhere else
-export const UpdateEntityUrlMethod = Object.freeze({ PATCH: 0, PUT: 1 })
-
+// NOTICE: we should use .jsx extention for this file to support custom actions
 export default {
   name: 'task',
 
@@ -45,7 +44,7 @@ export default {
       type: 'dropdown',
       rules: 'required',
       options: ['Created', 'In progress', 'Closed'],
-      // example of custpm body action
+      // example of custom body action
       actions: {
         body: {
           custom: ({ value }) => (
@@ -75,7 +74,7 @@ export default {
       type: 'dropdown',
       rules: 'required',
       options: ['Low', 'Medium', 'High'],
-      // example of custpm body action
+      // example of custom body action
       actions: {
         body: {
           custom: ({ value }) => (
