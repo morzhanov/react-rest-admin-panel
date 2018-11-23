@@ -72,16 +72,18 @@ class EntityPage extends React.Component {
                 </div>
               </div>
             </Card>
-            <Card className="card__body">
-              <Table
-                customHeadElements={customHeadElements}
-                customBodyElements={customBodyElements}
-                cols={cols}
-                data={data}
-                deleteEntityModal={this.deleteEntityModal}
-                isPending={isPending}
-              />
-            </Card>
+            <div className="entity-page__body-wrapper">
+              <Card className="card__body">
+                <Table
+                  customHeadElements={customHeadElements}
+                  customBodyElements={customBodyElements}
+                  cols={cols}
+                  data={data}
+                  deleteEntityModal={this.deleteEntityModal}
+                  isPending={isPending}
+                />
+              </Card>
+            </div>
             <Card className="card__footer">
               <Pagination pagination={pagination} />
             </Card>
