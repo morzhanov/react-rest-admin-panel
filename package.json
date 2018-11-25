@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Project that will help you to create admin panel for REST API from scratch.",
   "scripts": {
-    "start": "http-server ./build",
+    "start": "node server.js",
     "bld": "sh -ac '. ./.env.${REACT_APP_BUILD_MODE}; node ./config/scripts/build.js'",
     "build": "REACT_APP_BUILD_MODE=development yarn run bld",
     "staging": "REACT_APP_BUILD_MODE=staging yarn run bld",
@@ -26,7 +26,6 @@
     "express": "^4.16.4",
     "faker": "^4.1.0",
     "history": "^4.7.2",
-    "http-server": "^0.11.1",
     "lodash": "^4.17.11",
     "mobx": "^5.1.1",
     "mobx-react": "^5.2.8",
