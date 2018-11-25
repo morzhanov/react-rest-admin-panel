@@ -1,4 +1,4 @@
-# react-mobx-admin-panel
+# react-rest-admin-panel
 
 <img src="https://i.imgur.com/KKc5TOa.png"/>
 
