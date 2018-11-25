@@ -1,5 +1,5 @@
 {
-  "name": "react-mobx-admin-panel",
+  "name": "react-rest-admin-panel",
   "version": "1.0.0",
   "description": "Project that will help you to create admin panel for REST API from scratch.",
   "scripts": {
