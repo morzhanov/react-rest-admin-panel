@@ -23,6 +23,7 @@
     "@material-ui/icons": "3.0.1",
     "axios": "^0.18.0",
     "classnames": "^2.2.5",
+    "express": "^4.16.4",
     "faker": "^4.1.0",
     "history": "^4.7.2",
     "http-server": "^0.11.1",
