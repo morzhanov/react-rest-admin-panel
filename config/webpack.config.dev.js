@@ -24,7 +24,7 @@ module.exports = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
   context: paths.appSrc,
-  entry: ['@babel/polyfill', './index'],
+  entry: ['@babel/polyfill', './index.jsx'],
   output: {
     path: outPath,
     filename: 'bundle.js',
