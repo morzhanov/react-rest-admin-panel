@@ -25,7 +25,6 @@
     "classnames": "^2.2.5",
     "faker": "^4.1.0",
     "history": "^4.7.2",
-    "http-server": "^0.11.1",
     "lodash": "^4.17.11",
     "mobx": "^5.1.1",
     "mobx-react": "^5.2.8",
