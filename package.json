@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Project that will help you to create admin panel for REST API from scratch.",
   "scripts": {
-    "start": "NODE_ENV=development webpack-dev-server  --config config/webpack.config.dev.js --mode development",
+    "start": "http-server ./build",
     "bld": "sh -ac '. ./.env.${REACT_APP_BUILD_MODE}; node ./config/scripts/build.js'",
     "build": "REACT_APP_BUILD_MODE=development yarn run bld",
     "staging": "REACT_APP_BUILD_MODE=staging yarn run bld",
