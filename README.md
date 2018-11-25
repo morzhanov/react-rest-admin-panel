@@ -4,6 +4,9 @@
 
 Scallable and easy to use admin dashboard that will help you to manage your REST API data.
 
+##DEMO
+https://react-rest-admin-panel.herokuapp.com/
+
 ## Installation
 
 Use these steps to install project
