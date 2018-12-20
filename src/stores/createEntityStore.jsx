@@ -71,7 +71,7 @@ const createTableModel = entity => {
     name: 'actions',
     custom: ({ id, history, deleteEntityModal }) => {
       const { pathname } = history.location
-      const editPath = `${pathname}/${id}`
+      const editPath = `${pathname}${id}`
       return (
         <div className="table__actions">
           <Edit onClick={() => history.push(editPath)} />
