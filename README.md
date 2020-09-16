@@ -348,3 +348,4 @@ Vlad Morzhanov
 
 Copyright (c) 2018 Vlad Morzhanov.
 You can review license in the LICENSE file.
+[![Run on Repl.it](https://repl.it/badge/github/morzhanov/react-rest-admin-panel)](https://repl.it/github/morzhanov/react-rest-admin-panel)
